@@ -1,8 +1,8 @@
-# Install script for directory: /Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR
+# Install script for directory: /Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/Debug")
+  set(CMAKE_INSTALL_PREFIX "/Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,19 +34,19 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/Library/Developer/CommandLineTools/usr/bin/objdump")
+  set(CMAKE_OBJDUMP "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/objdump")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/cmake_aux/flags/cmake_install.cmake")
-  include("/Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/cmake_aux/listing/cmake_install.cmake")
-  include("/Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/cmake_aux/libraries/cmake_install.cmake")
-  include("/Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/cmake_aux/make_opt/cmake_install.cmake")
-  include("/Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/cmake_aux/addons/cmake_install.cmake")
-  include("/Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/mbs_common/cmake_install.cmake")
-  include("/Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/symbolicR/cmake_install.cmake")
-  include("/Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/userfctR/cmake_install.cmake")
+  include("/Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/cmake_aux/flags/cmake_install.cmake")
+  include("/Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/cmake_aux/listing/cmake_install.cmake")
+  include("/Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/cmake_aux/libraries/cmake_install.cmake")
+  include("/Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/cmake_aux/make_opt/cmake_install.cmake")
+  include("/Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/cmake_aux/addons/cmake_install.cmake")
+  include("/Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/mbs_common/cmake_install.cmake")
+  include("/Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/symbolicR/cmake_install.cmake")
+  include("/Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/userfctR/cmake_install.cmake")
 
 endif()
 
@@ -58,5 +58,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

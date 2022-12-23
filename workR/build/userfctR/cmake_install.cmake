@@ -1,8 +1,8 @@
-# Install script for directory: /Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/userfctR
+# Install script for directory: /Users/martinservais/Documents/GitHub/IAVSD_ILTIS/userfctR
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/Debug")
+  set(CMAKE_INSTALL_PREFIX "/Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,6 +34,6 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/Library/Developer/CommandLineTools/usr/bin/objdump")
+  set(CMAKE_OBJDUMP "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/objdump")
 endif()
 

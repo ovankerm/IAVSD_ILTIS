@@ -18,9 +18,9 @@ FIND_LIBRARY(LIB_MBSYSC_MODULES MBsysC_module
     PATHS 
           //Release
           //Debug
-          /Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/mbs_common/mbs_module
-          /Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/mbs_common/mbs_module//Debug
-          /Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/mbs_common/mbs_module//Release
+          /Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/mbs_common/mbs_module
+          /Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/mbs_common/mbs_module//Debug
+          /Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/mbs_common/mbs_module//Release
 )
 
 # MBSYSC_LOAD
@@ -28,9 +28,9 @@ FIND_LIBRARY(LIB_MBSYSC_LOAD MBsysC_loadXML
     PATHS 
           //Release
           //Debug
-          /Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/mbs_common/mbs_load_xml
-          /Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/mbs_common/mbs_load_xml//Debug
-          /Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/mbs_common/mbs_load_xml//Release
+          /Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/mbs_common/mbs_load_xml
+          /Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/mbs_common/mbs_load_xml//Debug
+          /Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/mbs_common/mbs_load_xml//Release
 )
 
 # MBSYSC_UTILITIES
@@ -38,9 +38,9 @@ FIND_LIBRARY(LIB_MBSYSC_UTILITIES MBsysC_utilities
     PATHS 
           //Release
           //Debug
-          /Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/mbs_common/mbs_utilities
-          /Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/mbs_common/mbs_utilities//Debug
-          /Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/mbs_common/mbs_utilities//Release
+          /Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/mbs_common/mbs_utilities
+          /Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/mbs_common/mbs_utilities//Debug
+          /Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/mbs_common/mbs_utilities//Release
 )
 
 # MBSYSC_REALTIME
@@ -48,9 +48,9 @@ FIND_LIBRARY(LIB_MBSYSC_REALTIME MBsysC_realtime
     PATHS 
           //Release
           //Debug
-          /Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/mbs_common/mbs_realtime
-          /Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/mbs_common/mbs_realtime//Debug
-          /Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/build/mbs_common/mbs_realtime//Release
+          /Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/mbs_common/mbs_realtime
+          /Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/mbs_common/mbs_realtime//Debug
+          /Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/build/mbs_common/mbs_realtime//Release
 )
 
 
@@ -59,7 +59,7 @@ FIND_LIBRARY(LIB_MBSYSC_REALTIME MBsysC_realtime
 #############
 
 # Path to Robotran common files
-SET(ROBOTRAN_SOURCE_DIR /Users/vankermotis/.robotran/mbsysc/MBsysC/mbs_common/../)
+SET(ROBOTRAN_SOURCE_DIR /Users/martinservais/.robotran/mbsysc/MBsysC/mbs_common/../)
 
 # Call project funstion (symbolic and user) via function pointers
 SET(FLAG_PRJ_FCT_PTR OFF)
@@ -78,7 +78,7 @@ SET(FLAG_SHARED_LIB OFF)
 # INCLUDE DIRECTORIES
 #############
 
-SET(LIB_MBSYSC_INCLUDE_DIRS /Users/vankermotis/.robotran/mbsysc/MBsysC/mbs_common/..//mbs_common/mbs_struct;/Users/vankermotis/.robotran/mbsysc/MBsysC/mbs_common/..//mbs_common/mbs_load_xml;/Users/vankermotis/.robotran/mbsysc/MBsysC/mbs_common/..//mbs_common/mbs_module;/Users/vankermotis/.robotran/mbsysc/MBsysC/mbs_common/..//mbs_common/mbs_utilities;/Users/vankermotis/.robotran/mbsysc/MBsysC/mbs_common/..//mbs_common/mbs_utilities/auto_output;/Users/vankermotis/.robotran/mbsysc/MBsysC/mbs_common/..//mbs_common/mbs_realtime;/Users/vankermotis/.robotran/mbsysc/MBsysC/mbs_common/..//mbs_common/mbs_realtime/realtime;/Users/vankermotis/.robotran/mbsysc/MBsysC/mbs_common/..//mbs_common/mbs_realtime/sdl;/Users/vankermotis/.robotran/mbsysc/MBsysC/mbs_common/..//mbs_common/mbs_realtime/sdl/auto_plot;/Users/vankermotis/.robotran/mbsysc/MBsysC/mbs_common/..//mbs_common/mbs_numerics )
+SET(LIB_MBSYSC_INCLUDE_DIRS /Users/martinservais/.robotran/mbsysc/MBsysC/mbs_common/..//mbs_common/mbs_struct;/Users/martinservais/.robotran/mbsysc/MBsysC/mbs_common/..//mbs_common/mbs_load_xml;/Users/martinservais/.robotran/mbsysc/MBsysC/mbs_common/..//mbs_common/mbs_module;/Users/martinservais/.robotran/mbsysc/MBsysC/mbs_common/..//mbs_common/mbs_utilities;/Users/martinservais/.robotran/mbsysc/MBsysC/mbs_common/..//mbs_common/mbs_utilities/auto_output;/Users/martinservais/.robotran/mbsysc/MBsysC/mbs_common/..//mbs_common/mbs_realtime;/Users/martinservais/.robotran/mbsysc/MBsysC/mbs_common/..//mbs_common/mbs_realtime/realtime;/Users/martinservais/.robotran/mbsysc/MBsysC/mbs_common/..//mbs_common/mbs_realtime/sdl;/Users/martinservais/.robotran/mbsysc/MBsysC/mbs_common/..//mbs_common/mbs_realtime/sdl/auto_plot;/Users/martinservais/.robotran/mbsysc/MBsysC/mbs_common/..//mbs_common/mbs_numerics )
 
 #############
 # DEFINITIONS
