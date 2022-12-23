@@ -15,8 +15,6 @@
 # CMake minimum version
 cmake_minimum_required(VERSION 3.4)
 
-martin la grosse putain
-
 # project name
 project (Jeep)
 
