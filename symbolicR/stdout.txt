@@ -1,0 +1,14 @@
+
+##############################################################
+#	file7.gen 23/12/2022 10:51:13    messages
+##############################################################
+Symbolic generation file : /usr/local/robotran/users/MECA2215/upload/file7.gen
+Project : /usr/local/robotran/users/MECA2215/upload/upload.mbs
+F2 - Recursive Inverse Dynamics of tree-like MBS
+
+##############################################################
+#	file5.gen 23/12/2022 10:51:13    messages
+##############################################################
+Symbolic generation file : /usr/local/robotran/users/MECA2215/upload/file5.gen
+Project : /usr/local/robotran/users/MECA2215/upload/upload.mbs
+F19 - External Forces

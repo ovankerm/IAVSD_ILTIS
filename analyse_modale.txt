@@ -1,0 +1,17 @@
+N°    | Description             | Re    | Im    | Freq  | Damp  |
+------|-------------------------|-------|-------|-------|-------|
+1     | Vehicule longitudinal   | 0     | 0     | /     | /     |
+20    | Vehicle lateral         |-0.029 | 0     | /     | /     |
+2     | Vehicule longitudinal   | 0     | 0     | /     | /     | => ?Bug? : selon modal_result.res, c'est la variable 2, soit latérale
+19    | Vehicle longitudinal    |-0.0006| 0     | /     | /     |
+18    | Cabin roll              |-6.968 | 0     | /     | /     |
+11    | Cabin roll              |-42.96 | 0     | /     | /     |
+16/17 | cabin lateral / roll    |       |       |       |       |
+      | roll out-of-phase       |-4.182 |±8.357 | 1.330 | 44.75 |
+14/15 | Cabin pitch             |-4.094 |±69.29 | 1.102 | 50.89 |
+12/13 | Cabin bounce            |-5.528 |±7.509 | 1.195 | 59.29 |
+9/10  | wheel hop: cabin roll   |-26.46 |±71.03 | 11.30 | 34.91 |
+3/4   | wheel hop: cabin bounce |-29.53 |±80.32 | 12.78 | 34.51 |
+5/6   | wheel hop: cabin pitch  |-29.28 |±81.41 | 12.96 | 33.84 |
+7/8   | wheel hop: cabin yaw    |-29.34 |±84.57 | 13.46 | 32.78 | => Pas convaincu
+-----------------------------------------------------------------
