@@ -247,7 +247,7 @@ plt.ylim((-0.2, 0.2))
 plt.xlabel('Simulation time [s]')
 plt.ylabel('Yaw rate of vehicle [rad/s]')
 plt.legend()
-plt.savefig('SinusoidalSteering_Yaw_Rate.png')
+plt.savefig('SinusoidalSteering_Yaw_Rate_20ms.png')
 
 plt.figure("Sinusoidal steering at 20 m/s - Lateral Acc.")
 plt.plot(SS1mm_qdd[:, 0], np.linalg.norm(SS1mm_qdd[:, [Id_x, Id_y]], axis=1), 'k-', label='Robotran : amplitude 1mm')
@@ -259,7 +259,7 @@ plt.ylim((-2.5, 2.5))
 plt.xlabel('Simulation time [s]')
 plt.ylabel('Lateral acceleration (norm) of vehicle [m/(s*s)]')
 plt.legend()
-plt.savefig('SinusoidalSteering_Lateral_Acc.png')
+plt.savefig('SinusoidalSteering_Lateral_Acc_20ms.png')
 
 
 plt.show()
