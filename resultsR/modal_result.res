@@ -1,7 +1,7 @@
 
 -------------------------------------------------------
 Project            : /Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/../dataR/Jeep.mbs
-Date               : Fri Dec 23 12:13:57 2022
+Date               : Tue Dec 27 12:53:41 2022
 Process            : Modal Analysis
 Computation        : Eigenmodes
 -------------------------------------------------------
