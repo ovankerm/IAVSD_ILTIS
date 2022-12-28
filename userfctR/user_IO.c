@@ -8,15 +8,12 @@
  *
  * Universite catholique de Louvain, Belgium 
  *
- * Last update : Mon Nov 14 14:37:06 2022
+ * Last update : Wed Dec 28 15:56:30 2022
  * --------------------------------------------------------
  *
  */
 #include <stdlib.h>
-#include <stdio.h>
-#include <float.h>
 #include "user_IO.h"
-#include "useful_functions.h"
 
 // ============================================================ //
 
@@ -29,30 +26,12 @@ UserIO* mbs_new_user_IO(UserIoInfo* ioInfo)
     return uio;
 }
 
+
+
 void mbs_delete_user_IO(UserIO *uio)
 {
 
     free(uio);
-}
-
- void mbs_print_user_IO(UserIO* uio) 
-{
-}
-
-
-void mbs_save_user_IO(FILE* stream, UserIO *uio)
-{
-    // Restoring UserIoInfo
-    fprintf(stream, "        s->__user_IO_info = (UserIoInfo*)malloc(sizeof(UserIoInfo));\n");
-    fprintf(stream, "        s->__user_IO_info->n_in = 0;\n");
-    fprintf(stream, "        s->__user_IO_info->n_out = 0;\n");
-    fprintf(stream, "        s->__user_IO_info->size_in = (int*)malloc(sizeof(int)*0);\n");
-    fprintf(stream, "        s->__user_IO_info->size_out = (int*)malloc(sizeof(int)*0);\n");
-    fprintf(stream, "        s->__user_IO_info->ptr_in = (double**)malloc(sizeof(double*)*0);\n");
-    fprintf(stream, "        s->__user_IO_info->ptr_out = (double**)malloc(sizeof(double*)*0);\n");
-    // Allocating UserIo
-    fprintf(stream, "        s->user_IO = (UserIO*) malloc(sizeof(UserIO));\n");
-    // Restoring UserIo
 }
 
 void mbs_get_user_IO_size(int *n_in, int *n_out, int *n_user_IO) 

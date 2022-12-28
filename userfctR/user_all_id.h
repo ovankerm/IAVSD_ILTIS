@@ -8,7 +8,7 @@
  *
  * Universite catholique de Louvain, Belgium 
  *
- * Last update : Mon Nov 14 14:37:06 2022
+ * Last update : Wed Dec 28 15:56:30 2022
  * --------------------------------------------------------
  *
  */
@@ -20,12 +20,12 @@
 
 // joint
 
-#define FL_Joint_0_id 1
-#define T2_Car_id 2
+#define X_Chassis_id 1
+#define Y_Chassis_id 2
 #define Z_Chassis_id 3
 #define Pitch_Chassis_id 4
-#define FL_Joint_4_id 5
-#define FL_Joint_5_id 6
+#define Roll_Chassis_id 5
+#define Yaw_Chassis_id 6
 #define R1_FL_id 7
 #define FL_Joint_7_id 8
 #define FL_Joint_8_id 9

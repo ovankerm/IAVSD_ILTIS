@@ -1,14 +1,50 @@
 
 ##############################################################
-#	file7.gen 23/12/2022 10:51:13    messages
+#	file6.gen 28/12/2022 15:56:26    messages
 ##############################################################
-Symbolic generation file : /usr/local/robotran/users/MECA2215/upload/file7.gen
+Symbolic generation file : /usr/local/robotran/users/MECA2215/upload/file6.gen
 Project : /usr/local/robotran/users/MECA2215/upload/upload.mbs
-F2 - Recursive Inverse Dynamics of tree-like MBS
+F27 - Link Forces (3D)
 
 ##############################################################
-#	file5.gen 23/12/2022 10:51:13    messages
+#	file3.gen 28/12/2022 15:56:26    messages
+##############################################################
+Symbolic generation file : /usr/local/robotran/users/MECA2215/upload/file3.gen
+Project : /usr/local/robotran/users/MECA2215/upload/upload.mbs
+F8 - Constraints and Constraints Jacobian(h, J)
+nombre de contraintes elmiminees : 4
+
+##############################################################
+#	file2.gen 28/12/2022 15:56:26    messages
+##############################################################
+Symbolic generation file : /usr/local/robotran/users/MECA2215/upload/file2.gen
+Project : /usr/local/robotran/users/MECA2215/upload/upload.mbs
+F7 - Link Forces (1D)
+
+##############################################################
+#	file5.gen 28/12/2022 15:56:26    messages
 ##############################################################
 Symbolic generation file : /usr/local/robotran/users/MECA2215/upload/file5.gen
 Project : /usr/local/robotran/users/MECA2215/upload/upload.mbs
 F19 - External Forces
+
+##############################################################
+#	file0.gen 28/12/2022 15:56:26    messages
+##############################################################
+Symbolic generation file : /usr/local/robotran/users/MECA2215/upload/file0.gen
+Project : /usr/local/robotran/users/MECA2215/upload/upload.mbs
+F1 - Recursive Direct Dynamics of tree-like MBS
+
+##############################################################
+#	file1.gen 28/12/2022 15:56:26    messages
+##############################################################
+Symbolic generation file : /usr/local/robotran/users/MECA2215/upload/file1.gen
+Project : /usr/local/robotran/users/MECA2215/upload/upload.mbs
+F6 - Sensors Kinematics
+
+##############################################################
+#	file1b.gen 28/12/2022 15:56:26    messages
+##############################################################
+Symbolic generation file : /usr/local/robotran/users/MECA2215/upload/file1b.gen
+Project : /usr/local/robotran/users/MECA2215/upload/upload.mbs
+F6 - Sensors Kinematics

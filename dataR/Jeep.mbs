@@ -120,7 +120,7 @@
         <pointname>origin</pointname>
       </parent>
       <joint>
-        <jointname>FL_Joint_0</jointname>
+        <jointname>X_Chassis</jointname>
         <type>T1</type>
         <nature>driven</nature>
         <symbols>
@@ -139,7 +139,7 @@
         </graphics>
       </joint>
       <joint>
-        <jointname>T2_Car</jointname>
+        <jointname>Y_Chassis</jointname>
         <type>T2</type>
         <nature>driven</nature>
         <symbols>
@@ -150,8 +150,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>609.0</x>
-              <y>532.0</y>
+              <x>541.0</x>
+              <y>493.0</y>
             </position>
           </x2D>
           <x3D />
@@ -167,8 +167,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>609.0</x>
-              <y>491.0</y>
+              <x>382.0</x>
+              <y>396.0</y>
             </position>
           </x2D>
           <x3D />
@@ -181,29 +181,29 @@
         <graphics>
           <x2D>
             <position>
-              <x>610.0</x>
-              <y>440.0</y>
+              <x>459.0</x>
+              <y>387.0</y>
             </position>
           </x2D>
           <x3D />
         </graphics>
       </joint>
       <joint>
-        <jointname>FL_Joint_4</jointname>
+        <jointname>Roll_Chassis</jointname>
         <type>R1</type>
         <nature>independent</nature>
         <graphics>
           <x2D>
             <position>
-              <x>610.0</x>
-              <y>395.0</y>
+              <x>507.0</x>
+              <y>379.0</y>
             </position>
           </x2D>
           <x3D />
         </graphics>
       </joint>
       <joint>
-        <jointname>FL_Joint_5</jointname>
+        <jointname>Yaw_Chassis</jointname>
         <type>R3</type>
         <nature>driven</nature>
         <symbols>
@@ -4388,6 +4388,34 @@
         <value>0.0</value>
       </parameter>
     </user_model>
+    <user_model>
+      <name>PID</name>
+      <parameter>
+        <name>Kp</name>
+        <type>scalar</type>
+        <value>0.0</value>
+      </parameter>
+      <parameter>
+        <name>Kd</name>
+        <type>scalar</type>
+        <value>0.0</value>
+      </parameter>
+      <parameter>
+        <name>Ki</name>
+        <type>scalar</type>
+        <value>0.0</value>
+      </parameter>
+      <parameter>
+        <name>e_sum</name>
+        <type>scalar</type>
+        <value>0.0</value>
+      </parameter>
+      <parameter>
+        <name>e_prev</name>
+        <type>scalar</type>
+        <value>0.0</value>
+      </parameter>
+    </user_model>
   </user_models>
   <x3D>
     <background>
@@ -4433,7 +4461,7 @@
       </viewpoint>
       <viewpoint>
         <name>Front</name>
-        <joint>FL_Joint_5</joint>
+        <joint>Yaw_Chassis</joint>
         <position>
           <x>3.0</x>
           <y>0.0</y>
@@ -4457,7 +4485,7 @@
       </viewpoint>
       <viewpoint>
         <name>Front_ground</name>
-        <joint>FL_Joint_0</joint>
+        <joint>X_Chassis</joint>
         <position>
           <x>3.0</x>
           <y>0.0</y>
@@ -4481,7 +4509,7 @@
       </viewpoint>
       <viewpoint>
         <name>Side</name>
-        <joint>T2_Car</joint>
+        <joint>Y_Chassis</joint>
         <position>
           <x>0.0</x>
           <y>5.0</y>

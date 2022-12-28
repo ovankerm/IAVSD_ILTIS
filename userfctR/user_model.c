@@ -8,7 +8,7 @@
  *
  * Universite catholique de Louvain, Belgium 
  *
- * Last update : Mon Nov 14 14:37:06 2022
+ * Last update : Wed Dec 28 15:56:30 2022
  * --------------------------------------------------------
  *
  */
@@ -18,8 +18,7 @@
 #include "mbs_load_xml.h"
 #include "useful_functions.h"
 #include "mbs_message.h"
-#include <math.h>
-#include <float.h>
+#include "math.h"
 
 // ============================================================ //
 
@@ -59,6 +58,12 @@ UserModel* mbs_new_user_model()
     um->Status.Steering = 0;
     um->Status.Steering_sinus = 0;
     um->Status.Linear_Modal = 0;
+ 
+    um->PID.Kp = 0.0;
+    um->PID.Kd = 0.0;
+    um->PID.Ki = 0.0;
+    um->PID.e_sum = 0.0;
+    um->PID.e_prev = 0.0;
  
     return um;
 }
@@ -104,6 +109,12 @@ void mbs_delete_user_model(UserModel* um)
     um->Status.Steering_sinus = (int)lround(mbs_infos->user_models->user_model_list[4]->parameter_list[3]->value_list[1]);
     um->Status.Linear_Modal = (int)lround(mbs_infos->user_models->user_model_list[4]->parameter_list[4]->value_list[1]);
  
+    um->PID.Kp = mbs_infos->user_models->user_model_list[5]->parameter_list[0]->value_list[1];
+    um->PID.Kd = mbs_infos->user_models->user_model_list[5]->parameter_list[1]->value_list[1];
+    um->PID.Ki = mbs_infos->user_models->user_model_list[5]->parameter_list[2]->value_list[1];
+    um->PID.e_sum = mbs_infos->user_models->user_model_list[5]->parameter_list[3]->value_list[1];
+    um->PID.e_prev = mbs_infos->user_models->user_model_list[5]->parameter_list[4]->value_list[1];
+ 
 }
 
  void mbs_bind_user_model(MbsInfos* mbs_infos, UserModel* um) 
@@ -139,6 +150,12 @@ void mbs_delete_user_model(UserModel* um)
     mbs_infos->user_models->user_model_list[4]->parameter_list[2]->val_ptr = &um->Status.Steering;
     mbs_infos->user_models->user_model_list[4]->parameter_list[3]->val_ptr = &um->Status.Steering_sinus;
     mbs_infos->user_models->user_model_list[4]->parameter_list[4]->val_ptr = &um->Status.Linear_Modal;
+ 
+    mbs_infos->user_models->user_model_list[5]->parameter_list[0]->val_ptr = &um->PID.Kp;
+    mbs_infos->user_models->user_model_list[5]->parameter_list[1]->val_ptr = &um->PID.Kd;
+    mbs_infos->user_models->user_model_list[5]->parameter_list[2]->val_ptr = &um->PID.Ki;
+    mbs_infos->user_models->user_model_list[5]->parameter_list[3]->val_ptr = &um->PID.e_sum;
+    mbs_infos->user_models->user_model_list[5]->parameter_list[4]->val_ptr = &um->PID.e_prev;
  
 }
  
@@ -177,11 +194,17 @@ void mbs_delete_user_model(UserModel* um)
     printf("user_model->Status.Steering_sinus=%d\n", um->Status.Steering_sinus);
     printf("user_model->Status.Linear_Modal=%d\n", um->Status.Linear_Modal);
  
+    printf("user_model->PID.Kp=%f\n", um->PID.Kp);
+    printf("user_model->PID.Kd=%f\n", um->PID.Kd);
+    printf("user_model->PID.Ki=%f\n", um->PID.Ki);
+    printf("user_model->PID.e_sum=%f\n", um->PID.e_sum);
+    printf("user_model->PID.e_prev=%f\n", um->PID.e_prev);
+ 
 }
  
 void mbs_get_user_model_size(int *n_user_model) 
 {
-    *n_user_model  = 5; 
+    *n_user_model  = 6; 
 }
  
 void mbs_get_user_model_list(int *user_model_list) 
@@ -191,87 +214,8 @@ void mbs_get_user_model_list(int *user_model_list)
     user_model_list[3]  = 8; 
     user_model_list[4]  = 8; 
     user_model_list[5]  = 5; 
+    user_model_list[6]  = 5; 
 
-}
-
-void mbs_save_um(FILE* stream, UserModel* um)
-{
-    if (isnan(um->Wheels.F_Rad)) { fprintf(stream, "         s->user_model->Wheels.F_Rad = NAN; \n");}
-    else if (isinf(um->Wheels.F_Rad)) { fprintf(stream, "        s->user_model->Wheels.F_Rad = %d * INFINITY; \n", isinf(um->Wheels.F_Rad));}
-    else { fprintf(stream, "        s->user_model->Wheels.F_Rad = %.*e;\n", DBL_DECIMAL_DIG - 1, um->Wheels.F_Rad);}
-    if (isnan(um->Wheels.R_Rad)) { fprintf(stream, "         s->user_model->Wheels.R_Rad = NAN; \n");}
-    else if (isinf(um->Wheels.R_Rad)) { fprintf(stream, "        s->user_model->Wheels.R_Rad = %d * INFINITY; \n", isinf(um->Wheels.R_Rad));}
-    else { fprintf(stream, "        s->user_model->Wheels.R_Rad = %.*e;\n", DBL_DECIMAL_DIG - 1, um->Wheels.R_Rad);}
-    if (isnan(um->Wheels.Stiffness)) { fprintf(stream, "         s->user_model->Wheels.Stiffness = NAN; \n");}
-    else if (isinf(um->Wheels.Stiffness)) { fprintf(stream, "        s->user_model->Wheels.Stiffness = %d * INFINITY; \n", isinf(um->Wheels.Stiffness));}
-    else { fprintf(stream, "        s->user_model->Wheels.Stiffness = %.*e;\n", DBL_DECIMAL_DIG - 1, um->Wheels.Stiffness);}
- 
-    if (isnan(um->LeafSpring.k)) { fprintf(stream, "         s->user_model->LeafSpring.k = NAN; \n");}
-    else if (isinf(um->LeafSpring.k)) { fprintf(stream, "        s->user_model->LeafSpring.k = %d * INFINITY; \n", isinf(um->LeafSpring.k));}
-    else { fprintf(stream, "        s->user_model->LeafSpring.k = %.*e;\n", DBL_DECIMAL_DIG - 1, um->LeafSpring.k);}
-    if (isnan(um->LeafSpring.l0)) { fprintf(stream, "         s->user_model->LeafSpring.l0 = NAN; \n");}
-    else if (isinf(um->LeafSpring.l0)) { fprintf(stream, "        s->user_model->LeafSpring.l0 = %d * INFINITY; \n", isinf(um->LeafSpring.l0));}
-    else { fprintf(stream, "        s->user_model->LeafSpring.l0 = %.*e;\n", DBL_DECIMAL_DIG - 1, um->LeafSpring.l0);}
-    if (isnan(um->LeafSpring.k_stop)) { fprintf(stream, "         s->user_model->LeafSpring.k_stop = NAN; \n");}
-    else if (isinf(um->LeafSpring.k_stop)) { fprintf(stream, "        s->user_model->LeafSpring.k_stop = %d * INFINITY; \n", isinf(um->LeafSpring.k_stop));}
-    else { fprintf(stream, "        s->user_model->LeafSpring.k_stop = %.*e;\n", DBL_DECIMAL_DIG - 1, um->LeafSpring.k_stop);}
- 
-    if (isnan(um->Initial_State.FL_Wheel_Z)) { fprintf(stream, "         s->user_model->Initial_State.FL_Wheel_Z = NAN; \n");}
-    else if (isinf(um->Initial_State.FL_Wheel_Z)) { fprintf(stream, "        s->user_model->Initial_State.FL_Wheel_Z = %d * INFINITY; \n", isinf(um->Initial_State.FL_Wheel_Z));}
-    else { fprintf(stream, "        s->user_model->Initial_State.FL_Wheel_Z = %.*e;\n", DBL_DECIMAL_DIG - 1, um->Initial_State.FL_Wheel_Z);}
-    if (isnan(um->Initial_State.RL_Wheel_Z)) { fprintf(stream, "         s->user_model->Initial_State.RL_Wheel_Z = NAN; \n");}
-    else if (isinf(um->Initial_State.RL_Wheel_Z)) { fprintf(stream, "        s->user_model->Initial_State.RL_Wheel_Z = %d * INFINITY; \n", isinf(um->Initial_State.RL_Wheel_Z));}
-    else { fprintf(stream, "        s->user_model->Initial_State.RL_Wheel_Z = %.*e;\n", DBL_DECIMAL_DIG - 1, um->Initial_State.RL_Wheel_Z);}
-    if (isnan(um->Initial_State.FL_Wheel_F)) { fprintf(stream, "         s->user_model->Initial_State.FL_Wheel_F = NAN; \n");}
-    else if (isinf(um->Initial_State.FL_Wheel_F)) { fprintf(stream, "        s->user_model->Initial_State.FL_Wheel_F = %d * INFINITY; \n", isinf(um->Initial_State.FL_Wheel_F));}
-    else { fprintf(stream, "        s->user_model->Initial_State.FL_Wheel_F = %.*e;\n", DBL_DECIMAL_DIG - 1, um->Initial_State.FL_Wheel_F);}
-    if (isnan(um->Initial_State.RL_Wheel_F)) { fprintf(stream, "         s->user_model->Initial_State.RL_Wheel_F = NAN; \n");}
-    else if (isinf(um->Initial_State.RL_Wheel_F)) { fprintf(stream, "        s->user_model->Initial_State.RL_Wheel_F = %d * INFINITY; \n", isinf(um->Initial_State.RL_Wheel_F));}
-    else { fprintf(stream, "        s->user_model->Initial_State.RL_Wheel_F = %.*e;\n", DBL_DECIMAL_DIG - 1, um->Initial_State.RL_Wheel_F);}
-    if (isnan(um->Initial_State.FL_Leaf_F)) { fprintf(stream, "         s->user_model->Initial_State.FL_Leaf_F = NAN; \n");}
-    else if (isinf(um->Initial_State.FL_Leaf_F)) { fprintf(stream, "        s->user_model->Initial_State.FL_Leaf_F = %d * INFINITY; \n", isinf(um->Initial_State.FL_Leaf_F));}
-    else { fprintf(stream, "        s->user_model->Initial_State.FL_Leaf_F = %.*e;\n", DBL_DECIMAL_DIG - 1, um->Initial_State.FL_Leaf_F);}
-    if (isnan(um->Initial_State.FL_Leaf_Z)) { fprintf(stream, "         s->user_model->Initial_State.FL_Leaf_Z = NAN; \n");}
-    else if (isinf(um->Initial_State.FL_Leaf_Z)) { fprintf(stream, "        s->user_model->Initial_State.FL_Leaf_Z = %d * INFINITY; \n", isinf(um->Initial_State.FL_Leaf_Z));}
-    else { fprintf(stream, "        s->user_model->Initial_State.FL_Leaf_Z = %.*e;\n", DBL_DECIMAL_DIG - 1, um->Initial_State.FL_Leaf_Z);}
-    if (isnan(um->Initial_State.FL_Spring_F)) { fprintf(stream, "         s->user_model->Initial_State.FL_Spring_F = NAN; \n");}
-    else if (isinf(um->Initial_State.FL_Spring_F)) { fprintf(stream, "        s->user_model->Initial_State.FL_Spring_F = %d * INFINITY; \n", isinf(um->Initial_State.FL_Spring_F));}
-    else { fprintf(stream, "        s->user_model->Initial_State.FL_Spring_F = %.*e;\n", DBL_DECIMAL_DIG - 1, um->Initial_State.FL_Spring_F);}
-    if (isnan(um->Initial_State.FL_Spring_Z)) { fprintf(stream, "         s->user_model->Initial_State.FL_Spring_Z = NAN; \n");}
-    else if (isinf(um->Initial_State.FL_Spring_Z)) { fprintf(stream, "        s->user_model->Initial_State.FL_Spring_Z = %d * INFINITY; \n", isinf(um->Initial_State.FL_Spring_Z));}
-    else { fprintf(stream, "        s->user_model->Initial_State.FL_Spring_Z = %.*e;\n", DBL_DECIMAL_DIG - 1, um->Initial_State.FL_Spring_Z);}
- 
-    if (isnan(um->Equilibrium_State.FR_Tyre)) { fprintf(stream, "         s->user_model->Equilibrium_State.FR_Tyre = NAN; \n");}
-    else if (isinf(um->Equilibrium_State.FR_Tyre)) { fprintf(stream, "        s->user_model->Equilibrium_State.FR_Tyre = %d * INFINITY; \n", isinf(um->Equilibrium_State.FR_Tyre));}
-    else { fprintf(stream, "        s->user_model->Equilibrium_State.FR_Tyre = %.*e;\n", DBL_DECIMAL_DIG - 1, um->Equilibrium_State.FR_Tyre);}
-    if (isnan(um->Equilibrium_State.RR_Tyre)) { fprintf(stream, "         s->user_model->Equilibrium_State.RR_Tyre = NAN; \n");}
-    else if (isinf(um->Equilibrium_State.RR_Tyre)) { fprintf(stream, "        s->user_model->Equilibrium_State.RR_Tyre = %d * INFINITY; \n", isinf(um->Equilibrium_State.RR_Tyre));}
-    else { fprintf(stream, "        s->user_model->Equilibrium_State.RR_Tyre = %.*e;\n", DBL_DECIMAL_DIG - 1, um->Equilibrium_State.RR_Tyre);}
-    if (isnan(um->Equilibrium_State.FR_Spring)) { fprintf(stream, "         s->user_model->Equilibrium_State.FR_Spring = NAN; \n");}
-    else if (isinf(um->Equilibrium_State.FR_Spring)) { fprintf(stream, "        s->user_model->Equilibrium_State.FR_Spring = %d * INFINITY; \n", isinf(um->Equilibrium_State.FR_Spring));}
-    else { fprintf(stream, "        s->user_model->Equilibrium_State.FR_Spring = %.*e;\n", DBL_DECIMAL_DIG - 1, um->Equilibrium_State.FR_Spring);}
-    if (isnan(um->Equilibrium_State.RR_Spring)) { fprintf(stream, "         s->user_model->Equilibrium_State.RR_Spring = NAN; \n");}
-    else if (isinf(um->Equilibrium_State.RR_Spring)) { fprintf(stream, "        s->user_model->Equilibrium_State.RR_Spring = %d * INFINITY; \n", isinf(um->Equilibrium_State.RR_Spring));}
-    else { fprintf(stream, "        s->user_model->Equilibrium_State.RR_Spring = %.*e;\n", DBL_DECIMAL_DIG - 1, um->Equilibrium_State.RR_Spring);}
-    if (isnan(um->Equilibrium_State.FR_Leaf_F)) { fprintf(stream, "         s->user_model->Equilibrium_State.FR_Leaf_F = NAN; \n");}
-    else if (isinf(um->Equilibrium_State.FR_Leaf_F)) { fprintf(stream, "        s->user_model->Equilibrium_State.FR_Leaf_F = %d * INFINITY; \n", isinf(um->Equilibrium_State.FR_Leaf_F));}
-    else { fprintf(stream, "        s->user_model->Equilibrium_State.FR_Leaf_F = %.*e;\n", DBL_DECIMAL_DIG - 1, um->Equilibrium_State.FR_Leaf_F);}
-    if (isnan(um->Equilibrium_State.FR_Leaf_Rod_F)) { fprintf(stream, "         s->user_model->Equilibrium_State.FR_Leaf_Rod_F = NAN; \n");}
-    else if (isinf(um->Equilibrium_State.FR_Leaf_Rod_F)) { fprintf(stream, "        s->user_model->Equilibrium_State.FR_Leaf_Rod_F = %d * INFINITY; \n", isinf(um->Equilibrium_State.FR_Leaf_Rod_F));}
-    else { fprintf(stream, "        s->user_model->Equilibrium_State.FR_Leaf_Rod_F = %.*e;\n", DBL_DECIMAL_DIG - 1, um->Equilibrium_State.FR_Leaf_Rod_F);}
-    if (isnan(um->Equilibrium_State.RR_Leaf_F)) { fprintf(stream, "         s->user_model->Equilibrium_State.RR_Leaf_F = NAN; \n");}
-    else if (isinf(um->Equilibrium_State.RR_Leaf_F)) { fprintf(stream, "        s->user_model->Equilibrium_State.RR_Leaf_F = %d * INFINITY; \n", isinf(um->Equilibrium_State.RR_Leaf_F));}
-    else { fprintf(stream, "        s->user_model->Equilibrium_State.RR_Leaf_F = %.*e;\n", DBL_DECIMAL_DIG - 1, um->Equilibrium_State.RR_Leaf_F);}
-    if (isnan(um->Equilibrium_State.RR_Leaf_Rod_F)) { fprintf(stream, "         s->user_model->Equilibrium_State.RR_Leaf_Rod_F = NAN; \n");}
-    else if (isinf(um->Equilibrium_State.RR_Leaf_Rod_F)) { fprintf(stream, "        s->user_model->Equilibrium_State.RR_Leaf_Rod_F = %d * INFINITY; \n", isinf(um->Equilibrium_State.RR_Leaf_Rod_F));}
-    else { fprintf(stream, "        s->user_model->Equilibrium_State.RR_Leaf_Rod_F = %.*e;\n", DBL_DECIMAL_DIG - 1, um->Equilibrium_State.RR_Leaf_Rod_F);}
- 
-    fprintf(stream, "        s->user_model->Status.AntiPhase=%d;\n", um->Status.AntiPhase);
-    fprintf(stream, "        s->user_model->Status.Bump=%d;\n", um->Status.Bump);
-    fprintf(stream, "        s->user_model->Status.Steering=%d;\n", um->Status.Steering);
-    fprintf(stream, "        s->user_model->Status.Steering_sinus=%d;\n", um->Status.Steering_sinus);
-    fprintf(stream, "        s->user_model->Status.Linear_Modal=%d;\n", um->Status.Linear_Modal);
- 
 }
 
 // ============================================================ //
