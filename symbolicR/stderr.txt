@@ -1,40 +1,6 @@
 
 ##############################################################
-#	file7.gen 29/12/2022 12:08:59    errors
-##############################################################
-git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
-
-	Computation of the kinematics........
-
-	Computation of the dynamics....................
-
-		Joints   40  39  38  37  36  35  34  33  32  31
-
-		    -->  30  29  28  27  26  25  24  23  22  21
-
-		    -->  20  19  18  17  16  15  14  13  12  11
-
-		    -->  10   9   8   7   6   5   4   3   2   1
-
-	Elimination of the superfluous equations.....................
-
-
-		Maximum simultaneous symbolic expressions :  6028
-
-		Maximum number of allocated Kbytes :  282
-
-
-	The symbolic equations have been generated 
-	in the directory: /usr/local/robotran/users/MECA2215/upload/
-
-
- 		*** Generation symbolique reussie ! ***
-
-
-
-
-##############################################################
-#	file4.gen 29/12/2022 12:08:59    errors
+#	file4.gen 29/12/2022 17:03:07    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -57,7 +23,7 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 
 ##############################################################
-#	file6.gen 29/12/2022 12:08:59    errors
+#	file6.gen 29/12/2022 17:03:07    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -66,7 +32,7 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 
 ##############################################################
-#	file3.gen 29/12/2022 12:08:59    errors
+#	file3.gen 29/12/2022 17:03:07    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -89,7 +55,7 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 
 ##############################################################
-#	file2.gen 29/12/2022 12:08:59    errors
+#	file2.gen 29/12/2022 17:03:07    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -112,7 +78,7 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 
 ##############################################################
-#	file5.gen 29/12/2022 12:08:59    errors
+#	file5.gen 29/12/2022 17:03:07    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -135,7 +101,7 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 
 ##############################################################
-#	file0.gen 29/12/2022 12:08:59    errors
+#	file0.gen 29/12/2022 17:03:07    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -169,7 +135,7 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 
 ##############################################################
-#	file1.gen 29/12/2022 12:08:59    errors
+#	file1.gen 29/12/2022 17:03:07    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -192,7 +158,7 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 
 ##############################################################
-#	file1b.gen 29/12/2022 12:08:59    errors
+#	file1b.gen 29/12/2022 17:03:07    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 

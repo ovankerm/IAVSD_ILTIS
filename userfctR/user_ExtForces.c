@@ -81,7 +81,11 @@ double* user_ExtForces(double PxF[4], double RxF[4][4],
             double *P  = get_dvec_1(3);
             double Fvert = 0;
             if (um->Status.Bump){
-                Fvert = ComputeRadialForce(PxF[1], PxF[3], K, R, P, ng, left*um->Status.AntiPhase); // > Radial force in the Ground Frame ([Rsol])
+                if(um->Status.Simple_contact){
+                    Fvert = ComputeSimpleRadialForce(PxF[1], PxF[3], K, R, P, ng, left*um->Status.AntiPhase); // > Radial force in the Ground Frame ([Rsol])
+                } else {
+                    Fvert = ComputeRadialForce(PxF[1], PxF[3], K, R, P, ng, left*um->Status.AntiPhase); // > Radial force in the Ground Frame ([Rsol])
+                }
             }
             else{
                 ng[1] = 0; ng[2] = 0; ng[3] = 1;

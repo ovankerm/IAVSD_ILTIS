@@ -8,7 +8,7 @@
  *
  * Universite catholique de Louvain, Belgium 
  *
- * Last update : Thu Dec 29 12:09:13 2022
+ * Last update : Thu Dec 29 17:03:14 2022
  * --------------------------------------------------------
  *
  */
@@ -64,6 +64,7 @@ struct UserModel
         int Steering_sinus;
         int Linear_Modal;
         int PID;
+        int Simple_contact;
     } Status;
  
     struct PID{

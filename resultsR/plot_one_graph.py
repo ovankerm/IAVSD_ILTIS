@@ -15,17 +15,77 @@ Id_RR = 3
 Id_FL = 1
 Id_RL = 4
 
-test_PID = np.loadtxt('Test_PID_q.res')
-acc_test_PID = np.loadtxt('Test_PID_qdd.res')
+x = np.linspace(0.97, 5.97, 2000)
+y = 0.1 * (1 - np.cos(2 * np.pi * (x - 0.97) / 5)) * 1000
 
-plt.figure("In-phase at 10m/s - Vert. Displ.")
-plt.plot(test_PID[:, Id_x], test_PID[:, Id_y], 'k-', label='y_position')
-# plt.plot(test_PID[:, Id_x], acc_test_PID[:, Id_y]/9.81, 'k-.', label='acceleration y_position [g]')
-plt.hlines(0, 0.0, test_PID[-1, Id_x], linestyles=u'dashed')
-# plt.xlim((0.0, 30.0))
-# plt.ylim((-0.5, 0.5))
+# ==============================================================================
+# Plotting at 5 m/s in-phase cosine bump normal contact
+# ==============================================================================
+
+InPhase5ms_q = np.loadtxt('InPhaseCosine_5ms_normal_contact_q.res')
+InPhase5ms_wheels = np.loadtxt('InPhaseCosine_5ms_normal_contact_Ground_Forces.res')
+
+plt.figure("In-phase at 5m/s - Normal contact - Vert. Displ.")
+plt.plot(InPhase5ms_q[:, Id_x], (InPhase5ms_q[:, Id_z] - 0.57) * 1000., 'k-', label='Robotran : speed 5m/s')
+plt.plot(x, y, 'k-.', label='vertical disturbance')
+plt.hlines(0, 0.0, 10.0, linestyles=u'dashed')
+plt.xlim((0.0, 10.0))
+plt.ylim((-50., 200.0))
 plt.xlabel('Distance [m]')
 plt.ylabel('Vertical displacement of CG [mm]')
+plt.legend()
+
+plt.figure("In-phase at 5m/s - Normal contact - Pitch Angle")
+plt.plot(InPhase5ms_q[:, Id_x], (InPhase5ms_q[:, Id_pitch] / np.pi) * 180., 'k-', label='Robotran : speed 5m/s')
+plt.hlines(0, 0.0, 10.0, linestyles=u'dashed')
+plt.xlim((0.0, 10.0))
+plt.ylim((-10., 10.0))
+plt.xlabel('Distance [m]')
+plt.ylabel('Pitch angle of vehicle [deg]')
+plt.legend()
+
+plt.figure("In-phase at 5m/s - Normal contact - Vertical tyre forces")
+plt.plot(InPhase5ms_q[:, Id_x], -InPhase5ms_wheels[:, Id_RR], 'k--', label='Robotran : Right rear  wheel')
+plt.plot(InPhase5ms_q[:, Id_x], -InPhase5ms_wheels[:, Id_FR], 'k-', label='Robotran : Right front wheel')
+plt.xlim((0.0, 10.0))
+plt.ylim((-1.0e4, 0.0))
+plt.xlabel('Distance [m]')
+plt.ylabel('Vertical tire force [N]')
+plt.legend()
+
+# ==============================================================================
+# Plotting at 5 m/s in-phase cosine bump simple contact
+# ==============================================================================
+
+InPhase5ms_q = np.loadtxt('InPhaseCosine_5ms_simple_contact_q.res')
+InPhase5ms_wheels = np.loadtxt('InPhaseCosine_5ms_simple_contact_Ground_Forces.res')
+
+plt.figure("In-phase at 5m/s - Simple Contact - Vert. Displ.")
+plt.plot(InPhase5ms_q[:, Id_x], (InPhase5ms_q[:, Id_z] - 0.57) * 1000., 'k-', label='Robotran : speed 5m/s')
+plt.plot(x, y, 'k-.', label='vertical disturbance')
+plt.hlines(0, 0.0, 10.0, linestyles=u'dashed')
+plt.xlim((0.0, 10.0))
+plt.ylim((-50., 200.0))
+plt.xlabel('Distance [m]')
+plt.ylabel('Vertical displacement of CG [mm]')
+plt.legend()
+
+plt.figure("In-phase at 5m/s - Simple Contact - Pitch Angle")
+plt.plot(InPhase5ms_q[:, Id_x], (InPhase5ms_q[:, Id_pitch] / np.pi) * 180., 'k-', label='Robotran : speed 5m/s')
+plt.hlines(0, 0.0, 10.0, linestyles=u'dashed')
+plt.xlim((0.0, 10.0))
+plt.ylim((-10., 10.0))
+plt.xlabel('Distance [m]')
+plt.ylabel('Pitch angle of vehicle [deg]')
+plt.legend()
+
+plt.figure("In-phase at 5m/s - Simple Contact - Vertical tyre forces")
+plt.plot(InPhase5ms_q[:, Id_x], -InPhase5ms_wheels[:, Id_RR], 'k--', label='Robotran : Right rear  wheel')
+plt.plot(InPhase5ms_q[:, Id_x], -InPhase5ms_wheels[:, Id_FR], 'k-', label='Robotran : Right front wheel')
+plt.xlim((0.0, 10.0))
+plt.ylim((-1.0e4, 0.0))
+plt.xlabel('Distance [m]')
+plt.ylabel('Vertical tire force [N]')
 plt.legend()
 
 plt.show()

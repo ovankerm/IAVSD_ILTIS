@@ -17,7 +17,24 @@
 #include "GroundContact.h"
 
 double ComputeSimpleRadialForce(double Xw, double Zw, double Kw, double Rw, double *Q, double *ng, int hole){
-    return 0.0;
+    double Zp;    // ground height under wheel center
+    // Road profile from [2]
+    if (Xw <= 0.97 || Xw >=5.97){
+        Zp = 0;
+    } else {
+        Zp = 0.1 * (1-cos(2*M_PI*(Xw-0.97)/5));
+    }
+    Zp *= hole ? -1 : 1;
+
+    ng[1]=0; ng[2]=0; ng[3]=1;
+
+    if (Zp <= Zw-Rw){
+        Q[1] = 0; Q[2] = 0; Q[3] = 0;
+        return 0.0;
+    } else {
+       Q[1] =Xw; Q[2] =0; Q[3] =Zp;
+       return Kw*(Zp + Rw - Zw);
+    }
 }
 
 double ComputeRadialForce(double Xw, double Zw, double Kw, double Rw, double *Q, double *ng, int hole)
@@ -37,7 +54,7 @@ double ComputeRadialForce(double Xw, double Zw, double Kw, double Rw, double *Q,
     if (Xw <= 0.97 || Xw >=5.97){
         Zp = 0;
         Q[1] =Xw; Q[2] =0; Q[3] =Zp;
-        ng[1]=0 ; ng[2]=0; ng[3]=1 ;
+        ng[1]=0; ng[2]=0; ng[3]=1;
 
         if (Zw-Rw<0){
             return Kw*(Rw-Zw);
