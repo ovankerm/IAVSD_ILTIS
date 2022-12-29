@@ -8,7 +8,7 @@
  *
  * Universite catholique de Louvain, Belgium 
  *
- * Last update : Wed Dec 28 15:56:30 2022
+ * Last update : Thu Dec 29 12:09:13 2022
  * --------------------------------------------------------
  *
  */
@@ -58,6 +58,7 @@ UserModel* mbs_new_user_model()
     um->Status.Steering = 0;
     um->Status.Steering_sinus = 0;
     um->Status.Linear_Modal = 0;
+    um->Status.PID = 0;
  
     um->PID.Kp = 0.0;
     um->PID.Kd = 0.0;
@@ -108,6 +109,7 @@ void mbs_delete_user_model(UserModel* um)
     um->Status.Steering = (int)lround(mbs_infos->user_models->user_model_list[4]->parameter_list[2]->value_list[1]);
     um->Status.Steering_sinus = (int)lround(mbs_infos->user_models->user_model_list[4]->parameter_list[3]->value_list[1]);
     um->Status.Linear_Modal = (int)lround(mbs_infos->user_models->user_model_list[4]->parameter_list[4]->value_list[1]);
+    um->Status.PID = (int)lround(mbs_infos->user_models->user_model_list[4]->parameter_list[5]->value_list[1]);
  
     um->PID.Kp = mbs_infos->user_models->user_model_list[5]->parameter_list[0]->value_list[1];
     um->PID.Kd = mbs_infos->user_models->user_model_list[5]->parameter_list[1]->value_list[1];
@@ -150,6 +152,7 @@ void mbs_delete_user_model(UserModel* um)
     mbs_infos->user_models->user_model_list[4]->parameter_list[2]->val_ptr = &um->Status.Steering;
     mbs_infos->user_models->user_model_list[4]->parameter_list[3]->val_ptr = &um->Status.Steering_sinus;
     mbs_infos->user_models->user_model_list[4]->parameter_list[4]->val_ptr = &um->Status.Linear_Modal;
+    mbs_infos->user_models->user_model_list[4]->parameter_list[5]->val_ptr = &um->Status.PID;
  
     mbs_infos->user_models->user_model_list[5]->parameter_list[0]->val_ptr = &um->PID.Kp;
     mbs_infos->user_models->user_model_list[5]->parameter_list[1]->val_ptr = &um->PID.Kd;
@@ -193,6 +196,7 @@ void mbs_delete_user_model(UserModel* um)
     printf("user_model->Status.Steering=%d\n", um->Status.Steering);
     printf("user_model->Status.Steering_sinus=%d\n", um->Status.Steering_sinus);
     printf("user_model->Status.Linear_Modal=%d\n", um->Status.Linear_Modal);
+    printf("user_model->Status.PID=%d\n", um->Status.PID);
  
     printf("user_model->PID.Kp=%f\n", um->PID.Kp);
     printf("user_model->PID.Kd=%f\n", um->PID.Kd);
@@ -213,7 +217,7 @@ void mbs_get_user_model_list(int *user_model_list)
     user_model_list[2]  = 3; 
     user_model_list[3]  = 8; 
     user_model_list[4]  = 8; 
-    user_model_list[5]  = 5; 
+    user_model_list[5]  = 6; 
     user_model_list[6]  = 5; 
 
 }

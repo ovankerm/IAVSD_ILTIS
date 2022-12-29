@@ -250,8 +250,9 @@ int main(int argc, char const *argv[])
     mbs_data->qd[J_RL_Wheel_id] = speed/mbs_data->user_model->Wheels.R_Rad;
     mbs_data->user_model->Status.Bump = 0;
     mbs_data->user_model->Status.AntiPhase = 0;
-    mbs_data->user_model->Status.Steering = 2;
-    mbs_data->user_model->Status.Steering_sinus = 1;
+    mbs_data->user_model->Status.Steering = 0;
+    mbs_data->user_model->Status.Steering_sinus = 0;
+    mbs_data->user_model->Status.PID = 1;
 
     mbs_data->user_model->PID.Kp = 0.55;
     mbs_data->user_model->PID.Kd = 0.3;

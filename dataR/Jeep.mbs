@@ -4387,6 +4387,11 @@
         <type>integer</type>
         <value>0.0</value>
       </parameter>
+      <parameter>
+        <name>PID</name>
+        <type>integer</type>
+        <value>0.0</value>
+      </parameter>
     </user_model>
     <user_model>
       <name>PID</name>

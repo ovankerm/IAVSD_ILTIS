@@ -16,7 +16,7 @@
 void user_DrivenJoints(MbsData *mbs_data,double tsim)
 {
     UserModel *um = mbs_data->user_model;
-    if(um->Status.Steering == 2){
+    if(um->Status.PID){
         float max_angle = 0.0781;
         float e = mbs_data->q[Y_Chassis_id];
         um->PID.e_sum += e * mbs_data->dt0;

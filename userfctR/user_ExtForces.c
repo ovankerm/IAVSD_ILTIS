@@ -87,7 +87,7 @@ double* user_ExtForces(double PxF[4], double RxF[4][4],
                 ng[1] = 0; ng[2] = 0; ng[3] = 1;
                 P[1] = PxF[1]; P[2] = PxF[2]; P[3] = 0;
                 Fvert = K*(R-PxF[3]);
-                if (Fvert<0){Fvert = 0;}
+                if (Fvert<0) Fvert = 0;
             }
 
             if (Fvert !=0){
@@ -126,7 +126,7 @@ double* user_ExtForces(double PxF[4], double RxF[4][4],
                 cross_product(ex,ey,ez);
                 normalize(ez, ez);
                 double rw = (PxF[3]-P[3])/ez[3];
-                if (rw<0){printf("mert\n");}
+                if (rw<0) printf("mert\n");
                 double Rtg[4][4];  // > Tangeant wheel frame, x wheel tangeant belonging to ground, y is wheel axis, z is a wheel spoke from ground to center
                 double Rttg[4][4]; // > Transpose of Rtg
                 // [Rtg] = Rtg*[I]: [T1; T2; T3]

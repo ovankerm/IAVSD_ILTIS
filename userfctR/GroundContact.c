@@ -16,9 +16,21 @@
 #include "mbs_matrix.h"
 #include "GroundContact.h"
 
+double ComputeSimpleRadialForce(double Xw, double Zw, double Kw, double Rw, double *Q, double *ng, int hole){
+    return 0.0;
+}
 
 double ComputeRadialForce(double Xw, double Zw, double Kw, double Rw, double *Q, double *ng, int hole)
 {
+    /*
+        Xw : x position of the wheel
+        Zw : z position of the wheel
+        Kw : spring constant of the tyre
+        Rw : radius of the wheel
+        Q : point of application of the force (to be filled)
+        ng : vector normal to the ground (to be filled)
+        hole : =1 if hole ; =0 if bump
+    */
     double Zp;    // ground height under wheel center
 
     // Road profile from [2]
@@ -39,8 +51,8 @@ double ComputeRadialForce(double Xw, double Zw, double Kw, double Rw, double *Q,
         double DZq, DXq, H, L_QG;
 
         // From road profile
-        Zp =    0.1*    (1-cos(2*M_PI*(Xw-0.97)/5)); // m
-        slope = 0.2*M_PI/5*sin(2*M_PI*(Xw-0.97)/5); //m
+        Zp =    0.1*    (1-cos(2*M_PI*(Xw-0.97)/5)); // [m]
+        slope = 0.2*M_PI/5*sin(2*M_PI*(Xw-0.97)/5); // [-]
         if (hole){
             Zp    *=-1;
             slope *=-1;

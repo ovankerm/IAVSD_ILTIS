@@ -10,6 +10,8 @@
 #ifndef GROUNDCONTACT_h
 #define GROUNDCONTACT_h
 
+double ComputeSimpleRadialForce(double Xw, double Zw, double Kw, double Rw, double *P, double *ng, int hole);
+
 double ComputeRadialForce(double Xw, double Zw, double Kw, double Rw, double *P, double *ng, int hole);
 
 void Calspan(double *Flat,double *Myaw, double Fvert, double Anglis, double Angcamb, double Gliss, double A0, double A1, double A2, double A3, double A4,
