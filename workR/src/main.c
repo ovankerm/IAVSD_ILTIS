@@ -38,8 +38,8 @@
 #include "math.h"
 
 int main(int argc, char const *argv[])
-{
 
+{
     MbsData *mbs_data;
     MbsPart *mbs_part;
     MbsEquil *mbs_equil;
