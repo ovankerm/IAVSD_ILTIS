@@ -44,18 +44,6 @@ void user_dirdyn_init(MbsData *mbs_data, MbsDirdyn *mbs_dd)
 void user_dirdyn_loop(MbsData *mbs_data, MbsDirdyn *mbs_dd)
 {
 
-    int id = Sensor_Conducteur_id;
-
-    // retrieve the pointer to the sensor structure defined in mbs_aux
-    MbsSensor *PtrSensor = mbs_dd->mbs_aux->psens;
-    
-    // compute the sensor (position, velocity...)
-    mbs_comp_S_sensor(PtrSensor, mbs_data, id);
-
-    // save the acceleration 
-    set_output(PtrSensor->A[1], "Horizontal_Acc");
-    set_output(PtrSensor->A[2], "Lateral_Acc");
-    set_output(PtrSensor->A[3], "Vertical_Acc");
 }
 
 /*! \brief user own finishing functions
