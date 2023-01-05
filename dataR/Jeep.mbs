@@ -105,7 +105,7 @@
             <specularColor R="255" G="255" B="255" />
             <shininess>250.0</shininess>
             <transparency>0.5</transparency>
-            <url>PRJPATH/wrl/bump.wrl</url>
+            <url>PRJPATH\wrl\bump.wrl</url>
           </inline>
         </x3D_shapes>
       </x3D>
@@ -239,8 +239,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>647.0</x>
-              <y>346.0</y>
+              <x>652.0</x>
+              <y>350.0</y>
             </position>
           </x2D>
           <x3D />
@@ -256,8 +256,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>647.0</x>
-              <y>209.0</y>
+              <x>652.0</x>
+              <y>213.0</y>
             </position>
           </x2D>
           <x3D />
@@ -273,8 +273,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>602.0</x>
-              <y>244.0</y>
+              <x>607.0</x>
+              <y>248.0</y>
             </position>
           </x2D>
           <x3D />
@@ -290,8 +290,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>555.0</x>
-              <y>203.0</y>
+              <x>560.0</x>
+              <y>207.0</y>
             </position>
           </x2D>
           <x3D />
@@ -307,8 +307,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>556.0</x>
-              <y>346.0</y>
+              <x>561.0</x>
+              <y>350.0</y>
             </position>
           </x2D>
           <x3D />
@@ -324,8 +324,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>577.0</x>
-              <y>568.0</y>
+              <x>582.0</x>
+              <y>572.0</y>
             </position>
           </x2D>
           <x3D />
@@ -341,8 +341,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>585.0</x>
-              <y>701.0</y>
+              <x>590.0</x>
+              <y>705.0</y>
             </position>
           </x2D>
           <x3D />
@@ -358,8 +358,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>609.0</x>
-              <y>777.0</y>
+              <x>614.0</x>
+              <y>781.0</y>
             </position>
           </x2D>
           <x3D />
@@ -375,8 +375,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>643.0</x>
-              <y>566.0</y>
+              <x>648.0</x>
+              <y>570.0</y>
             </position>
           </x2D>
           <x3D />
@@ -392,8 +392,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>633.0</x>
-              <y>706.0</y>
+              <x>638.0</x>
+              <y>710.0</y>
             </position>
           </x2D>
           <x3D />
@@ -409,8 +409,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>671.0</x>
-              <y>270.0</y>
+              <x>676.0</x>
+              <y>274.0</y>
             </position>
           </x2D>
           <x3D />
@@ -426,8 +426,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>539.0</x>
-              <y>274.0</y>
+              <x>544.0</x>
+              <y>278.0</y>
             </position>
           </x2D>
           <x3D />
@@ -443,8 +443,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>699.0</x>
-              <y>425.0</y>
+              <x>704.0</x>
+              <y>429.0</y>
             </position>
           </x2D>
           <x3D />
@@ -460,8 +460,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>545.0</x>
-              <y>424.0</y>
+              <x>550.0</x>
+              <y>428.0</y>
             </position>
           </x2D>
           <x3D />
@@ -477,8 +477,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>609.0</x>
-              <y>121.0</y>
+              <x>614.0</x>
+              <y>125.0</y>
             </position>
           </x2D>
           <x3D />
@@ -494,18 +494,36 @@
         <graphics>
           <x2D>
             <position>
-              <x>600.0</x>
-              <y>744.0</y>
+              <x>605.0</x>
+              <y>748.0</y>
             </position>
           </x2D>
           <x3D />
         </graphics>
       </point>
+      <point>
+        <pointname>Conducteur</pointname>
+        <coordinates>
+          <x>-0.19</x>
+          <y>0.259</y>
+          <z>0.43</z>
+        </coordinates>
+        <graphics>
+          <x2D>
+            <position>
+              <x>628.0</x>
+              <y>189.0</y>
+            </position>
+          </x2D>
+          <x3D />
+        </graphics>
+        <sensor name="Sensor_Conducteur" Pos="true" Rot="true" Vit="true" Om="true" Acc="true" Omp="true" Jac="true" />
+      </point>
       <graphics>
         <x2D>
           <position>
-            <x>-48.0</x>
-            <y>-178.0</y>
+            <x>-43.0</x>
+            <y>-174.0</y>
           </position>
           <name_pos>
             <x>0.0</x>
@@ -518,20 +536,20 @@
           </size>
           <control_points>
             <control_point>
-              <x>44.0</x>
-              <y>-178.0</y>
+              <x>49.0</x>
+              <y>-174.0</y>
             </control_point>
             <control_point>
-              <x>44.0</x>
-              <y>23.0</y>
+              <x>49.0</x>
+              <y>27.0</y>
             </control_point>
             <control_point>
-              <x>-48.0</x>
-              <y>23.0</y>
+              <x>-43.0</x>
+              <y>27.0</y>
             </control_point>
             <control_point>
-              <x>-48.0</x>
-              <y>-178.0</y>
+              <x>-43.0</x>
+              <y>-174.0</y>
             </control_point>
           </control_points>
           <angle>0.0</angle>
@@ -1292,7 +1310,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.5</transparency>
-              <url>PRJPATH/wrl/tire.wrl</url>
+              <url>PRJPATH\wrl\tire.wrl</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -2157,7 +2175,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.5</transparency>
-              <url>PRJPATH/wrl/tire.wrl</url>
+              <url>PRJPATH\wrl\tire.wrl</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -2894,7 +2912,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.5</transparency>
-              <url>PRJPATH/wrl/tire.wrl</url>
+              <url>PRJPATH\wrl\tire.wrl</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -3721,7 +3739,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.5</transparency>
-              <url>PRJPATH/wrl/tire.wrl</url>
+              <url>PRJPATH\wrl\tire.wrl</url>
             </inline>
           </x3D_shapes>
         </x3D>
