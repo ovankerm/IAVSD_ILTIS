@@ -8,7 +8,7 @@
  *
  * Universite catholique de Louvain, Belgium 
  *
- * Last update : Thu Dec 29 17:03:14 2022
+ * Last update : Thu Jan  5 23:49:46 2023
  * --------------------------------------------------------
  *
  */
@@ -115,50 +115,52 @@
 #define FL_Chassis_RR_Bumper_id 14
 #define FL_Chassis_F_Leaf_id 15
 #define FL_Chassis_R_Leaf_id 16
-#define FL_Leaf_spring_LeafSpringLength_id 17
-#define FL_Carrier1_AArm_attachement_carrier1_id 18
-#define FL_Carrier1_Wheel_carrier2_attachement_id 19
-#define FL_AArm_AArm_length_id 20
-#define FL_AArm_Point_0_id 21
-#define FL_Carrier2_Carrier2_Carrier3_id 22
-#define FL_Carrier2_C3_Cut_id 23
-#define FL_Carrier3_Wheel_spin_point_id 24
-//#define FL_Wheel_origin_id 25
-#define F_Rack_Point_0_id 26
-#define F_Rack_Point_1_id 27
-#define FR_Leaf_spring_LeafSpringLength_id 28
-#define FR_Carrier1_AArm_attachement_carrier1_id 29
-#define FR_Carrier1_Wheel_carrier2_attachement_id 30
-#define FR_AArm_AArm_length_id 31
-#define FR_AArm_Point_0_id 32
-#define FR_Carrier2_Carrier2_Carrier3_id 33
-#define FR_Carrier2_C3_Cut_id 34
-#define FR_Carrier3_Wheel_spin_point_id 35
-//#define FR_Wheel_origin_id 36
-#define RRR_Leaf_spring_LeafSpringLength_id 37
-#define RRR_Carrier1_AArm_attachement_carrier1_id 38
-#define RRR_Carrier1_Wheel_carrier2_attachement_id 39
-#define RRR_AArm_AArm_length_id 40
-#define RRR_AArm_Point_0_id 41
-#define RRR_Carrier2_Carrier2_Carrier3_id 42
-#define RRR_Carrier2_C3_Cut_id 43
-#define RRR_Carrier3_Wheel_spin_point_id 44
-//#define RRR_Wheel_origin_id 45
-#define RR_Rack_Point_0_id 46
-#define RR_Rack_Point_1_id 47
-#define RRL_Leaf_spring_LeafSpringLength_id 48
-#define RRL_Carrier1_AArm_attachement_carrier1_id 49
-#define RRL_Carrier1_Wheel_carrier2_attachement_id 50
-#define RRL_AArm_AArm_length_id 51
-#define RRL_AArm_Point_0_id 52
-#define RRL_Carrier2_Carrier2_Carrier3_id 53
-#define RRL_Carrier2_C3_Cut_id 54
-#define RRL_Carrier3_Wheel_spin_point_id 55
-//#define RRL_Wheel_origin_id 56
+#define FL_Chassis_Conducteur_id 17
+#define FL_Leaf_spring_LeafSpringLength_id 18
+#define FL_Carrier1_AArm_attachement_carrier1_id 19
+#define FL_Carrier1_Wheel_carrier2_attachement_id 20
+#define FL_AArm_AArm_length_id 21
+#define FL_AArm_Point_0_id 22
+#define FL_Carrier2_Carrier2_Carrier3_id 23
+#define FL_Carrier2_C3_Cut_id 24
+#define FL_Carrier3_Wheel_spin_point_id 25
+//#define FL_Wheel_origin_id 26
+#define F_Rack_Point_0_id 27
+#define F_Rack_Point_1_id 28
+#define FR_Leaf_spring_LeafSpringLength_id 29
+#define FR_Carrier1_AArm_attachement_carrier1_id 30
+#define FR_Carrier1_Wheel_carrier2_attachement_id 31
+#define FR_AArm_AArm_length_id 32
+#define FR_AArm_Point_0_id 33
+#define FR_Carrier2_Carrier2_Carrier3_id 34
+#define FR_Carrier2_C3_Cut_id 35
+#define FR_Carrier3_Wheel_spin_point_id 36
+//#define FR_Wheel_origin_id 37
+#define RRR_Leaf_spring_LeafSpringLength_id 38
+#define RRR_Carrier1_AArm_attachement_carrier1_id 39
+#define RRR_Carrier1_Wheel_carrier2_attachement_id 40
+#define RRR_AArm_AArm_length_id 41
+#define RRR_AArm_Point_0_id 42
+#define RRR_Carrier2_Carrier2_Carrier3_id 43
+#define RRR_Carrier2_C3_Cut_id 44
+#define RRR_Carrier3_Wheel_spin_point_id 45
+//#define RRR_Wheel_origin_id 46
+#define RR_Rack_Point_0_id 47
+#define RR_Rack_Point_1_id 48
+#define RRL_Leaf_spring_LeafSpringLength_id 49
+#define RRL_Carrier1_AArm_attachement_carrier1_id 50
+#define RRL_Carrier1_Wheel_carrier2_attachement_id 51
+#define RRL_AArm_AArm_length_id 52
+#define RRL_AArm_Point_0_id 53
+#define RRL_Carrier2_Carrier2_Carrier3_id 54
+#define RRL_Carrier2_C3_Cut_id 55
+#define RRL_Carrier3_Wheel_spin_point_id 56
+//#define RRL_Wheel_origin_id 57
 
 
 // sensor
 
+#define Sensor_Conducteur_id 1
 
 
 // extforce

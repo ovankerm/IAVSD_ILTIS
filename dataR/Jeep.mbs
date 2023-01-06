@@ -105,7 +105,7 @@
             <specularColor R="255" G="255" B="255" />
             <shininess>250.0</shininess>
             <transparency>0.5</transparency>
-            <url>PRJPATH\wrl\bump.wrl</url>
+            <url>PRJPATH/wrl/bump.wrl</url>
           </inline>
         </x3D_shapes>
       </x3D>
@@ -1310,7 +1310,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.5</transparency>
-              <url>PRJPATH\wrl\tire.wrl</url>
+              <url>PRJPATH/wrl/tire.wrl</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -2175,7 +2175,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.5</transparency>
-              <url>PRJPATH\wrl\tire.wrl</url>
+              <url>PRJPATH/wrl/tire.wrl</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -2912,7 +2912,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.5</transparency>
-              <url>PRJPATH\wrl\tire.wrl</url>
+              <url>PRJPATH/wrl/tire.wrl</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -3739,7 +3739,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.5</transparency>
-              <url>PRJPATH\wrl\tire.wrl</url>
+              <url>PRJPATH/wrl/tire.wrl</url>
             </inline>
           </x3D_shapes>
         </x3D>
