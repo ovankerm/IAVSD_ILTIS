@@ -4057,6 +4057,12 @@
           </x3D>
         </graphics>
       </joint>
+      <mass>70.0</mass>
+      <inertia>
+        <Ixx>9.858</Ixx>
+        <Iyy>11.258</Iyy>
+        <Izz>6.183</Izz>
+      </inertia>
       <point>
         <pointname>origin</pointname>
         <coordinates>

@@ -154,6 +154,10 @@ int main(int argc, char const *argv[])
     /*                   EQUILIBRIUM                             *
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     mbs_data->process = 2;
+    mbs_data->m[Conducteur_id] = 0;
+    mbs_data->In[0][Conducteur_id] = 0; //Ixx
+    mbs_data->In[4][Conducteur_id] = 0; //Iyy
+    mbs_data->In[8][Conducteur_id] = 0; //Izz 
 
     mbs_equil = mbs_new_equil(mbs_data);
     mbs_run_equil(mbs_equil, mbs_data);
@@ -206,6 +210,10 @@ int main(int argc, char const *argv[])
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     MbsModal *mbs_modal;
     mbs_data->process = 4;
+    mbs_data->m[Conducteur_id] = 0;
+    mbs_data->In[0][Conducteur_id] = 0; //Ixx
+    mbs_data->In[4][Conducteur_id] = 0; //Iyy
+    mbs_data->In[8][Conducteur_id] = 0; //Izz 
     mbs_data->user_model->Status.Linear_Modal=1;
 
     mbs_set_qu(mbs_data,1);
@@ -232,7 +240,7 @@ int main(int argc, char const *argv[])
     /***********************
         Test PID
     ************************/
-
+   
     mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_set_qu(mbs_data,1); // Setting joint 1 to independant
@@ -284,8 +292,13 @@ int main(int argc, char const *argv[])
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     /*                  Belgian road 5m/s                        *
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    
     mbs_reset_data(mbs_data);
     mbs_data->process = 3;
+    mbs_data->m[Conducteur_id] = 0;
+    mbs_data->In[0][Conducteur_id] = 0; //Ixx
+    mbs_data->In[4][Conducteur_id] = 0; //Iyy
+    mbs_data->In[8][Conducteur_id] = 0; //Izz    
     mbs_set_qu(mbs_data,1);
     mbs_set_qu(mbs_data,2);
     mbs_set_qu(mbs_data,6);
@@ -315,19 +328,16 @@ int main(int argc, char const *argv[])
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
 
     mbs_delete_dirdyn(mbs_dirdyn, mbs_data); 
- 
+    
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     /* COMFORT ANALYSIS at 8m/s                                  *
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    
     mbs_reset_data(mbs_data);
     mbs_data->process = 5;
     mbs_set_qu(mbs_data,1);
     mbs_set_qu(mbs_data,2);
     mbs_set_qu(mbs_data,6);
-    mbs_data->m[Conducteur_id] = 70;
-    mbs_data->In[0][Conducteur_id] = 9.858; //Ixx
-    mbs_data->In[4][Conducteur_id] = 13.125; //Iyy
-    mbs_data->In[8][Conducteur_id] = 6.183; //Izz 
     mbs_data->qd[1] = 8;
     mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
     mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
@@ -349,7 +359,7 @@ int main(int argc, char const *argv[])
     mbs_dirdyn->options->dt0 = 1e-3;
     // dirdyn options: about integrator
     mbs_dirdyn->options->integrator = Dopri5;
-    mbs_dirdyn->options->dt_max = 5e-2;
+    mbs_dirdyn->options->dt_max = 5e-3;
 
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
 
@@ -359,8 +369,13 @@ int main(int argc, char const *argv[])
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     /* IN-PHASE COSINE BUMP AT 5 m/s normal contact              *
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    
     mbs_reset_data(mbs_data);
     mbs_data->process = 3;
+    mbs_data->m[Conducteur_id] = 0;
+    mbs_data->In[0][Conducteur_id] = 0; //Ixx
+    mbs_data->In[4][Conducteur_id] = 0; //Iyy
+    mbs_data->In[8][Conducteur_id] = 0; //Izz 
     mbs_set_qu(mbs_data,1);
     mbs_set_qu(mbs_data,2);
     mbs_set_qu(mbs_data,6);
@@ -393,8 +408,13 @@ int main(int argc, char const *argv[])
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     /* IN-PHASE COSINE BUMP AT 5 m/s normal contact              *
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
     mbs_reset_data(mbs_data);
     mbs_data->process = 3;
+    mbs_data->m[Conducteur_id] = 0;
+    mbs_data->In[0][Conducteur_id] = 0; //Ixx
+    mbs_data->In[4][Conducteur_id] = 0; //Iyy
+    mbs_data->In[8][Conducteur_id] = 0; //Izz 
     mbs_set_qu(mbs_data,1);
     mbs_set_qu(mbs_data,2);
     mbs_set_qu(mbs_data,6);
@@ -428,327 +448,371 @@ int main(int argc, char const *argv[])
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     // /* IN-PHASE COSINE BUMP AT 10 m/s                            *
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-    // mbs_reset_data(mbs_data);
-    // mbs_data->process = 3;
-    // mbs_set_qu(mbs_data,1);
-    // mbs_set_qu(mbs_data,2);
-    // mbs_set_qu(mbs_data,6);
-    // mbs_data->qd[1] = 10.0;
-    // mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
-    // mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
-    // mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    // mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    // mbs_data->user_model->Status.Bump = 1;
+    /**
+    mbs_reset_data(mbs_data);
+    mbs_data->process = 3;
+    mbs_data->m[Conducteur_id] = 0;
+    mbs_data->In[0][Conducteur_id] = 0; //Ixx
+    mbs_data->In[4][Conducteur_id] = 0; //Iyy
+    mbs_data->In[8][Conducteur_id] = 0; //Izz  
+    mbs_set_qu(mbs_data,1);
+    mbs_set_qu(mbs_data,2);
+    mbs_set_qu(mbs_data,6);
+    mbs_data->qd[1] = 10.0;
+    mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->user_model->Status.Bump = 1;
 
-    // mbs_dirdyn = mbs_new_dirdyn(mbs_data);
+    mbs_dirdyn = mbs_new_dirdyn(mbs_data);
 
-    // // dirdyn options: about output data
-    // mbs_dirdyn->options->resfilename = "InPhaseCosine_10ms";
-    // mbs_dirdyn->options->show_failed_closure = 1;
-    // mbs_dirdyn->options->save2file = 1;
-    // mbs_dirdyn->options->verbose = 1;
-    // // dirdyn options: about integration time
-    // mbs_dirdyn->options->tf  = 2.5;
-    // mbs_dirdyn->options->dt0 = 1e-3;
-    // // dirdyn options: about integrator
-    // mbs_dirdyn->options->integrator = Dopri5;
-    // mbs_dirdyn->options->dt_max = 1e-3;
+    // dirdyn options: about output data
+    mbs_dirdyn->options->resfilename = "InPhaseCosine_10ms";
+    mbs_dirdyn->options->show_failed_closure = 1;
+    mbs_dirdyn->options->save2file = 1;
+    mbs_dirdyn->options->verbose = 1;
+    // dirdyn options: about integration time
+    mbs_dirdyn->options->tf  = 2.5;
+    mbs_dirdyn->options->dt0 = 1e-3;
+    // dirdyn options: about integrator
+    mbs_dirdyn->options->integrator = Dopri5;
+    mbs_dirdyn->options->dt_max = 1e-3;
 
-    // mbs_run_dirdyn(mbs_dirdyn, mbs_data);
+    mbs_run_dirdyn(mbs_dirdyn, mbs_data);
 
-    // mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
+    mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
 
 
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     // /* ANTI-PHASE COSINE BUMP AT 5 m/s                           *
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-    // mbs_reset_data(mbs_data);
-    // mbs_data->process = 3;
-    // mbs_set_qu(mbs_data,1);
-    // mbs_set_qu(mbs_data,2);
-    // mbs_set_qu(mbs_data,6);
-    // mbs_data->qd[1] = 5.0;
-    // mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
-    // mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
-    // mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    // mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    // mbs_data->user_model->Status.Bump = 1;
-    // mbs_data->user_model->Status.AntiPhase = 1;
+    /**
+    mbs_reset_data(mbs_data);
+    mbs_data->process = 3;
+    mbs_data->m[Conducteur_id] = 0;
+    mbs_data->In[0][Conducteur_id] = 0; //Ixx
+    mbs_data->In[4][Conducteur_id] = 0; //Iyy
+    mbs_data->In[8][Conducteur_id] = 0; //Izz  
+    mbs_set_qu(mbs_data,1);
+    mbs_set_qu(mbs_data,2);
+    mbs_set_qu(mbs_data,6);
+    mbs_data->qd[1] = 5.0;
+    mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->user_model->Status.Bump = 1;
+    mbs_data->user_model->Status.AntiPhase = 1;
 
-    // mbs_dirdyn = mbs_new_dirdyn(mbs_data);
+    mbs_dirdyn = mbs_new_dirdyn(mbs_data);
 
-    // // dirdyn options: about output data
-    // mbs_dirdyn->options->resfilename = "AntiPhaseCosine_5ms";
-    // mbs_dirdyn->options->show_failed_closure = 1;
-    // mbs_dirdyn->options->save2file = 1;
-    // mbs_dirdyn->options->verbose = 1;
-    // // dirdyn options: about integration time
-    // mbs_dirdyn->options->tf  = 3.0;
-    // mbs_dirdyn->options->dt0 = 1e-3;
-    // // dirdyn options: about integrator
-    // mbs_dirdyn->options->integrator = Dopri5;
-    // mbs_dirdyn->options->dt_max = 1e-3;
+    // dirdyn options: about output data
+    mbs_dirdyn->options->resfilename = "AntiPhaseCosine_5ms";
+    mbs_dirdyn->options->show_failed_closure = 1;
+    mbs_dirdyn->options->save2file = 1;
+    mbs_dirdyn->options->verbose = 1;
+    // dirdyn options: about integration time
+    mbs_dirdyn->options->tf  = 3.0;
+    mbs_dirdyn->options->dt0 = 1e-3;
+    // dirdyn options: about integrator
+    mbs_dirdyn->options->integrator = Dopri5;
+    mbs_dirdyn->options->dt_max = 1e-3;
 
-    // mbs_run_dirdyn(mbs_dirdyn, mbs_data);
+    mbs_run_dirdyn(mbs_dirdyn, mbs_data);
 
-    // mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
+    mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
 
 
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     // /* ANTI-PHASE COSINE BUMP AT 10 m/s                          *
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-    // mbs_reset_data(mbs_data);
-    // mbs_data->process = 3;
-    // mbs_set_qu(mbs_data,1);
-    // mbs_set_qu(mbs_data,2);
-    // mbs_set_qu(mbs_data,6);
-    // mbs_data->qd[1] = 10.0;
-    // mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
-    // mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
-    // mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    // mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    // mbs_data->user_model->Status.Bump = 1;
-    // mbs_data->user_model->Status.AntiPhase = 1;
+    /**
+    mbs_reset_data(mbs_data);
+    mbs_data->process = 3;
+    mbs_data->m[Conducteur_id] = 0;
+    mbs_data->In[0][Conducteur_id] = 0; //Ixx
+    mbs_data->In[4][Conducteur_id] = 0; //Iyy
+    mbs_data->In[8][Conducteur_id] = 0; //Izz  
+    mbs_set_qu(mbs_data,1);
+    mbs_set_qu(mbs_data,2);
+    mbs_set_qu(mbs_data,6);
+    mbs_data->qd[1] = 10.0;
+    mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->user_model->Status.Bump = 1;
+    mbs_data->user_model->Status.AntiPhase = 1;
 
-    // mbs_dirdyn = mbs_new_dirdyn(mbs_data);
+    mbs_dirdyn = mbs_new_dirdyn(mbs_data);
 
-    // // dirdyn options: about output data
-    // mbs_dirdyn->options->resfilename = "AntiPhaseCosine_10ms";
-    // mbs_dirdyn->options->show_failed_closure = 1;
-    // mbs_dirdyn->options->save2file = 1;
-    // mbs_dirdyn->options->verbose = 1;
-    // // dirdyn options: about integration time
-    // mbs_dirdyn->options->tf  = 2.0;
-    // mbs_dirdyn->options->dt0 = 1e-3;
-    // // dirdyn options: about integrator
-    // mbs_dirdyn->options->integrator = Dopri5;
-    // mbs_dirdyn->options->dt_max = 1e-3;
+    // dirdyn options: about output data
+    mbs_dirdyn->options->resfilename = "AntiPhaseCosine_10ms";
+    mbs_dirdyn->options->show_failed_closure = 1;
+    mbs_dirdyn->options->save2file = 1;
+    mbs_dirdyn->options->verbose = 1;
+    // dirdyn options: about integration time
+    mbs_dirdyn->options->tf  = 2.0;
+    mbs_dirdyn->options->dt0 = 1e-3;
+    // dirdyn options: about integrator
+    mbs_dirdyn->options->integrator = Dopri5;
+    mbs_dirdyn->options->dt_max = 1e-3;
 
-    // mbs_run_dirdyn(mbs_dirdyn, mbs_data);
+    mbs_run_dirdyn(mbs_dirdyn, mbs_data);
 
-    // mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
+    mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
 
 
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     // /* HANDLING TEST: RAMP TO STEER AT 10 m/s                    *
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-    // mbs_reset_data(mbs_data);
-    // mbs_data->process = 3;
-    // mbs_set_qu(mbs_data,1);
-    // mbs_set_qu(mbs_data,2);
-    // mbs_set_qu(mbs_data,6);
-    // mbs_data->qd[1] = 10.0;
-    // mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
-    // mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
-    // mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    // mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    // mbs_data->user_model->Status.Bump = 0;
-    // mbs_data->user_model->Status.AntiPhase = 0;
-    // mbs_data->user_model->Status.Steering = 1;
-    // mbs_data->user_model->Status.Steering_sinus = 0;
+    /**
+    mbs_reset_data(mbs_data);
+    mbs_data->process = 3;
+    mbs_data->m[Conducteur_id] = 0;
+    mbs_data->In[0][Conducteur_id] = 0; //Ixx
+    mbs_data->In[4][Conducteur_id] = 0; //Iyy
+    mbs_data->In[8][Conducteur_id] = 0; //Izz  
+    mbs_set_qu(mbs_data,1);
+    mbs_set_qu(mbs_data,2);
+    mbs_set_qu(mbs_data,6);
+    mbs_data->qd[1] = 10.0;
+    mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->user_model->Status.Bump = 0;
+    mbs_data->user_model->Status.AntiPhase = 0;
+    mbs_data->user_model->Status.Steering = 1;
+    mbs_data->user_model->Status.Steering_sinus = 0;
 
-    // mbs_dirdyn = mbs_new_dirdyn(mbs_data);
+    mbs_dirdyn = mbs_new_dirdyn(mbs_data);
 
-    // // dirdyn options: about output data
-    // mbs_dirdyn->options->resfilename = "RampToSteer_10ms";
-    // mbs_dirdyn->options->show_failed_closure = 1;
-    // mbs_dirdyn->options->save2file = 1;
-    // mbs_dirdyn->options->verbose = 1;
-    // // dirdyn options: about integration time
-    // mbs_dirdyn->options->tf  = 5.0;
-    // mbs_dirdyn->options->dt0 = 1e-3;
-    // // dirdyn options: about integrator
-    // mbs_dirdyn->options->integrator = Dopri5;
-    // mbs_dirdyn->options->dt_max = 1e-3;
+    // dirdyn options: about output data
+    mbs_dirdyn->options->resfilename = "RampToSteer_10ms";
+    mbs_dirdyn->options->show_failed_closure = 1;
+    mbs_dirdyn->options->save2file = 1;
+    mbs_dirdyn->options->verbose = 1;
+    // dirdyn options: about integration time
+    mbs_dirdyn->options->tf  = 5.0;
+    mbs_dirdyn->options->dt0 = 1e-3;
+    // dirdyn options: about integrator
+    mbs_dirdyn->options->integrator = Dopri5;
+    mbs_dirdyn->options->dt_max = 1e-3;
 
-    // mbs_run_dirdyn(mbs_dirdyn, mbs_data);
+    mbs_run_dirdyn(mbs_dirdyn, mbs_data);
 
-    // mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
+    mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
 
 
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     // /* HANDLING TEST: RAMP TO STEER AT 20 m/s                    *
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-    // mbs_reset_data(mbs_data);
-    // mbs_data->process = 3;
-    // mbs_set_qu(mbs_data,1);
-    // mbs_set_qu(mbs_data,2);
-    // mbs_set_qu(mbs_data,6);
-    // mbs_data->qd[1] = 20.0;
-    // mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
-    // mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
-    // mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    // mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    // mbs_data->user_model->Status.Bump = 0;
-    // mbs_data->user_model->Status.AntiPhase = 0;
-    // mbs_data->user_model->Status.Steering = 1;
-    // mbs_data->user_model->Status.Steering_sinus = 0;
+    /**
+    mbs_reset_data(mbs_data);
+    mbs_data->process = 3;
+    mbs_data->m[Conducteur_id] = 0;
+    mbs_data->In[0][Conducteur_id] = 0; //Ixx
+    mbs_data->In[4][Conducteur_id] = 0; //Iyy
+    mbs_data->In[8][Conducteur_id] = 0; //Izz  
+    mbs_set_qu(mbs_data,1);
+    mbs_set_qu(mbs_data,2);
+    mbs_set_qu(mbs_data,6);
+    mbs_data->qd[1] = 20.0;
+    mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->user_model->Status.Bump = 0;
+    mbs_data->user_model->Status.AntiPhase = 0;
+    mbs_data->user_model->Status.Steering = 1;
+    mbs_data->user_model->Status.Steering_sinus = 0;
 
-    // mbs_dirdyn = mbs_new_dirdyn(mbs_data);
+    mbs_dirdyn = mbs_new_dirdyn(mbs_data);
 
-    // // dirdyn options: about output data
-    // mbs_dirdyn->options->resfilename = "RampToSteer_20ms";
-    // mbs_dirdyn->options->show_failed_closure = 1;
-    // mbs_dirdyn->options->save2file = 1;
-    // mbs_dirdyn->options->verbose = 1;
-    // // dirdyn options: about integration time
-    // mbs_dirdyn->options->tf  = 5.0;
-    // mbs_dirdyn->options->dt0 = 1e-3;
-    // // dirdyn options: about integrator
-    // mbs_dirdyn->options->integrator = Dopri5;
-    // mbs_dirdyn->options->dt_max = 1e-3;
+    // dirdyn options: about output data
+    mbs_dirdyn->options->resfilename = "RampToSteer_20ms";
+    mbs_dirdyn->options->show_failed_closure = 1;
+    mbs_dirdyn->options->save2file = 1;
+    mbs_dirdyn->options->verbose = 1;
+    // dirdyn options: about integration time
+    mbs_dirdyn->options->tf  = 5.0;
+    mbs_dirdyn->options->dt0 = 1e-3;
+    // dirdyn options: about integrator
+    mbs_dirdyn->options->integrator = Dopri5;
+    mbs_dirdyn->options->dt_max = 1e-3;
 
-    // mbs_run_dirdyn(mbs_dirdyn, mbs_data);
+    mbs_run_dirdyn(mbs_dirdyn, mbs_data);
 
-    // mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
-
+    mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
 
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     // /* HANDLING TEST: RAMP TO STEER AT 30 m/s                    *
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-    // mbs_reset_data(mbs_data);
-    // mbs_data->process = 3;
-    // mbs_set_qu(mbs_data,1);
-    // mbs_set_qu(mbs_data,2);
-    // mbs_set_qu(mbs_data,6);
-    // mbs_data->qd[1] = 30.0;
-    // mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
-    // mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
-    // mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    // mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    // mbs_data->user_model->Status.Bump = 0;
-    // mbs_data->user_model->Status.AntiPhase = 0;
-    // mbs_data->user_model->Status.Steering = 1;
-    // mbs_data->user_model->Status.Steering_sinus = 0;
+    /**
+    mbs_reset_data(mbs_data);
+    mbs_data->process = 3;
+    mbs_data->m[Conducteur_id] = 0;
+    mbs_data->In[0][Conducteur_id] = 0; //Ixx
+    mbs_data->In[4][Conducteur_id] = 0; //Iyy
+    mbs_data->In[8][Conducteur_id] = 0; //Izz  
+    mbs_set_qu(mbs_data,1);
+    mbs_set_qu(mbs_data,2);
+    mbs_set_qu(mbs_data,6);
+    mbs_data->qd[1] = 30.0;
+    mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->user_model->Status.Bump = 0;
+    mbs_data->user_model->Status.AntiPhase = 0;
+    mbs_data->user_model->Status.Steering = 1;
+    mbs_data->user_model->Status.Steering_sinus = 0;
 
-    // mbs_dirdyn = mbs_new_dirdyn(mbs_data);
+    mbs_dirdyn = mbs_new_dirdyn(mbs_data);
 
-    // // dirdyn options: about output data
-    // mbs_dirdyn->options->resfilename = "RampToSteer_30ms";
-    // mbs_dirdyn->options->show_failed_closure = 1;
-    // mbs_dirdyn->options->save2file = 1;
-    // mbs_dirdyn->options->verbose = 1;
-    // // dirdyn options: about integration time
-    // mbs_dirdyn->options->tf  = 5.0;
-    // mbs_dirdyn->options->dt0 = 1e-3;
-    // // dirdyn options: about integrator
-    // mbs_dirdyn->options->integrator = Dopri5;
-    // mbs_dirdyn->options->dt_max = 1e-3;
+    // dirdyn options: about output data
+    mbs_dirdyn->options->resfilename = "RampToSteer_30ms";
+    mbs_dirdyn->options->show_failed_closure = 1;
+    mbs_dirdyn->options->save2file = 1;
+    mbs_dirdyn->options->verbose = 1;
+    // dirdyn options: about integration time
+    mbs_dirdyn->options->tf  = 5.0;
+    mbs_dirdyn->options->dt0 = 1e-3;
+    // dirdyn options: about integrator
+    mbs_dirdyn->options->integrator = Dopri5;
+    mbs_dirdyn->options->dt_max = 1e-3;
 
-    // mbs_run_dirdyn(mbs_dirdyn, mbs_data);
+    mbs_run_dirdyn(mbs_dirdyn, mbs_data);
 
-    // mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
+    mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
 
 
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     // /* HANDLING TEST: SINUSOIDAL STERRING OF 1 mm                *
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-    // mbs_reset_data(mbs_data);
-    // mbs_data->process = 3;
-    // mbs_set_qu(mbs_data,1);
-    // mbs_set_qu(mbs_data,2);
-    // mbs_set_qu(mbs_data,6);
-    // mbs_data->qd[1] = 20.0;
-    // mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
-    // mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
-    // mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    // mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    // mbs_data->user_model->Status.Bump = 0;
-    // mbs_data->user_model->Status.AntiPhase = 0;
-    // mbs_data->user_model->Status.Steering = 1;
-    // mbs_data->user_model->Status.Steering_sinus = 1;
+    /**
+    mbs_reset_data(mbs_data);
+    mbs_data->process = 3;
+    mbs_data->m[Conducteur_id] = 0;
+    mbs_data->In[0][Conducteur_id] = 0; //Ixx
+    mbs_data->In[4][Conducteur_id] = 0; //Iyy
+    mbs_data->In[8][Conducteur_id] = 0; //Izz  
+    mbs_set_qu(mbs_data,1);
+    mbs_set_qu(mbs_data,2);
+    mbs_set_qu(mbs_data,6);
+    mbs_data->qd[1] = 20.0;
+    mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->user_model->Status.Bump = 0;
+    mbs_data->user_model->Status.AntiPhase = 0;
+    mbs_data->user_model->Status.Steering = 1;
+    mbs_data->user_model->Status.Steering_sinus = 1;
 
-    // mbs_dirdyn = mbs_new_dirdyn(mbs_data);
+    mbs_dirdyn = mbs_new_dirdyn(mbs_data);
 
-    // // dirdyn options: about output data
-    // mbs_dirdyn->options->resfilename = "SinusoidalSteer_1mm";
-    // mbs_dirdyn->options->show_failed_closure = 1;
-    // mbs_dirdyn->options->save2file = 1;
-    // mbs_dirdyn->options->verbose = 1;
-    // // dirdyn options: about integration time
-    // mbs_dirdyn->options->tf  = 3.0;
-    // mbs_dirdyn->options->dt0 = 1e-3;
-    // // dirdyn options: about integrator
-    // mbs_dirdyn->options->integrator = Dopri5;
-    // mbs_dirdyn->options->dt_max = 1e-3;
+    // dirdyn options: about output data
+    mbs_dirdyn->options->resfilename = "SinusoidalSteer_1mm";
+    mbs_dirdyn->options->show_failed_closure = 1;
+    mbs_dirdyn->options->save2file = 1;
+    mbs_dirdyn->options->verbose = 1;
+    // dirdyn options: about integration time
+    mbs_dirdyn->options->tf  = 3.0;
+    mbs_dirdyn->options->dt0 = 1e-3;
+    // dirdyn options: about integrator
+    mbs_dirdyn->options->integrator = Dopri5;
+    mbs_dirdyn->options->dt_max = 1e-3;
 
-    // mbs_run_dirdyn(mbs_dirdyn, mbs_data);
+    mbs_run_dirdyn(mbs_dirdyn, mbs_data);
 
-    // mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
+    mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
 
 
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     // /* HANDLING TEST: SINUSOIDAL STERRING OF 2 mm                *
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-    // mbs_reset_data(mbs_data);
-    // mbs_data->process = 3;
-    // mbs_set_qu(mbs_data,1);
-    // mbs_set_qu(mbs_data,2);
-    // mbs_set_qu(mbs_data,6);
-    // mbs_data->qd[1] = 20.0;
-    // mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
-    // mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
-    // mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    // mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    // mbs_data->user_model->Status.Bump = 0;
-    // mbs_data->user_model->Status.AntiPhase = 0;
-    // mbs_data->user_model->Status.Steering = 1;
-    // mbs_data->user_model->Status.Steering_sinus = 2;
+    /**
+    mbs_reset_data(mbs_data);
+    mbs_data->process = 3;
+    mbs_data->m[Conducteur_id] = 0;
+    mbs_data->In[0][Conducteur_id] = 0; //Ixx
+    mbs_data->In[4][Conducteur_id] = 0; //Iyy
+    mbs_data->In[8][Conducteur_id] = 0; //Izz  
+    mbs_set_qu(mbs_data,1);
+    mbs_set_qu(mbs_data,2);
+    mbs_set_qu(mbs_data,6);
+    mbs_data->qd[1] = 20.0;
+    mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->user_model->Status.Bump = 0;
+    mbs_data->user_model->Status.AntiPhase = 0;
+    mbs_data->user_model->Status.Steering = 1;
+    mbs_data->user_model->Status.Steering_sinus = 2;
 
-    // mbs_dirdyn = mbs_new_dirdyn(mbs_data);
+    mbs_dirdyn = mbs_new_dirdyn(mbs_data);
 
-    // // dirdyn options: about output data
-    // mbs_dirdyn->options->resfilename = "SinusoidalSteer_2mm";
-    // mbs_dirdyn->options->show_failed_closure = 1;
-    // mbs_dirdyn->options->save2file = 1;
-    // mbs_dirdyn->options->verbose = 1;
-    // // dirdyn options: about integration time
-    // mbs_dirdyn->options->tf  = 3.0;
-    // mbs_dirdyn->options->dt0 = 1e-3;
-    // // dirdyn options: about integrator
-    // mbs_dirdyn->options->integrator = Dopri5;
-    // mbs_dirdyn->options->dt_max = 1e-3;
+    // dirdyn options: about output data
+    mbs_dirdyn->options->resfilename = "SinusoidalSteer_2mm";
+    mbs_dirdyn->options->show_failed_closure = 1;
+    mbs_dirdyn->options->save2file = 1;
+    mbs_dirdyn->options->verbose = 1;
+    // dirdyn options: about integration time
+    mbs_dirdyn->options->tf  = 3.0;
+    mbs_dirdyn->options->dt0 = 1e-3;
+    // dirdyn options: about integrator
+    mbs_dirdyn->options->integrator = Dopri5;
+    mbs_dirdyn->options->dt_max = 1e-3;
 
-    // mbs_run_dirdyn(mbs_dirdyn, mbs_data);
+    mbs_run_dirdyn(mbs_dirdyn, mbs_data);
 
-    // mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
+    mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
 
 
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     // /* HANDLING TEST: SINUSOIDAL STERRING OF 4 mm                *
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-    // mbs_reset_data(mbs_data);
-    // mbs_data->process = 3;
-    // mbs_set_qu(mbs_data,1);
-    // mbs_set_qu(mbs_data,2);
-    // mbs_set_qu(mbs_data,6);
-    // mbs_data->qd[1] = 20.0;
-    // mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
-    // mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
-    // mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    // mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    // mbs_data->user_model->Status.Bump = 0;
-    // mbs_data->user_model->Status.AntiPhase = 0;
-    // mbs_data->user_model->Status.Steering = 1;
-    // mbs_data->user_model->Status.Steering_sinus = 4;
+    /**
+    mbs_reset_data(mbs_data);
+    mbs_data->process = 3;
+    mbs_data->m[Conducteur_id] = 0;
+    mbs_data->In[0][Conducteur_id] = 0; //Ixx
+    mbs_data->In[4][Conducteur_id] = 0; //Iyy
+    mbs_data->In[8][Conducteur_id] = 0; //Izz  
+    mbs_set_qu(mbs_data,1);
+    mbs_set_qu(mbs_data,2);
+    mbs_set_qu(mbs_data,6);
+    mbs_data->qd[1] = 20.0;
+    mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->user_model->Status.Bump = 0;
+    mbs_data->user_model->Status.AntiPhase = 0;
+    mbs_data->user_model->Status.Steering = 1;
+    mbs_data->user_model->Status.Steering_sinus = 4;
 
-    // mbs_dirdyn = mbs_new_dirdyn(mbs_data);
+    mbs_dirdyn = mbs_new_dirdyn(mbs_data);
 
-    // // dirdyn options: about output data
-    // mbs_dirdyn->options->resfilename = "SinusoidalSteer_4mm";
-    // mbs_dirdyn->options->show_failed_closure = 1;
-    // mbs_dirdyn->options->save2file = 1;
-    // mbs_dirdyn->options->verbose = 1;
-    // // dirdyn options: about integration time
-    // mbs_dirdyn->options->tf  = 3.0;
-    // mbs_dirdyn->options->dt0 = 1e-3;
-    // // dirdyn options: about integrator
-    // mbs_dirdyn->options->integrator = Dopri5;
-    // mbs_dirdyn->options->dt_max = 1e-3;
+    // dirdyn options: about output data
+    mbs_dirdyn->options->resfilename = "SinusoidalSteer_4mm";
+    mbs_dirdyn->options->show_failed_closure = 1;
+    mbs_dirdyn->options->save2file = 1;
+    mbs_dirdyn->options->verbose = 1;
+    // dirdyn options: about integration time
+    mbs_dirdyn->options->tf  = 3.0;
+    mbs_dirdyn->options->dt0 = 1e-3;
+    // dirdyn options: about integrator
+    mbs_dirdyn->options->integrator = Dopri5;
+    mbs_dirdyn->options->dt_max = 1e-3;
 
-    // mbs_run_dirdyn(mbs_dirdyn, mbs_data);
+    mbs_run_dirdyn(mbs_dirdyn, mbs_data);
 
-    // mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
+    mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
 
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
