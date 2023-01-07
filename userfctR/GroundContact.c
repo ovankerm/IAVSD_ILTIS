@@ -115,25 +115,11 @@ double ComputeRadialForce_Belgian_road(double Xw, double Zw, double Kw, double R
     */
     double Zp;    // ground height under wheel center
 
-    // Road profile from [2]
     
     
-    if (Xw >= 5 && Xw <= 6 && left){
-        Zp = -0.2;
-        Q[1] =Xw; Q[2] =0; Q[3] =Zp;
-        ng[1]=0; ng[2]=0; ng[3]=1;
-
-        if (Zp <= Zw-Rw){
-            Q[1] =0; Q[2] =0; Q[3] =0;
-            ng[1]=0; ng[2]=0; ng[3]=1;
-
-            return 0.0;
-        }
-
-        return Kw*(Rw-Zw + Zp);
-    }
-    if (Xw >= 6 && Xw <= 8 && left){
-        Zp = -0.2 + 0.2*(Xw-6)/2;
+    
+    if (Xw >= 6 && Xw <= 7 && left){
+        Zp = -0.2 + 0.2*(Xw-6)/1;
         Q[1] =Xw; Q[2] =0; Q[3] =Zp;
         ng[1]=0; ng[2]=0; ng[3]=1;
 
