@@ -68,8 +68,8 @@ double ComputeRadialForce(double Xw, double Zw, double Kw, double Rw, double *Q,
         double DZq, DXq, H, L_QG;
 
         // From road profile
-        Zp =    0.1*    (1-cos(2*M_PI*(Xw-0.97)/5)); // [m]
-        slope = 0.2*M_PI/5*sin(2*M_PI*(Xw-0.97)/5); // [-]
+        Zp =    0.1*    (1-cos(2*M_PI*(Xw-0.97)/5)); // [m]  Road profile
+        slope = 0.2*M_PI/5*sin(2*M_PI*(Xw-0.97)/5); // [-]  Corresponding slope
         if (hole){
             Zp    *=-1;
             slope *=-1;
@@ -99,6 +99,85 @@ double ComputeRadialForce(double Xw, double Zw, double Kw, double Rw, double *Q,
         ng[3] = (Zw-Q[3])/L_QG ;
 
         return Kw*(Rw-DZ)/H;
+    }
+}
+
+double ComputeRadialForce_Belgian_road(double Xw, double Zw, double Kw, double Rw, double *Q, double *ng, int left)
+{
+    /*
+        Xw : x position of the wheel
+        Zw : z position of the wheel
+        Kw : spring constant of the tyre
+        Rw : radius of the wheel
+        Q : point of application of the force (to be filled)
+        ng : vector normal to the ground (to be filled)
+        
+    */
+    double Zp;    // ground height under wheel center
+
+    // Road profile from [2]
+    
+    
+    if (Xw >= 5 && Xw <= 6 && left){
+        Zp = -0.2;
+        Q[1] =Xw; Q[2] =0; Q[3] =Zp;
+        ng[1]=0; ng[2]=0; ng[3]=1;
+
+        if (Zp <= Zw-Rw){
+            Q[1] =0; Q[2] =0; Q[3] =0;
+            ng[1]=0; ng[2]=0; ng[3]=1;
+
+            return 0.0;
+        }
+
+        return Kw*(Rw-Zw + Zp);
+    }
+    if (Xw >= 6 && Xw <= 8 && left){
+        Zp = -0.2 + 0.2*(Xw-6)/2;
+        Q[1] =Xw; Q[2] =0; Q[3] =Zp;
+        ng[1]=0; ng[2]=0; ng[3]=1;
+
+        if (Zp <= Zw-Rw){
+            Q[1] =0; Q[2] =0; Q[3] =0;
+            ng[1]=0; ng[2]=0; ng[3]=1;
+
+            return 0.0;
+        }
+
+        return Kw*(Rw-Zw + Zp);
+    }
+    else{
+        double slope; // d(road profile)/d(x)
+        double DZ;    // Zw-Zp
+        double DZq, DXq, H, L_QG;
+
+        // From road profile
+        Zp =   0; // [m]  Road profile
+        slope = 1.0 ; // [-]  Corresponding slope
+        
+        // Ground contact condition
+        if (Zp <= Zw-Rw){
+            Q[1] =0; Q[2] =0; Q[3] =0;
+            ng[1]=0; ng[2]=0; ng[3]=1;
+
+            return 0.0;
+        }
+        // Computation, by Similar triangles
+        DZ = Zw-Zp;
+        DZq = slope*slope*DZ/(1+slope*slope);
+        DXq = DZq/slope;
+
+
+        Q[1] =Xw; Q[2] =0; Q[3] =Zp; // just to try
+
+        H = sqrt(1+slope*slope);
+        L_QG = DZ/H; // length Point Q to Wheel center
+
+        ng[1] = 0;
+        ng[2] = 0;
+        ng[3] = 1 ;
+
+        return Kw*(Rw-DZ);
     }
 }
 

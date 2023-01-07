@@ -51,7 +51,7 @@ void user_dirdyn_loop(MbsData *mbs_data, MbsDirdyn *mbs_dd)
     MbsSensor *PtrSensor = mbs_dd->mbs_aux->psens;
     
     // compute the sensor (position, velocity...)
-    mbs_comp_S_sensor(PtrSensor, mbs_data, id);
+    //mbs_comp_S_sensor(PtrSensor, mbs_data, id);
 
     // save the acceleration 
     set_output(PtrSensor->A[1], "Horizontal_Acc");

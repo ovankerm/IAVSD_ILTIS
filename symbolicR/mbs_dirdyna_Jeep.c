@@ -10,11 +10,7 @@
 //
 //	http://www.robotran.be 
 //
-<<<<<<< Updated upstream
-//	==> Generation Date: Thu Jan  5 23:49:40 2023
-=======
-//	==> Generation Date: Thu Jan  5 23:06:39 2023
->>>>>>> Stashed changes
+//	==> Generation Date: Fri Jan  6 23:55:23 2023
 //
 //	==> Project name: Jeep
 //

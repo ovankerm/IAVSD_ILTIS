@@ -87,6 +87,10 @@ double* user_ExtForces(double PxF[4], double RxF[4][4],
                     Fvert = ComputeRadialForce(PxF[1], PxF[3], K, R, P, ng, left*um->Status.AntiPhase); // > Radial force in the Ground Frame ([Rsol])
                 }
             }
+            else if (um->Status.Belgian_road) {
+                //Fvert = ComputeRadialForce(PxF[1], PxF[3], K, R, P, ng, left*um->Status.AntiPhase);
+                Fvert = ComputeRadialForce_Belgian_road(PxF[1], PxF[3], K, R, P, ng, left);
+            }
             else{
                 ng[1] = 0; ng[2] = 0; ng[3] = 1;
                 P[1] = PxF[1]; P[2] = PxF[2]; P[3] = 0;
