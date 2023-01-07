@@ -316,6 +316,45 @@ int main(int argc, char const *argv[])
 
     mbs_delete_dirdyn(mbs_dirdyn, mbs_data); 
  
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+    /* COMFORT ANALYSIS at 8m/s                                  *
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    mbs_reset_data(mbs_data);
+    mbs_data->process = 5;
+    mbs_set_qu(mbs_data,1);
+    mbs_set_qu(mbs_data,2);
+    mbs_set_qu(mbs_data,6);
+    mbs_data->m[Conducteur_id] = 70;
+    mbs_data->In[0][Conducteur_id] = 9.858; //Ixx
+    mbs_data->In[4][Conducteur_id] = 13.125; //Iyy
+    mbs_data->In[8][Conducteur_id] = 6.183; //Izz 
+    mbs_data->qd[1] = 8;
+    mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->user_model->Status.Bump = 0;
+    mbs_data->user_model->Status.Simple_contact = 0;
+    mbs_data->user_model->Status.Belgian_road = 1; 
+
+    mbs_dirdyn = mbs_new_dirdyn(mbs_data);
+
+    // dirdyn options: about output data
+    mbs_dirdyn->options->resfilename = "Comfort_analysis_8m_s";
+    mbs_dirdyn->options->show_failed_closure = 1;
+    mbs_dirdyn->options->save2file = 1;
+    mbs_dirdyn->options->verbose = 0;
+    // dirdyn options: about integration time
+    mbs_dirdyn->options->tf  = 10;
+    mbs_dirdyn->options->dt0 = 1e-3;
+    // dirdyn options: about integrator
+    mbs_dirdyn->options->integrator = Dopri5;
+    mbs_dirdyn->options->dt_max = 5e-2;
+
+    mbs_run_dirdyn(mbs_dirdyn, mbs_data);
+
+    mbs_delete_dirdyn(mbs_dirdyn, mbs_data); 
+
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     /* IN-PHASE COSINE BUMP AT 5 m/s normal contact              *
