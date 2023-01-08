@@ -155,9 +155,9 @@ int main(int argc, char const *argv[])
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     mbs_data->process = 2;
     mbs_data->m[Conducteur_id] = 0;
-    mbs_data->In[0][Conducteur_id] = 0; //Ixx
-    mbs_data->In[4][Conducteur_id] = 0; //Iyy
-    mbs_data->In[8][Conducteur_id] = 0; //Izz 
+    mbs_data->In[1][Conducteur_id] = 0; //Ixx
+    mbs_data->In[5][Conducteur_id] = 0; //Iyy
+    mbs_data->In[9][Conducteur_id] = 0; //Izz 
 
     mbs_equil = mbs_new_equil(mbs_data);
     mbs_run_equil(mbs_equil, mbs_data);
@@ -211,9 +211,9 @@ int main(int argc, char const *argv[])
     MbsModal *mbs_modal;
     mbs_data->process = 4;
     mbs_data->m[Conducteur_id] = 0;
-    mbs_data->In[0][Conducteur_id] = 0; //Ixx
-    mbs_data->In[4][Conducteur_id] = 0; //Iyy
-    mbs_data->In[8][Conducteur_id] = 0; //Izz 
+    mbs_data->In[1][Conducteur_id] = 0; //Ixx
+    mbs_data->In[5][Conducteur_id] = 0; //Iyy
+    mbs_data->In[9][Conducteur_id] = 0; //Izz 
     mbs_data->user_model->Status.Linear_Modal=1;
 
     mbs_set_qu(mbs_data,1);
@@ -243,6 +243,10 @@ int main(int argc, char const *argv[])
    
     mbs_reset_data(mbs_data);
     mbs_data->process = 3;
+    mbs_data->m[Conducteur_id] = 0;
+    mbs_data->In[1][Conducteur_id] = 0; //Ixx
+    mbs_data->In[5][Conducteur_id] = 0; //Iyy
+    mbs_data->In[9][Conducteur_id] = 0; //Izz 
     mbs_set_qu(mbs_data,1); // Setting joint 1 to independant
     mbs_set_qu(mbs_data,2); // Setting joint 2 to independant
     mbs_set_qu(mbs_data,6); // Setting joint 6 to independant
@@ -296,9 +300,9 @@ int main(int argc, char const *argv[])
     mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 0;
-    mbs_data->In[0][Conducteur_id] = 0; //Ixx
-    mbs_data->In[4][Conducteur_id] = 0; //Iyy
-    mbs_data->In[8][Conducteur_id] = 0; //Izz    
+    mbs_data->In[1][Conducteur_id] = 0; //Ixx
+    mbs_data->In[5][Conducteur_id] = 0; //Iyy
+    mbs_data->In[9][Conducteur_id] = 0; //Izz    
     mbs_set_qu(mbs_data,1);
     mbs_set_qu(mbs_data,2);
     mbs_set_qu(mbs_data,6);
@@ -335,6 +339,10 @@ int main(int argc, char const *argv[])
     
     mbs_reset_data(mbs_data);
     mbs_data->process = 5;
+    mbs_data->m[Conducteur_id] = 70;
+    mbs_data->In[1][Conducteur_id] = 9.858; //Ixx
+    mbs_data->In[5][Conducteur_id] = 12.258; //Iyy
+    mbs_data->In[9][Conducteur_id] = 6.183; //Izz 
     mbs_set_qu(mbs_data,1);
     mbs_set_qu(mbs_data,2);
     mbs_set_qu(mbs_data,6);
@@ -372,9 +380,9 @@ int main(int argc, char const *argv[])
     /* mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 0;
-    mbs_data->In[0][Conducteur_id] = 0; //Ixx
-    mbs_data->In[4][Conducteur_id] = 0; //Iyy
-    mbs_data->In[8][Conducteur_id] = 0; //Izz 
+    mbs_data->In[1][Conducteur_id] = 0; //Ixx
+    mbs_data->In[5][Conducteur_id] = 0; //Iyy
+    mbs_data->In[9][Conducteur_id] = 0; //Izz 
     mbs_set_qu(mbs_data,1);
     mbs_set_qu(mbs_data,2);
     mbs_set_qu(mbs_data,6);
@@ -411,9 +419,9 @@ int main(int argc, char const *argv[])
     /* mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 0;
-    mbs_data->In[0][Conducteur_id] = 0; //Ixx
-    mbs_data->In[4][Conducteur_id] = 0; //Iyy
-    mbs_data->In[8][Conducteur_id] = 0; //Izz 
+    mbs_data->In[1][Conducteur_id] = 0; //Ixx
+    mbs_data->In[5][Conducteur_id] = 0; //Iyy
+    mbs_data->In[9][Conducteur_id] = 0; //Izz 
     mbs_set_qu(mbs_data,1);
     mbs_set_qu(mbs_data,2);
     mbs_set_qu(mbs_data,6);
@@ -451,9 +459,9 @@ int main(int argc, char const *argv[])
     mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 0;
-    mbs_data->In[0][Conducteur_id] = 0; //Ixx
-    mbs_data->In[4][Conducteur_id] = 0; //Iyy
-    mbs_data->In[8][Conducteur_id] = 0; //Izz  
+    mbs_data->In[1][Conducteur_id] = 0; //Ixx
+    mbs_data->In[5][Conducteur_id] = 0; //Iyy
+    mbs_data->In[9][Conducteur_id] = 0; //Izz 
     mbs_set_qu(mbs_data,1);
     mbs_set_qu(mbs_data,2);
     mbs_set_qu(mbs_data,6);
@@ -490,9 +498,9 @@ int main(int argc, char const *argv[])
     mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 0;
-    mbs_data->In[0][Conducteur_id] = 0; //Ixx
-    mbs_data->In[4][Conducteur_id] = 0; //Iyy
-    mbs_data->In[8][Conducteur_id] = 0; //Izz  
+    mbs_data->In[1][Conducteur_id] = 0; //Ixx
+    mbs_data->In[5][Conducteur_id] = 0; //Iyy
+    mbs_data->In[9][Conducteur_id] = 0; //Izz 
     mbs_set_qu(mbs_data,1);
     mbs_set_qu(mbs_data,2);
     mbs_set_qu(mbs_data,6);
@@ -530,9 +538,9 @@ int main(int argc, char const *argv[])
     mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 0;
-    mbs_data->In[0][Conducteur_id] = 0; //Ixx
-    mbs_data->In[4][Conducteur_id] = 0; //Iyy
-    mbs_data->In[8][Conducteur_id] = 0; //Izz  
+    mbs_data->In[1][Conducteur_id] = 0; //Ixx
+    mbs_data->In[5][Conducteur_id] = 0; //Iyy
+    mbs_data->In[9][Conducteur_id] = 0; //Izz 
     mbs_set_qu(mbs_data,1);
     mbs_set_qu(mbs_data,2);
     mbs_set_qu(mbs_data,6);
@@ -570,9 +578,9 @@ int main(int argc, char const *argv[])
     mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 0;
-    mbs_data->In[0][Conducteur_id] = 0; //Ixx
-    mbs_data->In[4][Conducteur_id] = 0; //Iyy
-    mbs_data->In[8][Conducteur_id] = 0; //Izz  
+    mbs_data->In[1][Conducteur_id] = 0; //Ixx
+    mbs_data->In[5][Conducteur_id] = 0; //Iyy
+    mbs_data->In[9][Conducteur_id] = 0; //Izz  
     mbs_set_qu(mbs_data,1);
     mbs_set_qu(mbs_data,2);
     mbs_set_qu(mbs_data,6);
@@ -612,9 +620,9 @@ int main(int argc, char const *argv[])
     mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 0;
-    mbs_data->In[0][Conducteur_id] = 0; //Ixx
-    mbs_data->In[4][Conducteur_id] = 0; //Iyy
-    mbs_data->In[8][Conducteur_id] = 0; //Izz  
+    mbs_data->In[1][Conducteur_id] = 0; //Ixx
+    mbs_data->In[5][Conducteur_id] = 0; //Iyy
+    mbs_data->In[9][Conducteur_id] = 0; //Izz 
     mbs_set_qu(mbs_data,1);
     mbs_set_qu(mbs_data,2);
     mbs_set_qu(mbs_data,6);
@@ -653,9 +661,9 @@ int main(int argc, char const *argv[])
     mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 0;
-    mbs_data->In[0][Conducteur_id] = 0; //Ixx
-    mbs_data->In[4][Conducteur_id] = 0; //Iyy
-    mbs_data->In[8][Conducteur_id] = 0; //Izz  
+    mbs_data->In[1][Conducteur_id] = 0; //Ixx
+    mbs_data->In[5][Conducteur_id] = 0; //Iyy
+    mbs_data->In[9][Conducteur_id] = 0; //Izz 
     mbs_set_qu(mbs_data,1);
     mbs_set_qu(mbs_data,2);
     mbs_set_qu(mbs_data,6);
@@ -695,9 +703,9 @@ int main(int argc, char const *argv[])
     mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 0;
-    mbs_data->In[0][Conducteur_id] = 0; //Ixx
-    mbs_data->In[4][Conducteur_id] = 0; //Iyy
-    mbs_data->In[8][Conducteur_id] = 0; //Izz  
+    mbs_data->In[1][Conducteur_id] = 0; //Ixx
+    mbs_data->In[5][Conducteur_id] = 0; //Iyy
+    mbs_data->In[9][Conducteur_id] = 0; //Izz 
     mbs_set_qu(mbs_data,1);
     mbs_set_qu(mbs_data,2);
     mbs_set_qu(mbs_data,6);
@@ -737,9 +745,9 @@ int main(int argc, char const *argv[])
     mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 0;
-    mbs_data->In[0][Conducteur_id] = 0; //Ixx
-    mbs_data->In[4][Conducteur_id] = 0; //Iyy
-    mbs_data->In[8][Conducteur_id] = 0; //Izz  
+    mbs_data->In[1][Conducteur_id] = 0; //Ixx
+    mbs_data->In[5][Conducteur_id] = 0; //Iyy
+    mbs_data->In[9][Conducteur_id] = 0; //Izz 
     mbs_set_qu(mbs_data,1);
     mbs_set_qu(mbs_data,2);
     mbs_set_qu(mbs_data,6);
@@ -779,9 +787,9 @@ int main(int argc, char const *argv[])
     mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 0;
-    mbs_data->In[0][Conducteur_id] = 0; //Ixx
-    mbs_data->In[4][Conducteur_id] = 0; //Iyy
-    mbs_data->In[8][Conducteur_id] = 0; //Izz  
+    mbs_data->In[1][Conducteur_id] = 0; //Ixx
+    mbs_data->In[5][Conducteur_id] = 0; //Iyy
+    mbs_data->In[9][Conducteur_id] = 0; //Izz 
     mbs_set_qu(mbs_data,1);
     mbs_set_qu(mbs_data,2);
     mbs_set_qu(mbs_data,6);
