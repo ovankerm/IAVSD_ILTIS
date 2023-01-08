@@ -338,7 +338,7 @@ int main(int argc, char const *argv[])
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     
     mbs_reset_data(mbs_data);
-    mbs_data->process = 5;
+    mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 70;
     mbs_data->In[1][Conducteur_id] = 9.858; //Ixx
     mbs_data->In[5][Conducteur_id] = 12.258; //Iyy

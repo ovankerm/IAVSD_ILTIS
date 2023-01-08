@@ -45,7 +45,7 @@ void user_dirdyn_init(MbsData *mbs_data, MbsDirdyn *mbs_dd)
  */
 void user_dirdyn_loop(MbsData *mbs_data, MbsDirdyn *mbs_dd)
 {
-    if (mbs_data->process == 5) {
+    if (mbs_data->process == 3) {
 
         int id = Sensor_Conducteur_id;
         
