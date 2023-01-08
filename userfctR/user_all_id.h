@@ -8,7 +8,11 @@
  *
  * Universite catholique de Louvain, Belgium 
  *
+<<<<<<< HEAD
  * Last update : Sun Jan  8 00:07:44 2023
+=======
+ * Last update : Sat Jan  7 15:49:09 2023
+>>>>>>> 9cda43ee1ecf2f0d9951ae98a5b324420acf02bd
  * --------------------------------------------------------
  *
  */
@@ -60,6 +64,7 @@
 #define T2_FR_Stop_id 38
 #define T2_RL_Stop_id 39
 #define T2_RR_Stop_id 40
+#define Joint_0_id 41
 
 
 // body
@@ -95,6 +100,7 @@
 #define FR_Stop_id 38
 #define RL_Stop_id 39
 #define RR_Stop_id 40
+#define Conducteur_id 41
 
 
 // point
@@ -156,6 +162,7 @@
 #define RRL_Carrier2_C3_Cut_id 55
 #define RRL_Carrier3_Wheel_spin_point_id 56
 //#define RRL_Wheel_origin_id 57
+//#define Conducteur_origin_id 58
 
 
 // sensor
