@@ -14,6 +14,10 @@ import csv
 from termcolor import colored
 from colorama import init
 
+import os
+
+os.chdir('/Users/martinservais/Documents/GitHub/IAVSD_ILTIS/resultsR')
+
 ###### INFORMATION & OPTIONS ######
 init()
 
@@ -157,7 +161,7 @@ if(displayplt1):
     plt1[1].set_aspect(0.52)
     mng = plt.get_current_fig_manager()
     #mng.resize(*mng.window.maxsize())
-    mng.window.state('zoomed') #works fine on Windows!
+    #mng.window.state('zoomed') #works fine on Windows!
     plt.show(block=False)
 
 

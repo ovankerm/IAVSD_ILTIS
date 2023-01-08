@@ -114,14 +114,10 @@ double ComputeRadialForce_Belgian_road(double Xw, double Zw, double Kw, double R
         
     */
     double Zp;    // ground height under wheel center
-
-    
-    
-    
-    if (Xw >= 6 && Xw <= 7 && left){
-        Zp = -0.2 + 0.2*(Xw-6)/1;
-        Q[1] =Xw; Q[2] =0; Q[3] =Zp;
-        ng[1]=0; ng[2]=0; ng[3]=1;
+    double slope = 0.2/0.5 ;
+    if (Xw >= 6 && Xw <= 6.5 && left){
+        Zp = -0.2 + 0.2*(Xw-6)/0.5;
+        
 
         if (Zp <= Zw-Rw){
             Q[1] =0; Q[2] =0; Q[3] =0;
@@ -129,14 +125,29 @@ double ComputeRadialForce_Belgian_road(double Xw, double Zw, double Kw, double R
 
             return 0.0;
         }
+        // Correction for normal force
+        double DZ, DZq, DXq; 
+        DZ = Zw-Zp;
+        DZq = slope*slope*DZ/(1+slope*slope);
+        DXq = DZq/slope;
 
+        // Fill values
+        Q[1] = Xw+DXq;
+        Q[2] = 0;
+        Q[3] = Zp+DZq;
+
+        double H = sqrt(1+slope*slope);
+        double L_QG = DZ/H; // length Point Q to Wheel center
+
+        ng[1] = (-DXq)/L_QG;
+        ng[2] = 0;
+        ng[3] = (Zw-Q[3])/L_QG ;
         return Kw*(Rw-Zw + Zp);
     }
     else{
         double slope; // d(road profile)/d(x)
         double DZ;    // Zw-Zp
-        double DZq, DXq, H, L_QG;
-
+        
         // From road profile
         Zp =   0; // [m]  Road profile
         slope = 1.0 ; // [-]  Corresponding slope
@@ -150,14 +161,84 @@ double ComputeRadialForce_Belgian_road(double Xw, double Zw, double Kw, double R
         }
         // Computation, by Similar triangles
         DZ = Zw-Zp;
+        
+        Q[1] =Xw; Q[2] =0; Q[3] =Zp; // just to try
+
+        ng[1] = 0;
+        ng[2] = 0;
+        ng[3] = 1 ;
+
+        return Kw*(Rw-DZ);
+    }
+}
+
+double ComputeRadialForce_Bumpy(double Xw, double Yw, double Zw, double Kw, double Rw, double *Q, double *ng, int left)
+{
+    /*
+        Xw : x position of the wheel
+        Zw : z position of the wheel
+        Kw : spring constant of the tyre
+        Rw : radius of the wheel
+        Q : point of application of the force (to be filled)
+        ng : vector normal to the ground (to be filled)
+        
+    */
+    double Zp;    // ground height under wheel center
+    double slope ;
+    
+
+    if (Xw >= 3.15 ){
+        Zp = sin(Xw)/15 + sin(Yw)/15;
+        slope = cos (Xw)/15 - sin(Yw)/15;
+        if (left){
+            Zp *= -1;
+            slope *= -1;
+        }
+
+        if (Zp <= Zw-Rw){
+            Q[1] =0; Q[2] =0; Q[3] =0;
+            ng[1]=0; ng[2]=0; ng[3]=1;
+
+            return 0.0;
+        }
+        // Correction for normal force
+        double DZ, DZq, DXq; 
+        DZ = Zw-Zp;
         DZq = slope*slope*DZ/(1+slope*slope);
         DXq = DZq/slope;
 
+        // Fill values
+        Q[1] = Xw+DXq;
+        Q[2] = 0;
+        Q[3] = Zp+DZq;
 
+        double H = sqrt(1+slope*slope);
+        double L_QG = DZ/H; // length Point Q to Wheel center
+
+        ng[1] = (-DXq)/L_QG;
+        ng[2] = 0;
+        ng[3] = (Zw-Q[3])/L_QG ;
+        return Kw*(Rw-Zw + Zp);
+    }
+    else{
+        double slope; // d(road profile)/d(x)
+        double DZ;    // Zw-Zp
+        
+        // From road profile
+        Zp =   0; // [m]  Road profile
+        slope = 1.0 ; // [-]  Corresponding slope
+        
+        // Ground contact condition
+        if (Zp <= Zw-Rw){
+            Q[1] =0; Q[2] =0; Q[3] =0;
+            ng[1]=0; ng[2]=0; ng[3]=1;
+
+            return 0.0;
+        }
+        // Computation, by Similar triangles
+        DZ = Zw-Zp;
+        
         Q[1] =Xw; Q[2] =0; Q[3] =Zp; // just to try
-
-        H = sqrt(1+slope*slope);
-        L_QG = DZ/H; // length Point Q to Wheel center
 
         ng[1] = 0;
         ng[2] = 0;

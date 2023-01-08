@@ -8,7 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
-os.chdir('/Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/resultsR/')
+os.chdir('/Users/martinservais/Documents/GitHub/IAVSD_ILTIS/resultsR')
 
 Id_x = 1
 Id_y = 2
@@ -260,6 +260,10 @@ plt.xlabel('Simulation time [s]')
 plt.ylabel('Lateral acceleration (norm) of vehicle [m/(s*s)]')
 plt.legend()
 plt.savefig('SinusoidalSteering_Lateral_Acc_20ms.png')
+
+# ==============================================================================
+# Belgian road plots
+# ==============================================================================
 
 
 plt.show()

@@ -104,9 +104,36 @@
             <color R="0" G="0" B="0" />
             <specularColor R="255" G="255" B="255" />
             <shininess>250.0</shininess>
-            <transparency>0.5</transparency>
+            <transparency>1.0</transparency>
             <url>PRJPATH/wrl/bump.wrl</url>
           </inline>
+          <box>
+            <name>New_Shape</name>
+            <position>
+              <x>6.5</x>
+              <y>-0.65</y>
+              <z>0.0</z>
+            </position>
+            <scale>
+              <x>0.5</x>
+              <y>0.5</y>
+              <z>0.01</z>
+            </scale>
+            <rotation>
+              <x>0.0</x>
+              <y>0.0</y>
+              <z>0.0</z>
+            </rotation>
+            <color R="0" G="0" B="0" />
+            <specularColor R="255" G="255" B="255" />
+            <shininess>250.0</shininess>
+            <transparency>0.10000000149011612</transparency>
+            <size>
+              <x>1.0</x>
+              <y>1.0</y>
+              <z>1.0</z>
+            </size>
+          </box>
         </x3D_shapes>
       </x3D>
     </graphics>
@@ -239,8 +266,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>652.0</x>
-              <y>350.0</y>
+              <x>646.0</x>
+              <y>353.0</y>
             </position>
           </x2D>
           <x3D />
@@ -256,8 +283,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>652.0</x>
-              <y>213.0</y>
+              <x>646.0</x>
+              <y>216.0</y>
             </position>
           </x2D>
           <x3D />
@@ -273,8 +300,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>607.0</x>
-              <y>248.0</y>
+              <x>601.0</x>
+              <y>251.0</y>
             </position>
           </x2D>
           <x3D />
@@ -290,8 +317,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>560.0</x>
-              <y>207.0</y>
+              <x>554.0</x>
+              <y>210.0</y>
             </position>
           </x2D>
           <x3D />
@@ -307,8 +334,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>561.0</x>
-              <y>350.0</y>
+              <x>555.0</x>
+              <y>353.0</y>
             </position>
           </x2D>
           <x3D />
@@ -324,8 +351,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>582.0</x>
-              <y>572.0</y>
+              <x>576.0</x>
+              <y>575.0</y>
             </position>
           </x2D>
           <x3D />
@@ -341,8 +368,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>590.0</x>
-              <y>705.0</y>
+              <x>584.0</x>
+              <y>708.0</y>
             </position>
           </x2D>
           <x3D />
@@ -358,8 +385,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>614.0</x>
-              <y>781.0</y>
+              <x>608.0</x>
+              <y>784.0</y>
             </position>
           </x2D>
           <x3D />
@@ -375,8 +402,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>648.0</x>
-              <y>570.0</y>
+              <x>642.0</x>
+              <y>573.0</y>
             </position>
           </x2D>
           <x3D />
@@ -392,8 +419,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>638.0</x>
-              <y>710.0</y>
+              <x>632.0</x>
+              <y>713.0</y>
             </position>
           </x2D>
           <x3D />
@@ -409,8 +436,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>676.0</x>
-              <y>274.0</y>
+              <x>670.0</x>
+              <y>277.0</y>
             </position>
           </x2D>
           <x3D />
@@ -426,8 +453,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>544.0</x>
-              <y>278.0</y>
+              <x>538.0</x>
+              <y>281.0</y>
             </position>
           </x2D>
           <x3D />
@@ -443,8 +470,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>704.0</x>
-              <y>429.0</y>
+              <x>698.0</x>
+              <y>432.0</y>
             </position>
           </x2D>
           <x3D />
@@ -460,8 +487,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>550.0</x>
-              <y>428.0</y>
+              <x>544.0</x>
+              <y>431.0</y>
             </position>
           </x2D>
           <x3D />
@@ -477,8 +504,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>614.0</x>
-              <y>125.0</y>
+              <x>608.0</x>
+              <y>128.0</y>
             </position>
           </x2D>
           <x3D />
@@ -494,8 +521,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>605.0</x>
-              <y>748.0</y>
+              <x>599.0</x>
+              <y>751.0</y>
             </position>
           </x2D>
           <x3D />
@@ -511,8 +538,8 @@
         <graphics>
           <x2D>
             <position>
-              <x>628.0</x>
-              <y>189.0</y>
+              <x>622.0</x>
+              <y>192.0</y>
             </position>
           </x2D>
           <x3D />
@@ -522,8 +549,8 @@
       <graphics>
         <x2D>
           <position>
-            <x>-43.0</x>
-            <y>-174.0</y>
+            <x>-49.0</x>
+            <y>-171.0</y>
           </position>
           <name_pos>
             <x>0.0</x>
@@ -536,20 +563,20 @@
           </size>
           <control_points>
             <control_point>
-              <x>49.0</x>
-              <y>-174.0</y>
+              <x>43.0</x>
+              <y>-171.0</y>
             </control_point>
             <control_point>
-              <x>49.0</x>
-              <y>27.0</y>
+              <x>43.0</x>
+              <y>30.0</y>
             </control_point>
             <control_point>
-              <x>-43.0</x>
-              <y>27.0</y>
+              <x>-49.0</x>
+              <y>30.0</y>
             </control_point>
             <control_point>
-              <x>-43.0</x>
-              <y>-174.0</y>
+              <x>-49.0</x>
+              <y>-171.0</y>
             </control_point>
           </control_points>
           <angle>0.0</angle>
@@ -4445,6 +4472,11 @@
       <parameter>
         <name>Belgian_road</name>
         <type>scalar</type>
+        <value>0.0</value>
+      </parameter>
+      <parameter>
+        <name>Bumpy</name>
+        <type>integer</type>
         <value>0.0</value>
       </parameter>
     </user_model>

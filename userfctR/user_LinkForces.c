@@ -48,7 +48,7 @@ double user_LinkForces(double Z, double Zd, MbsData *mbs_data, double tsim, int 
             else{
                 F_damp = 9945.627*Zd +33955.72*Zd*Zd -59832.25*Zd*Zd*Zd -395651.0*Zd*Zd*Zd*Zd;
             }
-            Flink = F_damp+F_spring;
+            Flink = (F_damp+F_spring);
 
             if (mbs_data->process==0 && ilnk == FL_Bumper_id){
                 mbs_data->user_model->Initial_State.FL_Spring_F = Flink;

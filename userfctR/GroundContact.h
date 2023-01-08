@@ -16,6 +16,8 @@ double ComputeRadialForce(double Xw, double Zw, double Kw, double Rw, double *P,
 
 double ComputeRadialForce_Belgian_road(double Xw, double Zw, double Kw, double Rw, double *Q, double *ng, int left);
 
+double ComputeRadialForce_Bumpy(double Xw, double Yw, double Zw, double Kw, double Rw, double *Q, double *ng, int left);
+
 void Calspan(double *Flat,double *Myaw, double Fvert, double Anglis, double Angcamb, double Gliss, double A0, double A1, double A2, double A3, double A4,
              double Aomegat, double B1, double B2, double B3, double B4, double SN, double AF1, double AF2, double AF3);
 #endif
