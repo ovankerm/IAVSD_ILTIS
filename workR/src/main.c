@@ -255,7 +255,7 @@ int main(int argc, char const *argv[])
     mbs_data->qd[1] = speed * cos(angle * M_PI/180); // Speed in the X direction of the vehicle
     mbs_data->qd[2] = speed * sin(angle * M_PI/180); // Speed in the Y direction of the vehicle
     mbs_data->q[6] = angle * M_PI/180; // Yaw of the vehicle
-    mbs_data->q[Y_Chassis_id] = 1; // Y position of the chassis
+    mbs_data->q[Y_Chassis_id] = 0; // Y position of the chassis
     mbs_data->qd[J_FR_Wheel_id] = speed/mbs_data->user_model->Wheels.F_Rad; // Rotation speed of the front right wheel
     mbs_data->qd[J_FL_Wheel_id] = speed/mbs_data->user_model->Wheels.F_Rad; // Rotation speed of the front left wheel
     mbs_data->qd[J_RR_Wheel_id] = speed/mbs_data->user_model->Wheels.R_Rad; // Rotation speed of the rear right wheel
@@ -290,13 +290,13 @@ int main(int argc, char const *argv[])
 
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
 
-    mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
+    mbs_delete_dirdyn(mbs_dirdyn, mbs_data); 
 
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     /*                  Belgian road 15m/s    50cm Hole          *
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-    /*
+    
     mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 0;
@@ -316,8 +316,9 @@ int main(int argc, char const *argv[])
     mbs_data->user_model->Status.Belgian_road = 1; 
     mbs_data->user_model->Nid_De_Poule.Width = 0.5; 
     mbs_data->user_model->Nid_De_Poule.Height = 0.2;
-    mbs_data->user_model->Nid_De_Poule.Left = 1;
-    mbs_data->user_model->Nid_De_Poule.Right = 0; 
+    mbs_data->user_model->Nid_De_Poule.Left = 0;
+    mbs_data->user_model->Nid_De_Poule.Right = 1; 
+    
 
     mbs_dirdyn = mbs_new_dirdyn(mbs_data);
 
@@ -335,9 +336,9 @@ int main(int argc, char const *argv[])
 
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
 
-    mbs_delete_dirdyn(mbs_dirdyn, mbs_data); 
+    mbs_delete_dirdyn(mbs_dirdyn, mbs_data);  
 
-    */
+    
     
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     /* COMFORT ANALYSIS at 8m/s                                  *

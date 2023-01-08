@@ -94,7 +94,6 @@ double* user_ExtForces(double PxF[4], double RxF[4][4],
                 double width = um->Nid_De_Poule.Width;
                 double onTheRight = um->Nid_De_Poule.Right;
                 double onTheLeft = um->Nid_De_Poule.Left;
-                //printf("%f\n", width);
                 Fvert = ComputeRadialForce_Belgian_road(PxF[1], PxF[3], K, R, P, ng, left, height, width, onTheLeft, onTheRight);
             }
 
