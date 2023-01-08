@@ -1,3 +1,4 @@
 workR/CMakeLists.txt
 workR/build/
 .DS_Store
+dataR/
