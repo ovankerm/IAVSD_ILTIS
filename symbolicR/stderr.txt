@@ -1,6 +1,6 @@
 
 ##############################################################
-#	file4.gen 08/01/2023 12:30:34    errors
+#	file4.gen 08/01/2023 21:56:23    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -8,9 +8,9 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 	Elimination of the superfluous equations.....................
 
 
-		Maximum simultaneous symbolic expressions :  3597
+		Maximum simultaneous symbolic expressions :  3614
 
-		Maximum number of allocated Kbytes :  168
+		Maximum number of allocated Kbytes :  169
 
 
 	The symbolic equations have been generated 
@@ -23,7 +23,7 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 
 ##############################################################
-#	file6.gen 08/01/2023 12:30:34    errors
+#	file6.gen 08/01/2023 21:56:23    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -32,7 +32,7 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 
 ##############################################################
-#	file3.gen 08/01/2023 12:30:34    errors
+#	file3.gen 08/01/2023 21:56:23    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -40,9 +40,9 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 	Elimination of the superfluous equations.....................
 
 
-		Maximum simultaneous symbolic expressions :  2236
+		Maximum simultaneous symbolic expressions :  2265
 
-		Maximum number of allocated Kbytes :  104
+		Maximum number of allocated Kbytes :  106
 
 
 	The symbolic equations have been generated 
@@ -55,7 +55,7 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 
 ##############################################################
-#	file2.gen 08/01/2023 12:30:34    errors
+#	file2.gen 08/01/2023 21:56:23    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -63,9 +63,9 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 	Elimination of the superfluous equations.....................
 
 
-		Maximum simultaneous symbolic expressions :  2644
+		Maximum simultaneous symbolic expressions :  2661
 
-		Maximum number of allocated Kbytes :  123
+		Maximum number of allocated Kbytes :  124
 
 
 	The symbolic equations have been generated 
@@ -78,7 +78,7 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 
 ##############################################################
-#	file5.gen 08/01/2023 12:30:34    errors
+#	file5.gen 08/01/2023 21:56:23    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -86,9 +86,9 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 	Elimination of the superfluous equations.....................
 
 
-		Maximum simultaneous symbolic expressions :  6388
+		Maximum simultaneous symbolic expressions :  6405
 
-		Maximum number of allocated Kbytes :  299
+		Maximum number of allocated Kbytes :  300
 
 
 	The symbolic equations have been generated 
@@ -101,7 +101,7 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 
 ##############################################################
-#	file0.gen 08/01/2023 12:30:34    errors
+#	file0.gen 08/01/2023 21:56:23    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -109,20 +109,22 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 	Computation of the dynamics.....................
 
-		Joints   40  39  38  37  36  35  34  33  32  31
+		Joints   41  40  39  38  37  36  35  34  33  32
 
-		    -->  30  29  28  27  26  25  24  23  22  21
+		    -->  31  30  29  28  27  26  25  24  23  22
 
-		    -->  20  19  18  17  16  15  14  13  12  11
+		    -->  21  20  19  18  17  16  15  14  13  12
 
-		    -->  10   9   8   7   6   5   4   3   2   1
+		    -->  11  10   9   8   7   6   5   4   3   2
+
+		    -->   1
 
 	Elimination of the superfluous equations.....................
 
 
-		Maximum simultaneous symbolic expressions :  15316
+		Maximum simultaneous symbolic expressions :  15585
 
-		Maximum number of allocated Kbytes :  717
+		Maximum number of allocated Kbytes :  730
 
 
 	The symbolic equations have been generated 
@@ -135,7 +137,7 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 
 ##############################################################
-#	file1.gen 08/01/2023 12:30:34    errors
+#	file1.gen 08/01/2023 21:56:23    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -143,32 +145,9 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 	Elimination of the superfluous equations.....................
 
 
-		Maximum simultaneous symbolic expressions :  6230
+		Maximum simultaneous symbolic expressions :  6296
 
-		Maximum number of allocated Kbytes :  292
-
-
-	The symbolic equations have been generated 
-	in the directory: /usr/local/robotran/users/MECA2215/upload/
-
-
- 		*** Generation symbolique reussie ! ***
-
-
-
-
-##############################################################
-#	file1b.gen 08/01/2023 12:30:34    errors
-##############################################################
-git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
-
-
-	Elimination of the superfluous equations.....................
-
-
-		Maximum simultaneous symbolic expressions :  27522
-
-		Maximum number of allocated Kbytes :  1290
+		Maximum number of allocated Kbytes :  295
 
 
 	The symbolic equations have been generated 

@@ -240,7 +240,7 @@ int main(int argc, char const *argv[])
     /***********************
         Test PID
     ************************/
-   
+   /*
     mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 0;
@@ -292,6 +292,8 @@ int main(int argc, char const *argv[])
 
     mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
 
+    */
+
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     /*                  Belgian road 5m/s    50cm Hole          *
@@ -311,9 +313,10 @@ int main(int argc, char const *argv[])
     mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
     mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
     mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    mbs_data->user_model->Status.Bump = 0;
+    mbs_data->user_model->Status.Bump = 1;
+    mbs_data->user_model->Status.Bump = 1;
     mbs_data->user_model->Status.Simple_contact = 0;
-    mbs_data->user_model->Status.Belgian_road = 1; 
+    mbs_data->user_model->Status.Belgian_road = 0; 
 
     mbs_dirdyn = mbs_new_dirdyn(mbs_data);
 
@@ -337,6 +340,7 @@ int main(int argc, char const *argv[])
     /* COMFORT ANALYSIS at 8m/s                                  *
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     
+    /*
     mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 70;
@@ -372,6 +376,8 @@ int main(int argc, char const *argv[])
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
 
     mbs_delete_dirdyn(mbs_dirdyn, mbs_data); 
+
+    */
 
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

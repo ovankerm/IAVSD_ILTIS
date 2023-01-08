@@ -16,6 +16,80 @@
 #include "mbs_matrix.h"
 #include "GroundContact.h"
 
+double ComputeRadial(double Xw, double Zw, double Kw, double Rw, double *Q, double *ng, int hole, int left, int simple, int poule, int cosine){
+    /*
+        Xw : x position of the wheel
+        Zw : z position of the wheel
+        Kw : spring constant of the tyre
+        Rw : radius of the wheel
+        Q : point of application of the force (to be filled)
+        ng : vector normal to the ground (to be filled)
+        hole : =1 if hole ; =0 if bump
+    */
+
+    double Zp;
+
+    if((poule && (Xw <= 6 || Xw >= 6.5)) || (poule && left) || (cosine && (Xw <= 0.97 || Xw >=5.97)) || (!poule && !cosine)){
+        Zp = 0;
+        Q[1] =Xw; Q[2] =0; Q[3] =Zp;
+        ng[1]=0; ng[2]=0; ng[3]=1;
+
+        if (Zw-Rw<0){
+            return Kw*(Rw-Zw);
+        }
+
+        return 0.0;
+    } else {
+        double slope; // d(road profile)/d(x)
+        double DZ;    // Zw-Zp
+        double DZq, DXq, H, L_QG;
+
+        if(poule){
+            slope = 0.2/0.5;
+            Zp = -0.2 + 0.2*(Xw-6)/0.5;
+        } else {
+            Zp =    0.1*    (1-cos(2*M_PI*(Xw-0.97)/5)); // [m]  Road profile
+            slope = 0.2*M_PI/5*sin(2*M_PI*(Xw-0.97)/5); // [-]  Corresponding slope
+            if (hole){
+                Zp    *=-1;
+                slope *=-1;
+            }
+        }
+
+        // printf("%f\n", Zw);
+        if (Zp <= Zw-Rw){
+            Q[1] =0; Q[2] =0; Q[3] =0;
+            ng[1]=0; ng[2]=0; ng[3]=1;
+
+            return 0.0;
+        }
+
+        if(simple){
+            printf("road : %f, radius : %f, wheel : %f\n", Zp, Rw, Zw);
+            Q[1] =Xw; Q[2] =0; Q[3] =Zp;
+            return Kw*(Zp + Rw - Zw);
+        }
+        // Computation, by Similar triangles
+        DZ = Zw-Zp;
+        DZq = slope*slope*DZ/(1+slope*slope);
+        DXq = DZq/slope;
+
+        // Fill values
+        Q[1] = Xw+DXq;
+        Q[2] = 0;
+        Q[3] = Zp+DZq;
+
+        H = sqrt(1+slope*slope);
+        L_QG = DZ/H; // length Point Q to Wheel center
+
+        ng[1] = (-DXq)/L_QG;
+        ng[2] = 0;
+        ng[3] = (Zw-Q[3])/L_QG ;
+
+        return Kw*(Rw-DZ)/H;
+    }
+}
+
 double ComputeSimpleRadialForce(double Xw, double Zw, double Kw, double Rw, double *Q, double *ng, int hole){
     double Zp;    // ground height under wheel center
     // Road profile from [2]

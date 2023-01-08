@@ -8,7 +8,7 @@
  *
  * Universite catholique de Louvain, Belgium 
  *
- * Last update : Sun Jan  8 00:09:06 2023
+ * Last update : Sun Jan  8 21:56:29 2023
  * --------------------------------------------------------
  *
  */
@@ -61,7 +61,6 @@ UserModel* mbs_new_user_model()
     um->Status.PID = 0;
     um->Status.Simple_contact = 0;
     um->Status.Belgian_road = 0.0;
-    um->Status.Bumpy = 0;
  
     um->PID.Kp = 0.0;
     um->PID.Kd = 0.0;
@@ -115,7 +114,6 @@ void mbs_delete_user_model(UserModel* um)
     um->Status.PID = (int)lround(mbs_infos->user_models->user_model_list[4]->parameter_list[5]->value_list[1]);
     um->Status.Simple_contact = (int)lround(mbs_infos->user_models->user_model_list[4]->parameter_list[6]->value_list[1]);
     um->Status.Belgian_road = mbs_infos->user_models->user_model_list[4]->parameter_list[7]->value_list[1];
-    um->Status.Bumpy = (int)lround(mbs_infos->user_models->user_model_list[4]->parameter_list[8]->value_list[1]);
  
     um->PID.Kp = mbs_infos->user_models->user_model_list[5]->parameter_list[0]->value_list[1];
     um->PID.Kd = mbs_infos->user_models->user_model_list[5]->parameter_list[1]->value_list[1];
@@ -161,7 +159,6 @@ void mbs_delete_user_model(UserModel* um)
     mbs_infos->user_models->user_model_list[4]->parameter_list[5]->val_ptr = &um->Status.PID;
     mbs_infos->user_models->user_model_list[4]->parameter_list[6]->val_ptr = &um->Status.Simple_contact;
     mbs_infos->user_models->user_model_list[4]->parameter_list[7]->val_ptr = &um->Status.Belgian_road;
-    mbs_infos->user_models->user_model_list[4]->parameter_list[8]->val_ptr = &um->Status.Bumpy;
  
     mbs_infos->user_models->user_model_list[5]->parameter_list[0]->val_ptr = &um->PID.Kp;
     mbs_infos->user_models->user_model_list[5]->parameter_list[1]->val_ptr = &um->PID.Kd;
@@ -208,7 +205,6 @@ void mbs_delete_user_model(UserModel* um)
     printf("user_model->Status.PID=%d\n", um->Status.PID);
     printf("user_model->Status.Simple_contact=%d\n", um->Status.Simple_contact);
     printf("user_model->Status.Belgian_road=%f\n", um->Status.Belgian_road);
-    printf("user_model->Status.Bumpy=%d\n", um->Status.Bumpy);
  
     printf("user_model->PID.Kp=%f\n", um->PID.Kp);
     printf("user_model->PID.Kd=%f\n", um->PID.Kd);
@@ -229,7 +225,7 @@ void mbs_get_user_model_list(int *user_model_list)
     user_model_list[2]  = 3; 
     user_model_list[3]  = 8; 
     user_model_list[4]  = 8; 
-    user_model_list[5]  = 9; 
+    user_model_list[5]  = 8; 
     user_model_list[6]  = 5; 
 
 }

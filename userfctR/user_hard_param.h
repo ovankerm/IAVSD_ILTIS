@@ -8,7 +8,7 @@
  *
  * Universite catholique de Louvain, Belgium 
  *
- * Last update : Sun Jan  8 00:07:44 2023
+ * Last update : Sun Jan  8 21:56:29 2023
  * --------------------------------------------------------
  *
  */
@@ -31,6 +31,7 @@
 #define M_29 57.35
 #define M_33 6
 #define M_36 57.35
+#define M_41 70
 
 // center of mass
 #define L_2_9 0.16073
@@ -66,6 +67,9 @@
 #define IN_1_36 1.2402
 #define IN_5_36 1.908
 #define IN_9_36 1.2402
+#define IN_1_41 9.858
+#define IN_5_41 11.258
+#define IN_9_41 6.183
 
 // body point
 #define DPT_1_1 0.97
@@ -112,7 +116,6 @@
 #define DPT_3_15 0.137
 #define DPT_1_16 -1.047
 #define DPT_3_16 0.137
-#define DPT_1_17 -0.19
 #define DPT_2_17 0.259
 #define DPT_3_17 0.43
 #define DPT_2_18 -0.336647

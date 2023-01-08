@@ -10,11 +10,11 @@
 //
 //	http://www.robotran.be 
 //
-//	==> Generation Date: Sun Jan  8 12:30:34 2023
+//	==> Generation Date: Sun Jan  8 21:56:23 2023
 //
 //	==> Project name: Jeep
 //
-//	==> Number of joints: 40
+//	==> Number of joints: 41
 //
 //	==> Function: F19 - External Forces
 //
@@ -128,6 +128,10 @@ S35 = sin(q[35]);
 C35 = cos(q[35]);
 S36 = sin(q[36]);
 C36 = cos(q[36]);
+ 
+// Augmented Joint Position Vectors
+
+Dz413 = q[41]+dpt[3][17];
  
 // Augmented Joint Position Vectors
 
