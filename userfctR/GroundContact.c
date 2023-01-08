@@ -189,7 +189,7 @@ double ComputeRadialForce_Belgian_road(double Xw, double Zw, double Kw, double R
     */
     double Zp;    // ground height under wheel center
     double slope = 0.2/0.5 ;
-    if (Xw >= 6 && Xw <= 6.5 && left){
+    if (Xw >= 6 && Xw <= 6.5 && !left){
         Zp = -0.2 + 0.2*(Xw-6)/0.5;
         
 
@@ -225,6 +225,11 @@ double ComputeRadialForce_Belgian_road(double Xw, double Zw, double Kw, double R
         // From road profile
         Zp =   0; // [m]  Road profile
         slope = 1.0 ; // [-]  Corresponding slope
+
+        // Agrandir le nid de poule 
+        //if (Xw >= 5.2 && Xw <= 6 && !left){
+        //    Zp = -0.2;
+        //} 
         
         // Ground contact condition
         if (Zp <= Zw-Rw){
@@ -262,8 +267,8 @@ double ComputeRadialForce_Bumpy(double Xw, double Yw, double Zw, double Kw, doub
     
 
     if (Xw >= 3.15 ){
-        Zp = sin(Xw)/15 + sin(Yw)/15;
-        slope = cos (Xw)/15 - sin(Yw)/15;
+        Zp = sin(Xw)/30 + sin(Yw)/30;
+        slope = cos (Xw)/30 - sin(Yw)/30;
         if (left){
             Zp *= -1;
             slope *= -1;

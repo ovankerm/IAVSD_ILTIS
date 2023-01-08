@@ -10,7 +10,11 @@
 //
 //	http://www.robotran.be 
 //
+<<<<<<< HEAD
 //	==> Generation Date: Sun Jan  8 21:56:23 2023
+=======
+//	==> Generation Date: Sun Jan  8 13:26:38 2023
+>>>>>>> 4e3c68237ce49cc63248a517797502ff720fc3d5
 //
 //	==> Project name: Jeep
 //

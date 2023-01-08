@@ -8,7 +8,11 @@
  *
  * Universite catholique de Louvain, Belgium 
  *
+<<<<<<< HEAD
  * Last update : Sun Jan  8 21:56:29 2023
+=======
+ * Last update : Sun Jan  8 13:26:31 2023
+>>>>>>> 4e3c68237ce49cc63248a517797502ff720fc3d5
  * --------------------------------------------------------
  *
  */
@@ -61,6 +65,10 @@ UserModel* mbs_new_user_model()
     um->Status.PID = 0;
     um->Status.Simple_contact = 0;
     um->Status.Belgian_road = 0.0;
+<<<<<<< HEAD
+=======
+    um->Status.Bumpy = 0.0;
+>>>>>>> 4e3c68237ce49cc63248a517797502ff720fc3d5
  
     um->PID.Kp = 0.0;
     um->PID.Kd = 0.0;
@@ -114,6 +122,10 @@ void mbs_delete_user_model(UserModel* um)
     um->Status.PID = (int)lround(mbs_infos->user_models->user_model_list[4]->parameter_list[5]->value_list[1]);
     um->Status.Simple_contact = (int)lround(mbs_infos->user_models->user_model_list[4]->parameter_list[6]->value_list[1]);
     um->Status.Belgian_road = mbs_infos->user_models->user_model_list[4]->parameter_list[7]->value_list[1];
+<<<<<<< HEAD
+=======
+    um->Status.Bumpy = mbs_infos->user_models->user_model_list[4]->parameter_list[8]->value_list[1];
+>>>>>>> 4e3c68237ce49cc63248a517797502ff720fc3d5
  
     um->PID.Kp = mbs_infos->user_models->user_model_list[5]->parameter_list[0]->value_list[1];
     um->PID.Kd = mbs_infos->user_models->user_model_list[5]->parameter_list[1]->value_list[1];
@@ -205,6 +217,7 @@ void mbs_delete_user_model(UserModel* um)
     printf("user_model->Status.PID=%d\n", um->Status.PID);
     printf("user_model->Status.Simple_contact=%d\n", um->Status.Simple_contact);
     printf("user_model->Status.Belgian_road=%f\n", um->Status.Belgian_road);
+    printf("user_model->Status.Bumpy=%f\n", um->Status.Bumpy);
  
     printf("user_model->PID.Kp=%f\n", um->PID.Kp);
     printf("user_model->PID.Kd=%f\n", um->PID.Kd);

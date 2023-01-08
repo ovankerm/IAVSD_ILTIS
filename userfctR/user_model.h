@@ -66,6 +66,10 @@ struct UserModel
         int PID;
         int Simple_contact;
         double Belgian_road;
+<<<<<<< HEAD
+=======
+        double Bumpy;
+>>>>>>> 4e3c68237ce49cc63248a517797502ff720fc3d5
     } Status;
  
     struct PID{

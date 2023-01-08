@@ -340,8 +340,7 @@ int main(int argc, char const *argv[])
     /* COMFORT ANALYSIS at 8m/s                                  *
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     
-    /*
-    mbs_reset_data(mbs_data);
+    /* mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 70;
     mbs_data->In[1][Conducteur_id] = 9.858; //Ixx
@@ -375,7 +374,7 @@ int main(int argc, char const *argv[])
 
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
 
-    mbs_delete_dirdyn(mbs_dirdyn, mbs_data); 
+    mbs_delete_dirdyn(mbs_dirdyn, mbs_data);  */
 
     */
 
@@ -399,9 +398,7 @@ int main(int argc, char const *argv[])
     mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
     mbs_data->user_model->Status.Bump = 1;
     mbs_data->user_model->Status.Simple_contact = 0;
-
     mbs_dirdyn = mbs_new_dirdyn(mbs_data);
-
     // dirdyn options: about output data
     mbs_dirdyn->options->resfilename = "InPhaseCosine_5ms_normal_contact";
     mbs_dirdyn->options->show_failed_closure = 1;
@@ -413,9 +410,7 @@ int main(int argc, char const *argv[])
     // dirdyn options: about integrator
     mbs_dirdyn->options->integrator = Dopri5;
     mbs_dirdyn->options->dt_max = 5e-2;
-
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
-
     mbs_delete_dirdyn(mbs_dirdyn, mbs_data); */
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -438,9 +433,7 @@ int main(int argc, char const *argv[])
     mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
     mbs_data->user_model->Status.Bump = 1;
     mbs_data->user_model->Status.Simple_contact = 1;
-
     mbs_dirdyn = mbs_new_dirdyn(mbs_data);
-
     // dirdyn options: about output data
     mbs_dirdyn->options->resfilename = "InPhaseCosine_5ms_simple_contact";
     mbs_dirdyn->options->show_failed_closure = 1;
@@ -452,9 +445,7 @@ int main(int argc, char const *argv[])
     // dirdyn options: about integrator
     mbs_dirdyn->options->integrator = Dopri5;
     mbs_dirdyn->options->dt_max = 5e-2;
-
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
-
     mbs_delete_dirdyn(mbs_dirdyn, mbs_data); */
 
 
@@ -477,9 +468,7 @@ int main(int argc, char const *argv[])
     mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
     mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
     mbs_data->user_model->Status.Bump = 1;
-
     mbs_dirdyn = mbs_new_dirdyn(mbs_data);
-
     // dirdyn options: about output data
     mbs_dirdyn->options->resfilename = "InPhaseCosine_10ms";
     mbs_dirdyn->options->show_failed_closure = 1;
@@ -491,12 +480,8 @@ int main(int argc, char const *argv[])
     // dirdyn options: about integrator
     mbs_dirdyn->options->integrator = Dopri5;
     mbs_dirdyn->options->dt_max = 1e-3;
-
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
-
     mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
-
-
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     // /* ANTI-PHASE COSINE BUMP AT 5 m/s                           *
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -517,9 +502,7 @@ int main(int argc, char const *argv[])
     mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
     mbs_data->user_model->Status.Bump = 1;
     mbs_data->user_model->Status.AntiPhase = 1;
-
     mbs_dirdyn = mbs_new_dirdyn(mbs_data);
-
     // dirdyn options: about output data
     mbs_dirdyn->options->resfilename = "AntiPhaseCosine_5ms";
     mbs_dirdyn->options->show_failed_closure = 1;
@@ -531,12 +514,8 @@ int main(int argc, char const *argv[])
     // dirdyn options: about integrator
     mbs_dirdyn->options->integrator = Dopri5;
     mbs_dirdyn->options->dt_max = 1e-3;
-
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
-
     mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
-
-
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     // /* ANTI-PHASE COSINE BUMP AT 10 m/s                          *
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -557,9 +536,7 @@ int main(int argc, char const *argv[])
     mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
     mbs_data->user_model->Status.Bump = 1;
     mbs_data->user_model->Status.AntiPhase = 1;
-
     mbs_dirdyn = mbs_new_dirdyn(mbs_data);
-
     // dirdyn options: about output data
     mbs_dirdyn->options->resfilename = "AntiPhaseCosine_10ms";
     mbs_dirdyn->options->show_failed_closure = 1;
@@ -571,12 +548,8 @@ int main(int argc, char const *argv[])
     // dirdyn options: about integrator
     mbs_dirdyn->options->integrator = Dopri5;
     mbs_dirdyn->options->dt_max = 1e-3;
-
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
-
     mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
-
-
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     // /* HANDLING TEST: RAMP TO STEER AT 10 m/s                    *
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -599,9 +572,7 @@ int main(int argc, char const *argv[])
     mbs_data->user_model->Status.AntiPhase = 0;
     mbs_data->user_model->Status.Steering = 1;
     mbs_data->user_model->Status.Steering_sinus = 0;
-
     mbs_dirdyn = mbs_new_dirdyn(mbs_data);
-
     // dirdyn options: about output data
     mbs_dirdyn->options->resfilename = "RampToSteer_10ms";
     mbs_dirdyn->options->show_failed_closure = 1;
@@ -613,12 +584,8 @@ int main(int argc, char const *argv[])
     // dirdyn options: about integrator
     mbs_dirdyn->options->integrator = Dopri5;
     mbs_dirdyn->options->dt_max = 1e-3;
-
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
-
     mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
-
-
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     // /* HANDLING TEST: RAMP TO STEER AT 20 m/s                    *
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -641,9 +608,7 @@ int main(int argc, char const *argv[])
     mbs_data->user_model->Status.AntiPhase = 0;
     mbs_data->user_model->Status.Steering = 1;
     mbs_data->user_model->Status.Steering_sinus = 0;
-
     mbs_dirdyn = mbs_new_dirdyn(mbs_data);
-
     // dirdyn options: about output data
     mbs_dirdyn->options->resfilename = "RampToSteer_20ms";
     mbs_dirdyn->options->show_failed_closure = 1;
@@ -655,11 +620,8 @@ int main(int argc, char const *argv[])
     // dirdyn options: about integrator
     mbs_dirdyn->options->integrator = Dopri5;
     mbs_dirdyn->options->dt_max = 1e-3;
-
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
-
     mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
-
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     // /* HANDLING TEST: RAMP TO STEER AT 30 m/s                    *
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -682,9 +644,7 @@ int main(int argc, char const *argv[])
     mbs_data->user_model->Status.AntiPhase = 0;
     mbs_data->user_model->Status.Steering = 1;
     mbs_data->user_model->Status.Steering_sinus = 0;
-
     mbs_dirdyn = mbs_new_dirdyn(mbs_data);
-
     // dirdyn options: about output data
     mbs_dirdyn->options->resfilename = "RampToSteer_30ms";
     mbs_dirdyn->options->show_failed_closure = 1;
@@ -696,12 +656,8 @@ int main(int argc, char const *argv[])
     // dirdyn options: about integrator
     mbs_dirdyn->options->integrator = Dopri5;
     mbs_dirdyn->options->dt_max = 1e-3;
-
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
-
     mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
-
-
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     // /* HANDLING TEST: SINUSOIDAL STERRING OF 1 mm                *
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -724,9 +680,7 @@ int main(int argc, char const *argv[])
     mbs_data->user_model->Status.AntiPhase = 0;
     mbs_data->user_model->Status.Steering = 1;
     mbs_data->user_model->Status.Steering_sinus = 1;
-
     mbs_dirdyn = mbs_new_dirdyn(mbs_data);
-
     // dirdyn options: about output data
     mbs_dirdyn->options->resfilename = "SinusoidalSteer_1mm";
     mbs_dirdyn->options->show_failed_closure = 1;
@@ -738,12 +692,8 @@ int main(int argc, char const *argv[])
     // dirdyn options: about integrator
     mbs_dirdyn->options->integrator = Dopri5;
     mbs_dirdyn->options->dt_max = 1e-3;
-
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
-
     mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
-
-
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     // /* HANDLING TEST: SINUSOIDAL STERRING OF 2 mm                *
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -766,9 +716,7 @@ int main(int argc, char const *argv[])
     mbs_data->user_model->Status.AntiPhase = 0;
     mbs_data->user_model->Status.Steering = 1;
     mbs_data->user_model->Status.Steering_sinus = 2;
-
     mbs_dirdyn = mbs_new_dirdyn(mbs_data);
-
     // dirdyn options: about output data
     mbs_dirdyn->options->resfilename = "SinusoidalSteer_2mm";
     mbs_dirdyn->options->show_failed_closure = 1;
@@ -780,12 +728,8 @@ int main(int argc, char const *argv[])
     // dirdyn options: about integrator
     mbs_dirdyn->options->integrator = Dopri5;
     mbs_dirdyn->options->dt_max = 1e-3;
-
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
-
     mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
-
-
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     // /* HANDLING TEST: SINUSOIDAL STERRING OF 4 mm                *
     // /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -808,9 +752,7 @@ int main(int argc, char const *argv[])
     mbs_data->user_model->Status.AntiPhase = 0;
     mbs_data->user_model->Status.Steering = 1;
     mbs_data->user_model->Status.Steering_sinus = 4;
-
     mbs_dirdyn = mbs_new_dirdyn(mbs_data);
-
     // dirdyn options: about output data
     mbs_dirdyn->options->resfilename = "SinusoidalSteer_4mm";
     mbs_dirdyn->options->show_failed_closure = 1;
@@ -822,12 +764,8 @@ int main(int argc, char const *argv[])
     // dirdyn options: about integrator
     mbs_dirdyn->options->integrator = Dopri5;
     mbs_dirdyn->options->dt_max = 1e-3;
-
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
-
     mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
-
-
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     /*                   CLOSING OPERATIONS                      *
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -836,4 +774,3 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
-
