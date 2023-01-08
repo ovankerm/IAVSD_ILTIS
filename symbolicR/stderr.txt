@@ -1,14 +1,6 @@
 
 ##############################################################
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-#	file4.gen 08/01/2023 21:56:23    errors
-=======
-#	file7.gen 08/01/2023 13:26:38    errors
->>>>>>> 4e3c68237ce49cc63248a517797502ff720fc3d5
-=======
-#	file7.gen 08/01/2023 22:23:52    errors
->>>>>>> Stashed changes
+#	file7.gen 08/01/2023 23:07:25    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -29,15 +21,9 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 	Elimination of the superfluous equations.....................
 
 
-<<<<<<< HEAD
-		Maximum simultaneous symbolic expressions :  3614
-
-		Maximum number of allocated Kbytes :  169
-=======
 		Maximum simultaneous symbolic expressions :  6286
 
 		Maximum number of allocated Kbytes :  294
->>>>>>> 4e3c68237ce49cc63248a517797502ff720fc3d5
 
 
 	The symbolic equations have been generated 
@@ -50,15 +36,7 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 
 ##############################################################
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-#	file6.gen 08/01/2023 21:56:23    errors
-=======
-#	file4.gen 08/01/2023 13:26:38    errors
->>>>>>> 4e3c68237ce49cc63248a517797502ff720fc3d5
-=======
-#	file4.gen 08/01/2023 22:23:52    errors
->>>>>>> Stashed changes
+#	file4.gen 08/01/2023 23:07:25    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -81,14 +59,7 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 
 ##############################################################
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-#	file3.gen 08/01/2023 21:56:23    errors
-=======
-#	file3.gen 08/01/2023 13:26:38    errors
->>>>>>> 4e3c68237ce49cc63248a517797502ff720fc3d5
-=======
-#	file6.gen 08/01/2023 22:23:52    errors
+#	file6.gen 08/01/2023 23:07:25    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -97,8 +68,7 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 
 ##############################################################
-#	file3.gen 08/01/2023 22:23:52    errors
->>>>>>> Stashed changes
+#	file3.gen 08/01/2023 23:07:25    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -121,15 +91,7 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 
 ##############################################################
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-#	file2.gen 08/01/2023 21:56:23    errors
-=======
-#	file2.gen 08/01/2023 13:26:38    errors
->>>>>>> 4e3c68237ce49cc63248a517797502ff720fc3d5
-=======
-#	file2.gen 08/01/2023 22:23:52    errors
->>>>>>> Stashed changes
+#	file2.gen 08/01/2023 23:07:25    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -152,15 +114,7 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 
 ##############################################################
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-#	file5.gen 08/01/2023 21:56:23    errors
-=======
-#	file5.gen 08/01/2023 13:26:38    errors
->>>>>>> 4e3c68237ce49cc63248a517797502ff720fc3d5
-=======
-#	file5.gen 08/01/2023 22:23:52    errors
->>>>>>> Stashed changes
+#	file5.gen 08/01/2023 23:07:25    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -183,15 +137,7 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 
 ##############################################################
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-#	file0.gen 08/01/2023 21:56:23    errors
-=======
-#	file0.gen 08/01/2023 13:26:38    errors
->>>>>>> 4e3c68237ce49cc63248a517797502ff720fc3d5
-=======
-#	file0.gen 08/01/2023 22:23:52    errors
->>>>>>> Stashed changes
+#	file0.gen 08/01/2023 23:07:25    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -200,14 +146,6 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 	Computation of the dynamics.....................
 
 		Joints   41  40  39  38  37  36  35  34  33  32
-<<<<<<< HEAD
-
-		    -->  31  30  29  28  27  26  25  24  23  22
-
-		    -->  21  20  19  18  17  16  15  14  13  12
-
-		    -->  11  10   9   8   7   6   5   4   3   2
-=======
 
 		    -->  31  30  29  28  27  26  25  24  23  22
 
@@ -235,25 +173,17 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 
 ##############################################################
-#	file1.gen 08/01/2023 22:23:52    errors
+#	file1.gen 08/01/2023 23:07:25    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
->>>>>>> 4e3c68237ce49cc63248a517797502ff720fc3d5
 
-		    -->   1
 
 	Elimination of the superfluous equations.....................
 
 
-<<<<<<< HEAD
-		Maximum simultaneous symbolic expressions :  15585
-
-		Maximum number of allocated Kbytes :  730
-=======
 		Maximum simultaneous symbolic expressions :  6296
 
 		Maximum number of allocated Kbytes :  295
->>>>>>> 4e3c68237ce49cc63248a517797502ff720fc3d5
 
 
 	The symbolic equations have been generated 
@@ -266,15 +196,7 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
 
 ##############################################################
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-#	file1.gen 08/01/2023 21:56:23    errors
-=======
-#	file1b.gen 08/01/2023 13:26:38    errors
->>>>>>> 4e3c68237ce49cc63248a517797502ff720fc3d5
-=======
-#	file1b.gen 08/01/2023 22:23:52    errors
->>>>>>> Stashed changes
+#	file1b.gen 08/01/2023 23:07:25    errors
 ##############################################################
 git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 
@@ -282,15 +204,9 @@ git hash : 8f46effdc05c898000a15b4c4dfc8f70efce4fc0
 	Elimination of the superfluous equations.....................
 
 
-<<<<<<< HEAD
-		Maximum simultaneous symbolic expressions :  6296
-
-		Maximum number of allocated Kbytes :  295
-=======
 		Maximum simultaneous symbolic expressions :  27875
 
 		Maximum number of allocated Kbytes :  1306
->>>>>>> 4e3c68237ce49cc63248a517797502ff720fc3d5
 
 
 	The symbolic equations have been generated 

@@ -10,8 +10,6 @@
 #ifndef GROUNDCONTACT_h
 #define GROUNDCONTACT_h
 
-double ComputeRadial(double Xw, double Zw, double Kw, double Rw, double *Q, double *ng, int hole, int left, int simple, int poule, int cosine);
-
 double ComputeSimpleRadialForce(double Xw, double Zw, double Kw, double Rw, double *P, double *ng, int hole);
 
 double ComputeRadialForce(double Xw, double Zw, double Kw, double Rw, double *P, double *ng, int hole);

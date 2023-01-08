@@ -8,11 +8,7 @@
  *
  * Universite catholique de Louvain, Belgium 
  *
-<<<<<<< Updated upstream
- * Last update : Sun Jan  8 21:56:29 2023
-=======
- * Last update : Sun Jan  8 22:23:48 2023
->>>>>>> Stashed changes
+ * Last update : Sun Jan  8 23:07:19 2023
  * --------------------------------------------------------
  *
  */
