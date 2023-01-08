@@ -292,12 +292,8 @@ int main(int argc, char const *argv[])
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     /*                  Belgian road 5m/s    50cm Hole          *
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-<<<<<<< HEAD
-    /* mbs_reset_data(mbs_data);
-=======
     
     mbs_reset_data(mbs_data);
->>>>>>> 9cda43ee1ecf2f0d9951ae98a5b324420acf02bd
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 0;
     mbs_data->In[0][Conducteur_id] = 0; //Ixx
@@ -331,19 +327,6 @@ int main(int argc, char const *argv[])
 
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
 
-<<<<<<< HEAD
-    mbs_delete_dirdyn(mbs_dirdyn, mbs_data);  */
-
-     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-    /*        Belgian road 10m/s    50cm Hole   20cm deep              
-    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-    mbs_reset_data(mbs_data);
-    mbs_data->process = 3;
-    mbs_set_qu(mbs_data,1);
-    mbs_set_qu(mbs_data,2);
-    mbs_set_qu(mbs_data,6);
-    mbs_data->qd[1] = 10;
-=======
     mbs_delete_dirdyn(mbs_dirdyn, mbs_data); 
     
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -356,7 +339,6 @@ int main(int argc, char const *argv[])
     mbs_set_qu(mbs_data,2);
     mbs_set_qu(mbs_data,6);
     mbs_data->qd[1] = 8;
->>>>>>> 9cda43ee1ecf2f0d9951ae98a5b324420acf02bd
     mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
     mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
     mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
@@ -365,80 +347,14 @@ int main(int argc, char const *argv[])
     mbs_data->user_model->Status.Simple_contact = 0;
     mbs_data->user_model->Status.Belgian_road = 1; 
 
-<<<<<<< HEAD
-    /* mbs_data->user_model->Status.Bumpy = 1; 
-    mbs_data->user_model->Status.Steering = 1;
-    mbs_data->user_model->Status.Steering_sinus = 50; */
-
-    mbs_dirdyn = mbs_new_dirdyn(mbs_data);
-
-    // dirdyn options: about output data
-    mbs_dirdyn->options->resfilename = "Belgian_road_10m_s";
-=======
     mbs_dirdyn = mbs_new_dirdyn(mbs_data);
 
     // dirdyn options: about output data
     mbs_dirdyn->options->resfilename = "Comfort_analysis_8m_s";
->>>>>>> 9cda43ee1ecf2f0d9951ae98a5b324420acf02bd
     mbs_dirdyn->options->show_failed_closure = 1;
     mbs_dirdyn->options->save2file = 1;
     mbs_dirdyn->options->verbose = 0;
     // dirdyn options: about integration time
-<<<<<<< HEAD
-    mbs_dirdyn->options->tf  = 5;
-    mbs_dirdyn->options->dt0 = 1e-3;
-    // dirdyn options: about integrator
-    mbs_dirdyn->options->integrator = Dopri5;
-    mbs_dirdyn->options->dt_max = 5e-2;
-
-    mbs_run_dirdyn(mbs_dirdyn, mbs_data);
-
-    mbs_delete_dirdyn(mbs_dirdyn, mbs_data);  
-
-
-    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-    /*        Bumpy               
-    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-    /* mbs_reset_data(mbs_data);
-    mbs_data->process = 3;
-    mbs_set_qu(mbs_data,1);
-    mbs_set_qu(mbs_data,2);
-    mbs_set_qu(mbs_data,6);
-    mbs_data->qd[1] = 3;
-    mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
-    mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
-    mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    mbs_data->user_model->Status.Bump = 0;
-    mbs_data->user_model->Status.Simple_contact = 0;
-    mbs_data->user_model->Status.Belgian_road = 0; 
-    mbs_data->user_model->Status.Bumpy = 1; 
-    mbs_data->user_model->Status.Steering = 0;
-    mbs_data->user_model->Status.Steering_sinus = 0;
-    
-    mbs_dirdyn = mbs_new_dirdyn(mbs_data);
-
-    // dirdyn options: about output data
-    mbs_dirdyn->options->resfilename = "Bumpy_road_10m_s";
-    mbs_dirdyn->options->show_failed_closure = 1;
-    mbs_dirdyn->options->save2file = 1;
-    mbs_dirdyn->options->verbose = 0;
-    // dirdyn options: about integration time
-    mbs_dirdyn->options->tf  = 5;
-    mbs_dirdyn->options->dt0 = 1e-3;
-    // dirdyn options: about integrator
-    mbs_dirdyn->options->integrator = Dopri5;
-    mbs_dirdyn->options->dt_max = 5e-2;
-
-    mbs_run_dirdyn(mbs_dirdyn, mbs_data);
-
-    mbs_delete_dirdyn(mbs_dirdyn, mbs_data);   */
-
-
-    
-    
- 
-=======
     mbs_dirdyn->options->tf  = 10;
     mbs_dirdyn->options->dt0 = 1e-3;
     // dirdyn options: about integrator
@@ -449,17 +365,11 @@ int main(int argc, char const *argv[])
 
     mbs_delete_dirdyn(mbs_dirdyn, mbs_data); 
 
->>>>>>> 9cda43ee1ecf2f0d9951ae98a5b324420acf02bd
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     /* IN-PHASE COSINE BUMP AT 5 m/s normal contact              *
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-<<<<<<< HEAD
     /* mbs_reset_data(mbs_data);
-=======
-    
-    mbs_reset_data(mbs_data);
->>>>>>> 9cda43ee1ecf2f0d9951ae98a5b324420acf02bd
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 0;
     mbs_data->In[0][Conducteur_id] = 0; //Ixx
@@ -497,12 +407,8 @@ int main(int argc, char const *argv[])
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     /* IN-PHASE COSINE BUMP AT 5 m/s normal contact              *
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-<<<<<<< HEAD
-    /* mbs_reset_data(mbs_data);
-=======
 
-    mbs_reset_data(mbs_data);
->>>>>>> 9cda43ee1ecf2f0d9951ae98a5b324420acf02bd
+    /* mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 0;
     mbs_data->In[0][Conducteur_id] = 0; //Ixx
