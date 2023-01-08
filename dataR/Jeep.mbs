@@ -4577,6 +4577,16 @@
         <type>scalar</type>
         <value>0.0</value>
       </parameter>
+      <parameter>
+        <name>Left</name>
+        <type>scalar</type>
+        <value>0.0</value>
+      </parameter>
+      <parameter>
+        <name>Right</name>
+        <type>scalar</type>
+        <value>0.0</value>
+      </parameter>
     </user_model>
   </user_models>
   <x3D>

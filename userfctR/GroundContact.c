@@ -14,7 +14,13 @@
 
 #include "math.h"
 #include "mbs_matrix.h"
+#include "mbs_data.h"
 #include "GroundContact.h"
+#include "user_model.h"
+#include "mbs_project_interface.h"
+#include "user_all_id.h"
+
+
 
 double ComputeSimpleRadialForce(double Xw, double Zw, double Kw, double Rw, double *Q, double *ng, int hole){
     double Zp;    // ground height under wheel center
@@ -102,7 +108,7 @@ double ComputeRadialForce(double Xw, double Zw, double Kw, double Rw, double *Q,
     }
 }
 
-double ComputeRadialForce_Belgian_road(double Xw, double Zw, double Kw, double Rw, double *Q, double *ng, int left)
+double ComputeRadialForce_Belgian_road(double Xw, double Zw, double Kw, double Rw, double *Q, double *ng, int left, double height, double width, int onTheLeft, int onTheRight)
 {
     /*
         Xw : x position of the wheel
@@ -113,10 +119,12 @@ double ComputeRadialForce_Belgian_road(double Xw, double Zw, double Kw, double R
         ng : vector normal to the ground (to be filled)
         
     */
-    double Zp;    // ground height under wheel center
-    double slope = 0.2/0.5 ;
-    if (Xw >= 6 && Xw <= 6.5 && !left){
-        Zp = -0.2 + 0.2*(Xw-6)/0.5;
+
+    double Zp;   
+    double slope = height/width;
+    
+    if (Xw >= 6 && Xw <= 6 + width && ((!left && onTheLeft) || (left && onTheRight))){
+        Zp = -height + height*(Xw-6)/width;
         
 
         if (Zp <= Zw-Rw){

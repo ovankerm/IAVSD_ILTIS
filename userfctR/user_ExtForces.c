@@ -80,28 +80,33 @@ double* user_ExtForces(double PxF[4], double RxF[4][4],
             double *ng = get_dvec_1(3); // > R3: Vector normal to ground profile (normalized)
             double *P  = get_dvec_1(3);
             double Fvert = 0;
-            Fvert = ComputeRadial(PxF[1], PxF[3], K, R, P, ng, left*um->Status.AntiPhase, left, um->Status.Simple_contact, um->Status.Belgian_road, um->Status.Bump);
-            printf("%f\n", Fvert);
-            // if (um->Status.Bump){
-            //     if(um->Status.Simple_contact){
-            //         Fvert = ComputeSimpleRadialForce(PxF[1], PxF[3], K, R, P, ng, left*um->Status.AntiPhase); // > Radial force in the Ground Frame ([Rsol])
-            //     } else {
-            //         Fvert = ComputeRadialForce(PxF[1], PxF[3], K, R, P, ng, left*um->Status.AntiPhase); // > Radial force in the Ground Frame ([Rsol])
-            //     }
-            // }
-            // else if (um->Status.Belgian_road) {
-            //     Fvert = ComputeRadialForce_Belgian_road(PxF[1], PxF[3], K, R, P, ng, left);
-            // }
+            //Fvert = ComputeRadial(PxF[1], PxF[3], K, R, P, ng, left*um->Status.AntiPhase, left, um->Status.Simple_contact, um->Status.Belgian_road, um->Status.Bump);
+            
+            if (um->Status.Bump){
+                if(um->Status.Simple_contact){
+                    Fvert = ComputeSimpleRadialForce(PxF[1], PxF[3], K, R, P, ng, left*um->Status.AntiPhase); // > Radial force in the Ground Frame ([Rsol])
+                } else {
+                    Fvert = ComputeRadialForce(PxF[1], PxF[3], K, R, P, ng, left*um->Status.AntiPhase); // > Radial force in the Ground Frame ([Rsol])
+                }
+            }
+            else if (um->Status.Belgian_road) {
+                double height = um->Nid_De_Poule.Height;
+                double width = um->Nid_De_Poule.Width;
+                double onTheRight = um->Nid_De_Poule.Right;
+                double onTheLeft = um->Nid_De_Poule.Left;
+                //printf("%f\n", width);
+                Fvert = ComputeRadialForce_Belgian_road(PxF[1], PxF[3], K, R, P, ng, left, height, width, onTheLeft, onTheRight);
+            }
 
-            // else if (um->Status.Bumpy) {
-            //     Fvert = ComputeRadialForce_Bumpy(PxF[1], PxF[2], PxF[3], K, R, P, ng, left);
-            //     }
-            // else{
-            //     ng[1] = 0; ng[2] = 0; ng[3] = 1;
-            //     P[1] = PxF[1]; P[2] = PxF[2]; P[3] = 0;
-            //     Fvert = K*(R-PxF[3]);
-            //     if (Fvert<0) Fvert = 0;
-            // }
+            else if (um->Status.Bumpy) {
+                Fvert = ComputeRadialForce_Bumpy(PxF[1], PxF[2], PxF[3], K, R, P, ng, left);
+                }
+            else{
+                ng[1] = 0; ng[2] = 0; ng[3] = 1;
+                P[1] = PxF[1]; P[2] = PxF[2]; P[3] = 0;
+                Fvert = K*(R-PxF[3]);
+                if (Fvert<0) Fvert = 0;
+            }
 
             if (Fvert !=0){
                 double Flat = 0.0; // > Lateral force in the Ground Frame ([Rsol])

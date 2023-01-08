@@ -16,7 +16,7 @@ double ComputeSimpleRadialForce(double Xw, double Zw, double Kw, double Rw, doub
 
 double ComputeRadialForce(double Xw, double Zw, double Kw, double Rw, double *P, double *ng, int hole);
 
-double ComputeRadialForce_Belgian_road(double Xw, double Zw, double Kw, double Rw, double *Q, double *ng, int left);
+double ComputeRadialForce_Belgian_road(double Xw, double Zw, double Kw, double Rw, double *Q, double *ng, int left, double height, double width, int onTheLeft, int onTheRight);
 
 double ComputeRadialForce_Bumpy(double Xw, double Yw, double Zw, double Kw, double Rw, double *Q, double *ng, int left);
 

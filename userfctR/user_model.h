@@ -8,11 +8,7 @@
  *
  * Universite catholique de Louvain, Belgium 
  *
-<<<<<<< Updated upstream
- * Last update : Sun Jan  8 21:56:29 2023
-=======
- * Last update : Sun Jan  8 22:23:48 2023
->>>>>>> Stashed changes
+ * Last update : Sun Jan  8 23:16:46 2023
  * --------------------------------------------------------
  *
  */
@@ -70,6 +66,7 @@ struct UserModel
         int PID;
         int Simple_contact;
         double Belgian_road;
+        double Bumpy;
     } Status;
  
     struct PID{
@@ -83,6 +80,8 @@ struct UserModel
     struct Nid_De_Poule{
         double Height;
         double Width;
+        double Left;
+        double Right;
     } Nid_De_Poule;
  
 };

@@ -1,16 +1,7 @@
 
 -------------------------------------------------------
-<<<<<<< HEAD
-Project            : /Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/workR/../dataR/Jeep.mbs
-Date               : Sun Jan  8 22:16:19 2023
-=======
 Project            : /Users/martinservais/Documents/GitHub/IAVSD_ILTIS/workR/../dataR/Jeep.mbs
-<<<<<<< Updated upstream
-Date               : Sun Jan  8 19:37:44 2023
->>>>>>> 4e3c68237ce49cc63248a517797502ff720fc3d5
-=======
-Date               : Sun Jan  8 22:17:52 2023
->>>>>>> Stashed changes
+Date               : Sun Jan  8 23:19:38 2023
 Process            : Modal Analysis
 Computation        : Eigenmodes
 -------------------------------------------------------

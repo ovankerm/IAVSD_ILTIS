@@ -294,7 +294,7 @@ int main(int argc, char const *argv[])
 
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-    /*                  Belgian road 5m/s    50cm Hole          *
+    /*                  Belgian road 15m/s    50cm Hole          *
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     
     mbs_reset_data(mbs_data);
@@ -306,7 +306,7 @@ int main(int argc, char const *argv[])
     mbs_set_qu(mbs_data,1);
     mbs_set_qu(mbs_data,2);
     mbs_set_qu(mbs_data,6);
-    mbs_data->qd[1] = 15;
+    mbs_data->qd[1] = 10;
     mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
     mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
     mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
@@ -314,6 +314,10 @@ int main(int argc, char const *argv[])
     mbs_data->user_model->Status.Bump = 0;
     mbs_data->user_model->Status.Simple_contact = 0;
     mbs_data->user_model->Status.Belgian_road = 1; 
+    mbs_data->user_model->Nid_De_Poule.Width = 0.5; 
+    mbs_data->user_model->Nid_De_Poule.Height = 0.2;
+    mbs_data->user_model->Nid_De_Poule.Left = 1;
+    mbs_data->user_model->Nid_De_Poule.Right = 0; 
 
     mbs_dirdyn = mbs_new_dirdyn(mbs_data);
 
@@ -323,7 +327,7 @@ int main(int argc, char const *argv[])
     mbs_dirdyn->options->save2file = 1;
     mbs_dirdyn->options->verbose = 0;
     // dirdyn options: about integration time
-    mbs_dirdyn->options->tf  = 1.;
+    mbs_dirdyn->options->tf  = 5;
     mbs_dirdyn->options->dt0 = 1e-3;
     // dirdyn options: about integrator
     mbs_dirdyn->options->integrator = Dopri5;
