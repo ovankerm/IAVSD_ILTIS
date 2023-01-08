@@ -10,11 +10,11 @@
 //
 //	http://www.robotran.be 
 //
-//	==> Generation Date: Sun Jan  8 12:30:34 2023
+//	==> Generation Date: Sun Jan  8 13:26:38 2023
 //
 //	==> Project name: Jeep
 //
-//	==> Number of joints: 40
+//	==> Number of joints: 41
 //
 //	==> Function: F18 - Constraints Quadratic Velocity Terms (Jdqd)
 //
@@ -73,6 +73,10 @@ S34 = sin(q[34]);
 C34 = cos(q[34]);
 S27 = sin(q[27]);
 C27 = cos(q[27]);
+ 
+// Augmented Joint Position Vectors
+
+Dz413 = q[41]+dpt[3][17];
  
 // Augmented Joint Position Vectors
 

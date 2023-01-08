@@ -65,9 +65,9 @@ if(displayplt1):
 
 ###### READ FILE & EXTRACT DATA  ######
 
-vert_acc = np.loadtxt('InPhaseCosine_5ms_normal_contact_Vertical_Acc.res')
-hor_acc = np.loadtxt('InPhaseCosine_5ms_normal_contact_Horizontal_Acc.res')
-lat_acc = np.loadtxt('InPhaseCosine_5ms_normal_contact_Lateral_Acc.res')
+vert_acc = np.loadtxt('Belgian_road_15m_s_Vertical_Acc.res')
+hor_acc = np.loadtxt('Belgian_road_15m_s_Horizontal_Acc.res')
+lat_acc = np.loadtxt('Belgian_road_15m_s_Lateral_Acc.res')
 
 x = hor_acc[:,1]
 y = lat_acc[:,1]

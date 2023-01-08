@@ -10,11 +10,11 @@
 //
 //	http://www.robotran.be 
 //
-//	==> Generation Date: Sun Jan  8 12:30:34 2023
+//	==> Generation Date: Sun Jan  8 13:26:38 2023
 //
 //	==> Project name: Jeep
 //
-//	==> Number of joints: 40
+//	==> Number of joints: 41
 //
 //	==> Function: F2 - Recursive Inverse Dynamics of tree-like MBS
 //
@@ -105,6 +105,10 @@ S35 = sin(q[35]);
 C35 = cos(q[35]);
 S36 = sin(q[36]);
 C36 = cos(q[36]);
+ 
+// Augmented Joint Position Vectors
+
+Dz413 = q[41]+dpt[3][17];
  
 // Augmented Joint Position Vectors
 
@@ -512,9 +516,18 @@ OMp336 = C36*(OMp335+qd[36]*OM135)+S36*(OMp135-qd[36]*OM335);
 ALPHA136 = C36*(ALPHA135+BETA235*dpt[2][56]+BETA335*dpt[3][56])-S36*(ALPHA335+BETA835*dpt[2][56]+BS935*dpt[3][56]);
 ALPHA236 = ALPHA235+BETA635*dpt[3][56]+BS535*dpt[2][56];
 ALPHA336 = C36*(ALPHA335+BETA835*dpt[2][56]+BS935*dpt[3][56])+S36*(ALPHA135+BETA235*dpt[2][56]+BETA335*dpt[3][56]);
+ALPHA141 = ALPHA16+(2.0)*qd[41]*OM26+BETA26*dpt[2][17]+BETA36*Dz413;
+ALPHA241 = ALPHA26-(2.0)*qd[41]*OM16+BETA66*Dz413+BS56*dpt[2][17];
+ALPHA341 = qdd[41]+ALPHA35+BETA86*dpt[2][17]+BS96*Dz413;
  
 // Backward Dynamics
 
+Fs141 = -frc[1][41]+m[41]*ALPHA141;
+Fs241 = -frc[2][41]+m[41]*ALPHA241;
+Fs341 = -frc[3][41]+m[41]*ALPHA341;
+Cq141 = -trq[1][41]+In[1][41]*OMp16-In[5][41]*OM26*OM36+In[9][41]*OM26*OM36;
+Cq241 = -trq[2][41]+In[1][41]*OM16*OM36+In[5][41]*OMp26-In[9][41]*OM16*OM36;
+Cq341 = -trq[3][41]-In[1][41]*OM16*OM26+In[5][41]*OM16*OM26+In[9][41]*OMp36;
 Fs136 = -frc[1][36]+m[36]*ALPHA136;
 Fs236 = -frc[2][36]+m[36]*ALPHA236;
 Fs336 = -frc[3][36]+m[36]*ALPHA336;
@@ -670,29 +683,29 @@ Cq37 = -trq[3][7]+Cq28*S8+Cq38*C8-Fq18*dpt[2][18];
 Fs16 = -frc[1][6]+m[6]*ALPHA16;
 Fs26 = -frc[2][6]+m[6]*ALPHA26;
 Fs36 = -frc[3][6]+m[6]*ALPHA35;
-Fq16 = -frc[1][13]-frc[1][30]-frc[1][37]-frc[1][38]-frc[1][39]-frc[1][40]+Fq116+Fq124+Fq131+Fq17+Fs16;
-Fq26 = -frc[2][13]-frc[2][30]-frc[2][37]-frc[2][38]-frc[2][39]-frc[2][40]+Fs26+Fq216*C14+Fq224*C22+Fq231*C31+Fq27*C7-
- Fq316*S14-Fq324*S22-Fq331*S31-Fq37*S7;
-Fq36 = -frc[3][13]-frc[3][30]-frc[3][37]-frc[3][38]-frc[3][39]-frc[3][40]+Fs36+Fq216*S14+Fq224*S22+Fq231*S31+Fq27*S7+
- Fq316*C14+Fq324*C22+Fq331*C31+Fq37*C7;
-Cq16 = -trq[1][13]-trq[1][30]-trq[1][37]-trq[1][38]-trq[1][39]-trq[1][40]-trq[1][6]+Cq114+Cq122+Cq131+Cq17-q[13]*
- frc[3][13]-q[30]*frc[3][30]-q[37]*frc[3][37]-q[38]*frc[3][38]-q[39]*frc[3][39]-q[40]*frc[3][40]+In[1][6]*OMp16-In[5][6]*OM26
- *OM36+In[9][6]*OM26*OM36+frc[2][13]*dpt[3][3]+frc[2][30]*dpt[3][8]+frc[2][37]*dpt[3][15]+frc[2][38]*dpt[3][15]+frc[2][39]*
- dpt[3][16]+frc[2][40]*dpt[3][16]+dpt[2][10]*(Fq231*S31+Fq331*C31)+dpt[2][2]*(Fq27*S7+Fq37*C7)+dpt[2][4]*(Fq216*S14+Fq316*C14
- )+dpt[2][7]*(Fq224*S22+Fq324*C22)-dpt[3][10]*(Fq231*C31-Fq331*S31)-dpt[3][2]*(Fq27*C7-Fq37*S7)-dpt[3][4]*(Fq216*C14-Fq316*
- S14)-dpt[3][7]*(Fq224*C22-Fq324*S22);
-Cq26 = -trq[2][13]-trq[2][30]-trq[2][37]-trq[2][38]-trq[2][39]-trq[2][40]-trq[2][6]+In[1][6]*OM16*OM36+In[5][6]*OMp26-
- In[9][6]*OM16*OM36-frc[1][13]*dpt[3][3]-frc[1][30]*dpt[3][8]-frc[1][37]*dpt[3][15]-frc[1][38]*dpt[3][15]-frc[1][39]*
+Fq16 = -frc[1][13]-frc[1][30]-frc[1][37]-frc[1][38]-frc[1][39]-frc[1][40]+Fq116+Fq124+Fq131+Fq17+Fs141+Fs16;
+Fq26 = -frc[2][13]-frc[2][30]-frc[2][37]-frc[2][38]-frc[2][39]-frc[2][40]+Fs241+Fs26+Fq216*C14+Fq224*C22+Fq231*C31+
+ Fq27*C7-Fq316*S14-Fq324*S22-Fq331*S31-Fq37*S7;
+Fq36 = -frc[3][13]-frc[3][30]-frc[3][37]-frc[3][38]-frc[3][39]-frc[3][40]+Fs341+Fs36+Fq216*S14+Fq224*S22+Fq231*S31+
+ Fq27*S7+Fq316*C14+Fq324*C22+Fq331*C31+Fq37*C7;
+Cq16 = -trq[1][13]-trq[1][30]-trq[1][37]-trq[1][38]-trq[1][39]-trq[1][40]-trq[1][6]+Cq114+Cq122+Cq131+Cq141+Cq17-q[13]
+ *frc[3][13]-q[30]*frc[3][30]-q[37]*frc[3][37]-q[38]*frc[3][38]-q[39]*frc[3][39]-q[40]*frc[3][40]+In[1][6]*OMp16-In[5][6]*
+ OM26*OM36+In[9][6]*OM26*OM36+frc[2][13]*dpt[3][3]+frc[2][30]*dpt[3][8]+frc[2][37]*dpt[3][15]+frc[2][38]*dpt[3][15]+
+ frc[2][39]*dpt[3][16]+frc[2][40]*dpt[3][16]-Fs241*Dz413+Fs341*dpt[2][17]+dpt[2][10]*(Fq231*S31+Fq331*C31)+dpt[2][2]*(Fq27*S7
+ +Fq37*C7)+dpt[2][4]*(Fq216*S14+Fq316*C14)+dpt[2][7]*(Fq224*S22+Fq324*C22)-dpt[3][10]*(Fq231*C31-Fq331*S31)-dpt[3][2]*(Fq27*
+ C7-Fq37*S7)-dpt[3][4]*(Fq216*C14-Fq316*S14)-dpt[3][7]*(Fq224*C22-Fq324*S22);
+Cq26 = -trq[2][13]-trq[2][30]-trq[2][37]-trq[2][38]-trq[2][39]-trq[2][40]-trq[2][6]+Cq241+In[1][6]*OM16*OM36+In[5][6]*
+ OMp26-In[9][6]*OM16*OM36-frc[1][13]*dpt[3][3]-frc[1][30]*dpt[3][8]-frc[1][37]*dpt[3][15]-frc[1][38]*dpt[3][15]-frc[1][39]*
  dpt[3][16]-frc[1][40]*dpt[3][16]+frc[3][13]*dpt[1][3]+frc[3][30]*dpt[1][8]+frc[3][37]*dpt[1][15]+frc[3][38]*dpt[1][15]+
  frc[3][39]*dpt[1][16]+frc[3][40]*dpt[1][16]+Cq215*C14+Cq223*C22+Cq231*C31+Cq27*C7-Cq314*S14-Cq322*S22-Cq331*S31-Cq37*S7+
- Fq116*dpt[3][4]+Fq124*dpt[3][7]+Fq131*dpt[3][10]+Fq17*dpt[3][2]-dpt[1][10]*(Fq231*S31+Fq331*C31)-dpt[1][2]*(Fq27*S7+Fq37*C7)
- -dpt[1][4]*(Fq216*S14+Fq316*C14)-dpt[1][7]*(Fq224*S22+Fq324*C22);
-Cq36 = -trq[3][13]-trq[3][30]-trq[3][37]-trq[3][38]-trq[3][39]-trq[3][40]-trq[3][6]+q[13]*frc[1][13]+q[30]*frc[1][30]+
- q[37]*frc[1][37]+q[38]*frc[1][38]+q[39]*frc[1][39]+q[40]*frc[1][40]-In[1][6]*OM16*OM26+In[5][6]*OM16*OM26+In[9][6]*OMp36-
- frc[2][13]*dpt[1][3]-frc[2][30]*dpt[1][8]-frc[2][37]*dpt[1][15]-frc[2][38]*dpt[1][15]-frc[2][39]*dpt[1][16]-frc[2][40]*
- dpt[1][16]+Cq215*S14+Cq223*S22+Cq231*S31+Cq27*S7+Cq314*C14+Cq322*C22+Cq331*C31+Cq37*C7-Fq116*dpt[2][4]-Fq124*dpt[2][7]-Fq131
- *dpt[2][10]-Fq17*dpt[2][2]+dpt[1][10]*(Fq231*C31-Fq331*S31)+dpt[1][2]*(Fq27*C7-Fq37*S7)+dpt[1][4]*(Fq216*C14-Fq316*S14)+
- dpt[1][7]*(Fq224*C22-Fq324*S22);
+ Fq116*dpt[3][4]+Fq124*dpt[3][7]+Fq131*dpt[3][10]+Fq17*dpt[3][2]+Fs141*Dz413-dpt[1][10]*(Fq231*S31+Fq331*C31)-dpt[1][2]*(Fq27
+ *S7+Fq37*C7)-dpt[1][4]*(Fq216*S14+Fq316*C14)-dpt[1][7]*(Fq224*S22+Fq324*C22);
+Cq36 = -trq[3][13]-trq[3][30]-trq[3][37]-trq[3][38]-trq[3][39]-trq[3][40]-trq[3][6]+Cq341+q[13]*frc[1][13]+q[30]*
+ frc[1][30]+q[37]*frc[1][37]+q[38]*frc[1][38]+q[39]*frc[1][39]+q[40]*frc[1][40]-In[1][6]*OM16*OM26+In[5][6]*OM16*OM26+
+ In[9][6]*OMp36-frc[2][13]*dpt[1][3]-frc[2][30]*dpt[1][8]-frc[2][37]*dpt[1][15]-frc[2][38]*dpt[1][15]-frc[2][39]*dpt[1][16]-
+ frc[2][40]*dpt[1][16]+Cq215*S14+Cq223*S22+Cq231*S31+Cq27*S7+Cq314*C14+Cq322*C22+Cq331*C31+Cq37*C7-Fq116*dpt[2][4]-Fq124*
+ dpt[2][7]-Fq131*dpt[2][10]-Fq17*dpt[2][2]-Fs141*dpt[2][17]+dpt[1][10]*(Fq231*C31-Fq331*S31)+dpt[1][2]*(Fq27*C7-Fq37*S7)+
+ dpt[1][4]*(Fq216*C14-Fq316*S14)+dpt[1][7]*(Fq224*C22-Fq324*S22);
 Fq15 = Fq16*C6-Fq26*S6;
 Fq25 = Fq16*S6+Fq26*C6;
 Cq15 = Cq16*C6-Cq26*S6;
@@ -745,6 +758,7 @@ Qq[37] = -frc[2][37];
 Qq[38] = -frc[2][38];
 Qq[39] = -frc[2][39];
 Qq[40] = -frc[2][40];
+Qq[41] = Fs341;
 
 // Number of continuation lines = 5
 

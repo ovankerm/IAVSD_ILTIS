@@ -10,11 +10,11 @@
 //
 //	http://www.robotran.be 
 //
-//	==> Generation Date: Sun Jan  8 12:30:34 2023
+//	==> Generation Date: Sun Jan  8 13:26:38 2023
 //
 //	==> Project name: Jeep
 //
-//	==> Number of joints: 40
+//	==> Number of joints: 41
 //
 //	==> Function: F7 - Link Forces (1D)
 //
@@ -75,6 +75,10 @@ S25 = sin(q[25]);
 C25 = cos(q[25]);
 S26 = sin(q[26]);
 C26 = cos(q[26]);
+ 
+// Augmented Joint Position Vectors
+
+Dz413 = q[41]+dpt[3][17];
  
 // Augmented Joint Position Vectors
 

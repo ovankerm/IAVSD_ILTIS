@@ -16,6 +16,7 @@
 #include "set_output.h"
 #include "mbs_dirdyn_struct.h"
 #include "user_all_id.h"
+#include "mbs_sensor.h"
 #include "mbs_sensor_Jeep.h"
 
 
@@ -45,11 +46,11 @@ void user_dirdyn_init(MbsData *mbs_data, MbsDirdyn *mbs_dd)
  */
 void user_dirdyn_loop(MbsData *mbs_data, MbsDirdyn *mbs_dd)
 {
-    if (mbs_data->process == 5) {
+    if (mbs_data->process == 3) {
 
         int id = Sensor_Conducteur_id;
         
-        // retrieve the pointer to the sensor structure defined in mbs_aux
+        //retrieve the pointer to the sensor structure defined in mbs_aux
         MbsSensor *PtrSensor = mbs_dd->mbs_aux->psens;
         
         // compute the sensor (position, velocity...)
@@ -59,7 +60,8 @@ void user_dirdyn_loop(MbsData *mbs_data, MbsDirdyn *mbs_dd)
         set_output(PtrSensor->A[1], "Horizontal_Acc");
         set_output(PtrSensor->A[2], "Lateral_Acc");
         set_output(PtrSensor->A[3], "Vertical_Acc");
-    }
+        
+    }  
         
 
 

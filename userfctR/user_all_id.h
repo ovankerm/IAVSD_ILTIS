@@ -8,11 +8,7 @@
  *
  * Universite catholique de Louvain, Belgium 
  *
-<<<<<<< HEAD
- * Last update : Sun Jan  8 00:07:44 2023
-=======
- * Last update : Sat Jan  7 15:49:09 2023
->>>>>>> 9cda43ee1ecf2f0d9951ae98a5b324420acf02bd
+ * Last update : Sun Jan  8 13:26:31 2023
  * --------------------------------------------------------
  *
  */

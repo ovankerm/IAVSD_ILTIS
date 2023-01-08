@@ -10,11 +10,11 @@
 //
 //	http://www.robotran.be 
 //
-//	==> Generation Date: Sun Jan  8 12:30:34 2023
+//	==> Generation Date: Sun Jan  8 13:26:38 2023
 //
 //	==> Project name: Jeep
 //
-//	==> Number of joints: 40
+//	==> Number of joints: 41
 //
 //	==> Function: F6 - Sensors Kinematics
 //
@@ -96,6 +96,10 @@ S35 = sin(q[35]);
 C35 = cos(q[35]);
 S36 = sin(q[36]);
 C36 = cos(q[36]);
+ 
+// Augmented Joint Position Vectors
+
+Dz413 = q[41]+dpt[3][17];
  
 // Augmented Joint Position Vectors
 
@@ -6808,6 +6812,99 @@ sens->A[3] = ACcp40_37;
 sens->OMP[1] = OPcp40_16;
 sens->OMP[2] = OPcp40_26;
 sens->OMP[3] = OPcp40_36;
+
+break;
+
+case 41:
+
+ROcp41_45 = S4*S5;
+ROcp41_65 = C4*S5;
+ROcp41_75 = S4*C5;
+ROcp41_95 = C4*C5;
+ROcp41_16 = ROcp41_45*S6+C4*C6;
+ROcp41_26 = C5*S6;
+ROcp41_36 = ROcp41_65*S6-S4*C6;
+ROcp41_46 = ROcp41_45*C6-C4*S6;
+ROcp41_56 = C5*C6;
+ROcp41_66 = ROcp41_65*C6+S4*S6;
+OMcp41_15 = qd[5]*C4;
+OMcp41_35 = -qd[5]*S4;
+OPcp41_15 = qdd[5]*C4-qd[4]*qd[5]*S4;
+OPcp41_35 = -qdd[5]*S4-qd[4]*qd[5]*C4;
+OMcp41_16 = OMcp41_15+ROcp41_75*qd[6];
+OMcp41_26 = qd[4]-qd[6]*S5;
+OMcp41_36 = OMcp41_35+ROcp41_95*qd[6];
+OPcp41_16 = OPcp41_15+ROcp41_75*qdd[6]+qd[6]*(OMcp41_35*S5+ROcp41_95*qd[4]);
+OPcp41_26 = qdd[4]-qdd[6]*S5+qd[6]*(-OMcp41_15*ROcp41_95+OMcp41_35*ROcp41_75);
+OPcp41_36 = OPcp41_35+ROcp41_95*qdd[6]+qd[6]*(-OMcp41_15*S5-ROcp41_75*qd[4]);
+RLcp41_17 = ROcp41_46*dpt[2][17]+ROcp41_75*Dz413;
+RLcp41_27 = ROcp41_56*dpt[2][17]-Dz413*S5;
+RLcp41_37 = ROcp41_66*dpt[2][17]+ROcp41_95*Dz413;
+POcp41_17 = RLcp41_17+q[1];
+POcp41_27 = RLcp41_27+q[2];
+POcp41_37 = RLcp41_37+q[3];
+JTcp41_17_5 = RLcp41_27*S4;
+JTcp41_27_5 = -RLcp41_17*S4-RLcp41_37*C4;
+JTcp41_37_5 = RLcp41_27*C4;
+JTcp41_17_6 = -RLcp41_27*ROcp41_95-RLcp41_37*S5;
+JTcp41_27_6 = RLcp41_17*ROcp41_95-RLcp41_37*ROcp41_75;
+JTcp41_37_6 = RLcp41_17*S5+RLcp41_27*ROcp41_75;
+ORcp41_17 = OMcp41_26*RLcp41_37-OMcp41_36*RLcp41_27;
+ORcp41_27 = -OMcp41_16*RLcp41_37+OMcp41_36*RLcp41_17;
+ORcp41_37 = OMcp41_16*RLcp41_27-OMcp41_26*RLcp41_17;
+VIcp41_17 = ORcp41_17+qd[1]+ROcp41_75*qd[41];
+VIcp41_27 = ORcp41_27+qd[2]-qd[41]*S5;
+VIcp41_37 = ORcp41_37+qd[3]+ROcp41_95*qd[41];
+ACcp41_17 = qdd[1]+OMcp41_26*ORcp41_37-OMcp41_36*ORcp41_27+OPcp41_26*RLcp41_37-OPcp41_36*RLcp41_27+ROcp41_75*qdd[41]+(2.0)*
+ qd[41]*(OMcp41_26*ROcp41_95+OMcp41_36*S5);
+ACcp41_27 = qdd[2]-OMcp41_16*ORcp41_37+OMcp41_36*ORcp41_17-OPcp41_16*RLcp41_37+OPcp41_36*RLcp41_17-qdd[41]*S5+(2.0)*qd[41]*
+ (-OMcp41_16*ROcp41_95+OMcp41_36*ROcp41_75);
+ACcp41_37 = qdd[3]+OMcp41_16*ORcp41_27-OMcp41_26*ORcp41_17+OPcp41_16*RLcp41_27-OPcp41_26*RLcp41_17+ROcp41_95*qdd[41]+(2.0)*
+ qd[41]*(-OMcp41_16*S5-OMcp41_26*ROcp41_75);
+sens->P[1] = POcp41_17;
+sens->P[2] = POcp41_27;
+sens->P[3] = POcp41_37;
+sens->R[1][1] = ROcp41_16;
+sens->R[1][2] = ROcp41_26;
+sens->R[1][3] = ROcp41_36;
+sens->R[2][1] = ROcp41_46;
+sens->R[2][2] = ROcp41_56;
+sens->R[2][3] = ROcp41_66;
+sens->R[3][1] = ROcp41_75;
+sens->R[3][2] = -S5;
+sens->R[3][3] = ROcp41_95;
+sens->V[1] = VIcp41_17;
+sens->V[2] = VIcp41_27;
+sens->V[3] = VIcp41_37;
+sens->OM[1] = OMcp41_16;
+sens->OM[2] = OMcp41_26;
+sens->OM[3] = OMcp41_36;
+sens->J[1][1] = (1.0);
+sens->J[1][4] = RLcp41_37;
+sens->J[1][5] = JTcp41_17_5;
+sens->J[1][6] = JTcp41_17_6;
+sens->J[1][41] = ROcp41_75;
+sens->J[2][2] = (1.0);
+sens->J[2][5] = JTcp41_27_5;
+sens->J[2][6] = JTcp41_27_6;
+sens->J[2][41] = -S5;
+sens->J[3][3] = (1.0);
+sens->J[3][4] = -RLcp41_17;
+sens->J[3][5] = JTcp41_37_5;
+sens->J[3][6] = JTcp41_37_6;
+sens->J[3][41] = ROcp41_95;
+sens->J[4][5] = C4;
+sens->J[4][6] = ROcp41_75;
+sens->J[5][4] = (1.0);
+sens->J[5][6] = -S5;
+sens->J[6][5] = -S4;
+sens->J[6][6] = ROcp41_95;
+sens->A[1] = ACcp41_17;
+sens->A[2] = ACcp41_27;
+sens->A[3] = ACcp41_37;
+sens->OMP[1] = OPcp41_16;
+sens->OMP[2] = OPcp41_26;
+sens->OMP[3] = OPcp41_36;
 
 break;
 
