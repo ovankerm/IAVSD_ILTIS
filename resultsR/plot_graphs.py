@@ -25,7 +25,7 @@ x = np.linspace(0.97, 5.97, 2000)
 y = 0.1 * (1 - np.cos(2 * np.pi * (x - 0.97) / 5)) * 1000
 
 # ==============================================================================
-# Bumpy Road, Take me home, ...
+# Bumpy Road, Take me home, ... To belgium
 # ==============================================================================
 
 
@@ -44,10 +44,10 @@ plt.title('10m/s')
 plt.savefig('Belgian_10m_s.png',dpi = 600) """
  
 
-""" plt.figure("5m/s")
-hor_acc5 = np.loadtxt('Belgian_road_5m_s_Horizontal_Acc.res')
-lat_acc5 = np.loadtxt('Belgian_road_5m_s_Lateral_Acc.res')
-vert_acc5 = np.loadtxt('Belgian_road_5m_s_Vertical_Acc.res')
+""" plt.figure("3m/s")
+hor_acc5 = np.loadtxt('Belgian_road_3m_s_Horizontal_Acc.res')
+lat_acc5 = np.loadtxt('Belgian_road_3m_s_Lateral_Acc.res')
+vert_acc5 = np.loadtxt('Belgian_road_3m_s_Vertical_Acc.res')
 plt.figure('Test')
 plt.plot(np.linspace(0,5,len(vert_acc5[:,1])),vert_acc5[:,1],'k-', label = 'vertical' )
 plt.plot(np.linspace(0,5,len(hor_acc5[:,1])),hor_acc5[:,1],'k--', label = 'horizontal')
@@ -71,7 +71,7 @@ plt.ylabel(r"Acceleration $\frac{m}{s^2}$")
 plt.title('15m/s')
 plt.savefig('Belgian_15m_s.png',dpi = 600) """
 
-plt.figure("Big3m/s")
+""" plt.figure("Big3m/s")
 hor_acc_big = np.loadtxt('Belgian_road__Big_3m_s__Horizontal_Acc.res')
 lat_acc_big = np.loadtxt('Belgian_road__Big_3m_s__Lateral_Acc.res')
 vert_acc_big = np.loadtxt('Belgian_road__Big_3m_s__Vertical_Acc.res')
@@ -82,12 +82,12 @@ plt.legend()
 plt.xlabel('time [s]')
 plt.ylabel(r"Acceleration $\frac{m}{s^2}$")
 plt.title('3m/s')
-plt.savefig('Belgian_Big_3m_s.png',dpi = 600)
+plt.savefig('Belgian_Big_3m_s.png',dpi = 600) """
 
-""" plt.figure('Forces3m/s')
-F_3m_s = np.loadtxt('Belgian_road_5m_s_Ground_Forces.res')
-F_3m_s_FL = F_3m_s[:,1]
-F_3m_s_RL = F_3m_s[:,4]
+plt.figure('Forces3m/s')
+F_3m_s = np.loadtxt('Belgian_road_3m_s_Ground_Forces.res')
+F_3m_s_FL = F_3m_s[:,2]
+F_3m_s_RL = F_3m_s[:,3]
 
 plt.plot(np.linspace(0,5,len(F_3m_s[:,1])),F_3m_s_FL,'k-', label = 'Front Left' )
 plt.plot(np.linspace(0,5,len(F_3m_s[:,1])),F_3m_s_RL,'k--', label = 'Rear Left' )
@@ -100,8 +100,8 @@ plt.savefig('Belgian_Force_3m_s',dpi = 600)
 
 plt.figure('Forces10m/s')
 F_10m_s = np.loadtxt('Belgian_road_10m_s_Ground_Forces.res')
-F_10m_s_FL = F_10m_s[100:,1]  #Démarrage a 100 car parasite en 0...
-F_10m_s_RL = F_10m_s[100:,4]
+F_10m_s_FL = F_10m_s[100:,2]  #Démarrage a 100 car parasite en 0...
+F_10m_s_RL = F_10m_s[100:,3]
 
 plt.plot(np.linspace(0,1.7,len(F_10m_s[100:,1])),F_10m_s_FL,'k-', label = 'Front Left' )
 plt.plot(np.linspace(0,1.7,len(F_10m_s[100:,1])),F_10m_s_RL,'k--', label = 'Rear Left' )
@@ -114,8 +114,8 @@ plt.savefig('Belgian_Force_10m_s',dpi = 600)
 
 plt.figure('Forces15m/s')
 F_15m_s = np.loadtxt('Belgian_road_15m_s_Ground_Forces.res')
-F_15m_s_FL = F_15m_s[100:,1]
-F_15m_s_RL = F_15m_s[100:,4]
+F_15m_s_FL = F_15m_s[100:,2]
+F_15m_s_RL = F_15m_s[100:,3]
 
 plt.plot(np.linspace(0,1.2,len(F_15m_s[100:,1])),F_15m_s_FL,'k-', label = 'Front Left' )
 plt.plot(np.linspace(0,1.2,len(F_15m_s[100:,1])),F_15m_s_RL,'k--', label = 'Rear Left' )
@@ -123,7 +123,7 @@ plt.legend()
 plt.xlabel('time [s]')
 plt.ylabel("Force[N]")
 plt.title('15m/s')
-plt.savefig('Belgian_Force_15m_s',dpi = 600) """
+plt.savefig('Belgian_Force_15m_s',dpi = 600)
 
 
 # ==============================================================================

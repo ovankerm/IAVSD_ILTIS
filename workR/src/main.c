@@ -240,7 +240,7 @@ int main(int argc, char const *argv[])
     /***********************
         Test PID
     ************************/
-   /*
+   
     mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 0;
@@ -292,8 +292,6 @@ int main(int argc, char const *argv[])
 
     mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
 
-    */
-
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     /*                  Belgian road 5m/s    50cm Hole          *
@@ -308,25 +306,24 @@ int main(int argc, char const *argv[])
     mbs_set_qu(mbs_data,1);
     mbs_set_qu(mbs_data,2);
     mbs_set_qu(mbs_data,6);
-    mbs_data->qd[1] = 5;
+    mbs_data->qd[1] = 15;
     mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
     mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
     mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
     mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
-    mbs_data->user_model->Status.Bump = 1;
-    mbs_data->user_model->Status.Bump = 1;
+    mbs_data->user_model->Status.Bump = 0;
     mbs_data->user_model->Status.Simple_contact = 0;
-    mbs_data->user_model->Status.Belgian_road = 0; 
+    mbs_data->user_model->Status.Belgian_road = 1; 
 
     mbs_dirdyn = mbs_new_dirdyn(mbs_data);
 
     // dirdyn options: about output data
-    mbs_dirdyn->options->resfilename = "Belgian_road_5m_s";
+    mbs_dirdyn->options->resfilename = "Belgian_road_15m_s";
     mbs_dirdyn->options->show_failed_closure = 1;
     mbs_dirdyn->options->save2file = 1;
     mbs_dirdyn->options->verbose = 0;
     // dirdyn options: about integration time
-    mbs_dirdyn->options->tf  = 5;
+    mbs_dirdyn->options->tf  = 1.;
     mbs_dirdyn->options->dt0 = 1e-3;
     // dirdyn options: about integrator
     mbs_dirdyn->options->integrator = Dopri5;
@@ -375,8 +372,6 @@ int main(int argc, char const *argv[])
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
 
     mbs_delete_dirdyn(mbs_dirdyn, mbs_data);  */
-
-    */
 
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

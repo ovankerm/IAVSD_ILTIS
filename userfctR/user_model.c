@@ -8,11 +8,15 @@
  *
  * Universite catholique de Louvain, Belgium 
  *
+<<<<<<< Updated upstream
 <<<<<<< HEAD
  * Last update : Sun Jan  8 21:56:29 2023
 =======
  * Last update : Sun Jan  8 13:26:31 2023
 >>>>>>> 4e3c68237ce49cc63248a517797502ff720fc3d5
+=======
+ * Last update : Sun Jan  8 22:23:48 2023
+>>>>>>> Stashed changes
  * --------------------------------------------------------
  *
  */
@@ -76,6 +80,9 @@ UserModel* mbs_new_user_model()
     um->PID.e_sum = 0.0;
     um->PID.e_prev = 0.0;
  
+    um->Nid_De_Poule.Height = 0.0;
+    um->Nid_De_Poule.Width = 0.0;
+ 
     return um;
 }
 
@@ -133,6 +140,9 @@ void mbs_delete_user_model(UserModel* um)
     um->PID.e_sum = mbs_infos->user_models->user_model_list[5]->parameter_list[3]->value_list[1];
     um->PID.e_prev = mbs_infos->user_models->user_model_list[5]->parameter_list[4]->value_list[1];
  
+    um->Nid_De_Poule.Height = mbs_infos->user_models->user_model_list[6]->parameter_list[0]->value_list[1];
+    um->Nid_De_Poule.Width = mbs_infos->user_models->user_model_list[6]->parameter_list[1]->value_list[1];
+ 
 }
 
  void mbs_bind_user_model(MbsInfos* mbs_infos, UserModel* um) 
@@ -177,6 +187,9 @@ void mbs_delete_user_model(UserModel* um)
     mbs_infos->user_models->user_model_list[5]->parameter_list[2]->val_ptr = &um->PID.Ki;
     mbs_infos->user_models->user_model_list[5]->parameter_list[3]->val_ptr = &um->PID.e_sum;
     mbs_infos->user_models->user_model_list[5]->parameter_list[4]->val_ptr = &um->PID.e_prev;
+ 
+    mbs_infos->user_models->user_model_list[6]->parameter_list[0]->val_ptr = &um->Nid_De_Poule.Height;
+    mbs_infos->user_models->user_model_list[6]->parameter_list[1]->val_ptr = &um->Nid_De_Poule.Width;
  
 }
  
@@ -225,11 +238,14 @@ void mbs_delete_user_model(UserModel* um)
     printf("user_model->PID.e_sum=%f\n", um->PID.e_sum);
     printf("user_model->PID.e_prev=%f\n", um->PID.e_prev);
  
+    printf("user_model->Nid_De_Poule.Height=%f\n", um->Nid_De_Poule.Height);
+    printf("user_model->Nid_De_Poule.Width=%f\n", um->Nid_De_Poule.Width);
+ 
 }
  
 void mbs_get_user_model_size(int *n_user_model) 
 {
-    *n_user_model  = 6; 
+    *n_user_model  = 7; 
 }
  
 void mbs_get_user_model_list(int *user_model_list) 
@@ -240,6 +256,7 @@ void mbs_get_user_model_list(int *user_model_list)
     user_model_list[4]  = 8; 
     user_model_list[5]  = 8; 
     user_model_list[6]  = 5; 
+    user_model_list[7]  = 2; 
 
 }
 
