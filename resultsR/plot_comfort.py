@@ -16,16 +16,14 @@ from colorama import init
 
 import os
 
-os.chdir('/Users/martinservais/Documents/GitHub/IAVSD_ILTIS/resultsR')
+#os.chdir('/Users/martinservais/Documents/GitHub/IAVSD_ILTIS/resultsR')
 
 ###### INFORMATION & OPTIONS ######
 init()
 
-resampling= 0
 
 displayplt2 = (input('Display Primary plots?[y for yes,n for no]')=='y')
 displayplt1 = (input('Display Secondary plots?[y for yes,n for no]')=='y')
-print('Resampling is ON') if resampling else print('Resampling is OFF')
 savefig = False
 
 
@@ -65,9 +63,9 @@ if(displayplt1):
 
 ###### READ FILE & EXTRACT DATA  ######
 
-vert_acc = np.loadtxt('Belgian_road_15m_s_Vertical_Acc.res')
-hor_acc = np.loadtxt('Belgian_road_15m_s_Horizontal_Acc.res')
-lat_acc = np.loadtxt('Belgian_road_15m_s_Lateral_Acc.res')
+vert_acc = np.loadtxt('Comfort_analysis_8m_s_Vertical_Acc.res')
+hor_acc = np.loadtxt('Comfort_analysis_8m_s_Horizontal_Acc.res')
+lat_acc = np.loadtxt('Comfort_analysis_8m_s_Lateral_Acc.res')
 
 x = hor_acc[:,1]
 y = lat_acc[:,1]
@@ -88,45 +86,10 @@ timevar = np.var(time)
 
 fs = np.floor(freqmean)
 print(f'Frequency Mean: {freqmean:.2f} Hz\nTime Variance:  {timevar:.2f}')
-print(f'Resampling frequency : {fs} Hz'+ (colored('\n/!\\ Caution! Sampling frequency is too low. Please use a better device','red') if fs<201 else ''))
 print(f'Measurement duration : {time[-1]} s')
 
 
-
-###### UNIFORM RESAMPLING #######
-resampfx = spi.interp1d(time, x)
-resampfy = spi.interp1d(time, y)
-resampfz = spi.interp1d(time, z)
-resamptime = np.arange(0 , time[-1] , 1/fs)
-time = time[0:len(resamptime)]
-x = x[0:len(resamptime)]
-y = y[0:len(resamptime)]
-z = z[0:len(resamptime)]
-resampx = resampfx(resamptime)
-resampy = resampfy(resamptime)
-resampz = resampfz(resamptime)
-
-
-
-workx = x if resampling==False else resampx
-worky = y if resampling==False else resampy
-workz = z if resampling==False else resampz
-
-if False:
-
-    zffterror = (np.abs((np.fft.fft(z))[0:z.size//2]) - np.abs((np.fft.fft(resampz))[0:resampz.size//2]))
-    freq = np.linspace(0.0, fs/(2.0), time.size//2)
-    plt.plot(freq,(np.abs((np.fft.fft(z))[0:z.size//2])),'-',freq,np.abs((np.fft.fft(resampz))[0:resampz.size//2]),freq,zffterror,'-')
-    plt.xlabel('Frequency [Hz]')
-    plt.ylabel('Amplitude [-]')
-    plt.title('Resampling error for Device 3')
-    #plt.plot(freq,zffterror,'-')
-    plt.xscale('log')
-    plt.yscale('log')
-    plt.legend(['Original signal', 'Resampled signal','Error'], loc='best')
-    plt.savefig('device3error.eps', format='eps')
-    plt.show()
-
+###### RMS #######
 
 RMS = np.sqrt(np.mean(x**2+y**2+z**2))
 print(f'RMS value of signal: {RMS:.2f} m/s^2')
@@ -136,9 +99,9 @@ print(f'RMS value of signal: {RMS:.2f} m/s^2')
 # desired cutoff frequencies (in Hz) (according to the norms, they should be 1/3 octave above and below our desired frequency study resp. 0.5 and 80.0)
 lowcut = 0.4
 highcut = fs/2-1 if fs<201 else 100.0
-xfiltered = bbf(workx, lowcut, highcut, fs, order=2)
-yfiltered = bbf(worky, lowcut, highcut, fs, order=2)
-zfiltered = bbf(workz, lowcut, highcut, fs, order=2)
+xfiltered = bbf(x, lowcut, highcut, fs, order=2)
+yfiltered = bbf(y, lowcut, highcut, fs, order=2)
+zfiltered = bbf(z, lowcut, highcut, fs, order=2)
 RMS = np.sqrt(np.mean(xfiltered**2+yfiltered**2+zfiltered**2))
 print(f'RMS value of filtered signal: {RMS:.2f} m/s^2')
 
@@ -176,9 +139,9 @@ freq = np.linspace(0.0, fs/(2.0), time.size//2)
 
 ###### APPLY COEFFICIENTS #######
 
-wkpondfunc = spi.interp1d(pondfreqs, Wk)
+wkpondfunc = spi.interp1d(pondfreqs, Wk, fill_value="extrapolate")
 wkpondcoeffs = wkpondfunc(freq)
-wdpondfunc = spi.interp1d(pondfreqs, Wd)
+wdpondfunc = spi.interp1d(pondfreqs, Wd, fill_value="extrapolate")
 wdpondcoeffs = wdpondfunc(freq)
 
 
@@ -198,7 +161,7 @@ RMStotvib =np.sqrt(np.mean(totvib**2))
 
 VDV = np.power(np.mean(totvib**4 ), 0.25)
 methodcoeff = RMStotvib/VDV/np.power(time[-1] , 0.25)
-print(methodcoeff)
+#print(methodcoeff)
 
 if(methodcoeff > 1.75):
     print('The basic method cannot be used, see ISO2631-1:1997[F] Section C.2.2.3 for more information')
@@ -231,8 +194,8 @@ if(displayplt2):
     fig2, plt2 = plt.subplots(3,3)
     fig2.tight_layout()
     fig2.suptitle('Comfort Analysis',x=0.05,y=0.995,fontsize=16)
-    plt2[0,0].plot(time, x-np.mean(x), '-', resamptime, resampx-np.mean(resampx), '-',resamptime, xfiltered, '-')
-    plt2[0,0].legend(['data (centered)', 'resampled(centered)','filtered'], loc='best')
+    plt2[0,0].plot(time, x-np.mean(x), '-', time, xfiltered, '-')
+    plt2[0,0].legend(['data (centered)','filtered'], loc='best')
     start = time[-1]/5
     #plt2[0,0].set_xlim(start,start+0.2)
     plt2[0,0].set_xlabel('Time [s]')
@@ -240,8 +203,8 @@ if(displayplt2):
     plt2[0,0].set_title('X Signal')
 
 
-    plt2[0,1].plot(time, y-np.mean(y), '-', resamptime, resampy-np.mean(resampy), '-',resamptime, yfiltered, '-')
-    plt2[0,1].legend(['data (centered)', 'resampled(centered)','filtered'], loc='best')
+    plt2[0,1].plot(time, y-np.mean(y), '-', time, yfiltered, '-')
+    plt2[0,1].legend(['data (centered)','filtered'], loc='best')
     start = time[-1]/5
     #plt2[0,1].set_xlim(start,start+0.2)
     plt2[0,1].set_xlabel('Time [s]')
@@ -249,8 +212,8 @@ if(displayplt2):
     plt2[0,1].set_title('Y Signal')
 
 
-    plt2[0,2].plot(time, z-np.mean(z), '-', resamptime, resampz-np.mean(resampz), '-',resamptime, zfiltered, '-')
-    plt2[0,2].legend(['data (centered)', 'resampled(centered)','filtered'], loc='best')
+    plt2[0,2].plot(time, z-np.mean(z), '-',time, zfiltered, '-')
+    plt2[0,2].legend(['data (centered)','filtered'], loc='best')
     start = time[-1]/5
     #plt2[0,2].set_xlim(start,start+0.2)
     plt2[0,2].set_xlabel('Time [s]')
@@ -261,9 +224,9 @@ if(displayplt2):
     def moving_average(x, w=40):
         return np.convolve(x, np.ones(w), 'same') / w
 
-    xfft = ((np.fft.fft(workx))[0:xfiltered.size//2])
-    yfft = ((np.fft.fft(worky))[0:yfiltered.size//2])
-    zfft = ((np.fft.fft(workz))[0:zfiltered.size//2])
+    xfft = ((np.fft.fft(x))[0:xfiltered.size//2])
+    yfft = ((np.fft.fft(y))[0:yfiltered.size//2])
+    zfft = ((np.fft.fft(z))[0:zfiltered.size//2])
     freq = np.linspace(0.0, fs/(2.0), time.size//2)
 
     plt2[1,0].plot(freq,abs(xfft),freq[w:],moving_average(abs(xfft))[w:])
@@ -370,8 +333,8 @@ if(displayplt2):
     fig2, plt2 = plt.subplots(3,3)
     fig2.tight_layout()
     fig2.suptitle('Health Analysis',x=0.05,y=0.995, fontsize=16)
-    plt2[0,0].plot(time, x-np.mean(x), '-', resamptime, resampx-np.mean(resampx), '-',resamptime, xfiltered, '-')
-    plt2[0,0].legend(['data (centered)', 'resampled(centered)','filtered'], loc='best')
+    plt2[0,0].plot(time, x-np.mean(x), '-',time, xfiltered, '-')
+    plt2[0,0].legend(['data (centered)', 'filtered'], loc='best')
     start = time[-1]/5
     #plt2[0,0].set_xlim(start,start+0.2)
     plt2[0,0].set_xlabel('Time [s]')
@@ -379,8 +342,8 @@ if(displayplt2):
     plt2[0,0].set_title('X Signal')
 
 
-    plt2[0,1].plot(time, y-np.mean(y), '-', resamptime, resampy-np.mean(resampy), '-',resamptime, yfiltered, '-')
-    plt2[0,1].legend(['data (centered)', 'resampled(centered)','filtered'], loc='best')
+    plt2[0,1].plot(time, y-np.mean(y), '-',time, yfiltered, '-')
+    plt2[0,1].legend(['data (centered)','filtered'], loc='best')
     start = time[-1]/5
     #plt2[0,1].set_xlim(start,start+0.2)
     plt2[0,1].set_xlabel('Time [s]')
@@ -388,8 +351,8 @@ if(displayplt2):
     plt2[0,1].set_title('Y Signal')
 
 
-    plt2[0,2].plot(time, z-np.mean(z), '-', resamptime, resampz-np.mean(resampz), '-',resamptime, zfiltered, '-')
-    plt2[0,2].legend(['data (centered)', 'resampled(centered)','filtered'], loc='best')
+    plt2[0,2].plot(time, z-np.mean(z), '-', time, zfiltered, '-')
+    plt2[0,2].legend(['data (centered)', 'filtered'], loc='best')
     start = time[-1]/5
     #plt2[0,2].set_xlim(start,start+0.2)
     plt2[0,2].set_xlabel('Time [s]')
@@ -400,9 +363,9 @@ if(displayplt2):
     def moving_average(x, w=40):
         return np.convolve(x, np.ones(w), 'same') / w
 
-    xfft = ((np.fft.fft(workx))[0:xfiltered.size//2])
-    yfft = ((np.fft.fft(worky))[0:yfiltered.size//2])
-    zfft = ((np.fft.fft(workz))[0:zfiltered.size//2])
+    xfft = ((np.fft.fft(x))[0:xfiltered.size//2])
+    yfft = ((np.fft.fft(y))[0:yfiltered.size//2])
+    zfft = ((np.fft.fft(z))[0:zfiltered.size//2])
     freq = np.linspace(0.0, fs/(2.0), time.size//2)
 
     plt2[1,0].plot(freq,abs(xfft),freq[w:],moving_average(abs(xfft))[w:])
