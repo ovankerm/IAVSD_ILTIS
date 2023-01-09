@@ -16,7 +16,7 @@ from colorama import init
 
 import os
 
-os.chdir('/Users/martinservais/Documents/GitHub/IAVSD_ILTIS/resultsR')
+os.chdir('/Users/vankermotis/Documents/MBProjects/IAVSD_ILTIS/resultsR')
 
 ###### INFORMATION & OPTIONS ######
 init()
@@ -65,15 +65,17 @@ if(displayplt1):
 
 ###### READ FILE & EXTRACT DATA  ######
 
-vert_acc = np.loadtxt('Belgian_road_15m_s_Vertical_Acc.res')
-hor_acc = np.loadtxt('Belgian_road_15m_s_Horizontal_Acc.res')
-lat_acc = np.loadtxt('Belgian_road_15m_s_Lateral_Acc.res')
+qdd = np.loadtxt('Bumpy_10m_s_Simple_contact_qdd.res')
 
-x = hor_acc[:,1]
-y = lat_acc[:,1]
-z = vert_acc[:,1]
+# vert_acc = np.loadtxt('Belgian_road_15m_s_qdd.res')[:, 3]
+# hor_acc = np.loadtxt('Belgian_road_15m_s_Horizontal_Acc.res')
+# lat_acc = np.loadtxt('Belgian_road_15m_s_Lateral_Acc.res')
 
-time = lat_acc[:, 0]
+x = qdd[:, 1]
+y = qdd[:, 2]
+z = qdd[:, 3]
+
+time = qdd[:, 0]
 
 
 ###### TIME VECTOR ANALYSIS ######

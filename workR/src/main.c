@@ -240,7 +240,7 @@ int main(int argc, char const *argv[])
     /***********************
         Test PID
     ************************/
-   
+    /*
     mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 0;
@@ -290,8 +290,8 @@ int main(int argc, char const *argv[])
 
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
 
-    mbs_delete_dirdyn(mbs_dirdyn, mbs_data); 
-
+    mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
+    */
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     /*                  Belgian road 15m/s    50cm Hole          *
@@ -313,17 +313,27 @@ int main(int argc, char const *argv[])
     mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
     mbs_data->user_model->Status.Bump = 0;
     mbs_data->user_model->Status.Simple_contact = 0;
-    mbs_data->user_model->Status.Belgian_road = 1; 
-    mbs_data->user_model->Nid_De_Poule.Width = 0.5; 
-    mbs_data->user_model->Nid_De_Poule.Height = 0.2;
+    mbs_data->user_model->Status.Belgian_road = 0; 
+    mbs_data->user_model->Nid_De_Poule.Width = 0; 
+    mbs_data->user_model->Nid_De_Poule.Height = 0;
     mbs_data->user_model->Nid_De_Poule.Left = 0;
-    mbs_data->user_model->Nid_De_Poule.Right = 1; 
+    mbs_data->user_model->Nid_De_Poule.Right = 0; 
+    mbs_data->user_model->Status.Bumpy = 1;
+    mbs_data->user_model->Status.PID = 0;
+    mbs_data->user_model->Status.Simple_contact = 1;
+
+
+    mbs_data->user_model->PID.Kp = 0.55;
+    mbs_data->user_model->PID.Kd = 0.3;
+    mbs_data->user_model->PID.Ki = 0.01;
+    mbs_data->user_model->PID.e_prev = mbs_data->q[Y_Chassis_id];
+    mbs_data->user_model->PID.e_sum = 0.0;
     
 
     mbs_dirdyn = mbs_new_dirdyn(mbs_data);
 
     // dirdyn options: about output data
-    mbs_dirdyn->options->resfilename = "Belgian_road_15m_s";
+    mbs_dirdyn->options->resfilename = "Bumpy_10m_s_Simple_contact";
     mbs_dirdyn->options->show_failed_closure = 1;
     mbs_dirdyn->options->save2file = 1;
     mbs_dirdyn->options->verbose = 0;
@@ -337,6 +347,213 @@ int main(int argc, char const *argv[])
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
 
     mbs_delete_dirdyn(mbs_dirdyn, mbs_data);  
+
+
+    mbs_reset_data(mbs_data);
+    mbs_data->process = 3;
+    mbs_data->m[Conducteur_id] = 0;
+    mbs_data->In[1][Conducteur_id] = 0; //Ixx
+    mbs_data->In[5][Conducteur_id] = 0; //Iyy
+    mbs_data->In[9][Conducteur_id] = 0; //Izz    
+    mbs_set_qu(mbs_data,1);
+    mbs_set_qu(mbs_data,2);
+    mbs_set_qu(mbs_data,6);
+    mbs_data->qd[1] = 10;
+    mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->user_model->Status.Bump = 0;
+    mbs_data->user_model->Status.Simple_contact = 0;
+    mbs_data->user_model->Status.Belgian_road = 0; 
+    mbs_data->user_model->Nid_De_Poule.Width = 0; 
+    mbs_data->user_model->Nid_De_Poule.Height = 0;
+    mbs_data->user_model->Nid_De_Poule.Left = 0;
+    mbs_data->user_model->Nid_De_Poule.Right = 0; 
+    mbs_data->user_model->Status.Bumpy = 1;
+    mbs_data->user_model->Status.PID = 0;
+    mbs_data->user_model->Status.Simple_contact = 0;
+
+
+    mbs_data->user_model->PID.Kp = 0.55;
+    mbs_data->user_model->PID.Kd = 0.3;
+    mbs_data->user_model->PID.Ki = 0.01;
+    mbs_data->user_model->PID.e_prev = mbs_data->q[Y_Chassis_id];
+    mbs_data->user_model->PID.e_sum = 0.0;
+    
+
+    mbs_dirdyn = mbs_new_dirdyn(mbs_data);
+
+    // dirdyn options: about output data
+    mbs_dirdyn->options->resfilename = "Bumpy_10m_s_Normal_contact";
+    mbs_dirdyn->options->show_failed_closure = 1;
+    mbs_dirdyn->options->save2file = 1;
+    mbs_dirdyn->options->verbose = 0;
+    // dirdyn options: about integration time
+    mbs_dirdyn->options->tf  = 5;
+    mbs_dirdyn->options->dt0 = 1e-3;
+    // dirdyn options: about integrator
+    mbs_dirdyn->options->integrator = Dopri5;
+    mbs_dirdyn->options->dt_max = 5e-2;
+
+    mbs_run_dirdyn(mbs_dirdyn, mbs_data);
+
+    mbs_delete_dirdyn(mbs_dirdyn, mbs_data); 
+
+     mbs_reset_data(mbs_data);
+    mbs_data->process = 3;
+    mbs_data->m[Conducteur_id] = 0;
+    mbs_data->In[1][Conducteur_id] = 0; //Ixx
+    mbs_data->In[5][Conducteur_id] = 0; //Iyy
+    mbs_data->In[9][Conducteur_id] = 0; //Izz    
+    mbs_set_qu(mbs_data,1);
+    mbs_set_qu(mbs_data,2);
+    mbs_set_qu(mbs_data,6);
+    mbs_data->qd[1] = 20;
+    mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->user_model->Status.Bump = 0;
+    mbs_data->user_model->Status.Simple_contact = 0;
+    mbs_data->user_model->Status.Belgian_road = 0; 
+    mbs_data->user_model->Nid_De_Poule.Width = 0; 
+    mbs_data->user_model->Nid_De_Poule.Height = 0;
+    mbs_data->user_model->Nid_De_Poule.Left = 0;
+    mbs_data->user_model->Nid_De_Poule.Right = 0; 
+    mbs_data->user_model->Status.Bumpy = 1;
+    mbs_data->user_model->Status.PID = 0;
+    mbs_data->user_model->Status.Simple_contact = 1;
+
+
+    mbs_data->user_model->PID.Kp = 0.55;
+    mbs_data->user_model->PID.Kd = 0.3;
+    mbs_data->user_model->PID.Ki = 0.01;
+    mbs_data->user_model->PID.e_prev = mbs_data->q[Y_Chassis_id];
+    mbs_data->user_model->PID.e_sum = 0.0;
+    
+
+    mbs_dirdyn = mbs_new_dirdyn(mbs_data);
+
+    // dirdyn options: about output data
+    mbs_dirdyn->options->resfilename = "Bumpy_20m_s_Simple_contact";
+    mbs_dirdyn->options->show_failed_closure = 1;
+    mbs_dirdyn->options->save2file = 1;
+    mbs_dirdyn->options->verbose = 0;
+    // dirdyn options: about integration time
+    mbs_dirdyn->options->tf  = 5;
+    mbs_dirdyn->options->dt0 = 1e-3;
+    // dirdyn options: about integrator
+    mbs_dirdyn->options->integrator = Dopri5;
+    mbs_dirdyn->options->dt_max = 5e-2;
+
+    mbs_run_dirdyn(mbs_dirdyn, mbs_data);
+
+    mbs_delete_dirdyn(mbs_dirdyn, mbs_data);  
+
+
+    mbs_reset_data(mbs_data);
+    mbs_data->process = 3;
+    mbs_data->m[Conducteur_id] = 0;
+    mbs_data->In[1][Conducteur_id] = 0; //Ixx
+    mbs_data->In[5][Conducteur_id] = 0; //Iyy
+    mbs_data->In[9][Conducteur_id] = 0; //Izz    
+    mbs_set_qu(mbs_data,1);
+    mbs_set_qu(mbs_data,2);
+    mbs_set_qu(mbs_data,6);
+    mbs_data->qd[1] = 20;
+    mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->user_model->Status.Bump = 0;
+    mbs_data->user_model->Status.Simple_contact = 0;
+    mbs_data->user_model->Status.Belgian_road = 0; 
+    mbs_data->user_model->Nid_De_Poule.Width = 0; 
+    mbs_data->user_model->Nid_De_Poule.Height = 0;
+    mbs_data->user_model->Nid_De_Poule.Left = 0;
+    mbs_data->user_model->Nid_De_Poule.Right = 0; 
+    mbs_data->user_model->Status.Bumpy = 1;
+    mbs_data->user_model->Status.PID = 0;
+    mbs_data->user_model->Status.Simple_contact = 0;
+
+
+    mbs_data->user_model->PID.Kp = 0.55;
+    mbs_data->user_model->PID.Kd = 0.3;
+    mbs_data->user_model->PID.Ki = 0.01;
+    mbs_data->user_model->PID.e_prev = mbs_data->q[Y_Chassis_id];
+    mbs_data->user_model->PID.e_sum = 0.0;
+    
+
+    mbs_dirdyn = mbs_new_dirdyn(mbs_data);
+
+    // dirdyn options: about output data
+    mbs_dirdyn->options->resfilename = "Bumpy_20m_s_Normal_contact";
+    mbs_dirdyn->options->show_failed_closure = 1;
+    mbs_dirdyn->options->save2file = 1;
+    mbs_dirdyn->options->verbose = 0;
+    // dirdyn options: about integration time
+    mbs_dirdyn->options->tf  = 5;
+    mbs_dirdyn->options->dt0 = 1e-3;
+    // dirdyn options: about integrator
+    mbs_dirdyn->options->integrator = Dopri5;
+    mbs_dirdyn->options->dt_max = 5e-2;
+
+    mbs_run_dirdyn(mbs_dirdyn, mbs_data);
+
+    mbs_delete_dirdyn(mbs_dirdyn, mbs_data); 
+
+
+    mbs_reset_data(mbs_data);
+    mbs_data->process = 3;
+    mbs_data->m[Conducteur_id] = 0;
+    mbs_data->In[1][Conducteur_id] = 0; //Ixx
+    mbs_data->In[5][Conducteur_id] = 0; //Iyy
+    mbs_data->In[9][Conducteur_id] = 0; //Izz    
+    mbs_set_qu(mbs_data,1);
+    mbs_set_qu(mbs_data,2);
+    mbs_set_qu(mbs_data,6);
+    mbs_data->qd[1] = 10;
+    mbs_data->qd[J_FR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_FL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.F_Rad;
+    mbs_data->qd[J_RR_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
+    mbs_data->user_model->Status.Bump = 0;
+    mbs_data->user_model->Status.Simple_contact = 0;
+    mbs_data->user_model->Status.Belgian_road = 0; 
+    mbs_data->user_model->Nid_De_Poule.Width = 0; 
+    mbs_data->user_model->Nid_De_Poule.Height = 0;
+    mbs_data->user_model->Nid_De_Poule.Left = 0;
+    mbs_data->user_model->Nid_De_Poule.Right = 0; 
+    mbs_data->user_model->Status.Bumpy = 1;
+    mbs_data->user_model->Status.PID = 1;
+    mbs_data->user_model->Status.Simple_contact = 0;
+
+
+    mbs_data->user_model->PID.Kp = 0.55;
+    mbs_data->user_model->PID.Kd = 0.3;
+    mbs_data->user_model->PID.Ki = 0.01;
+    mbs_data->user_model->PID.e_prev = mbs_data->q[Y_Chassis_id];
+    mbs_data->user_model->PID.e_sum = 0.0;
+    
+
+    mbs_dirdyn = mbs_new_dirdyn(mbs_data);
+
+    // dirdyn options: about output data
+    mbs_dirdyn->options->resfilename = "Bumpy_10m_s_Normal_contact_PID";
+    mbs_dirdyn->options->show_failed_closure = 1;
+    mbs_dirdyn->options->save2file = 1;
+    mbs_dirdyn->options->verbose = 0;
+    // dirdyn options: about integration time
+    mbs_dirdyn->options->tf  = 5;
+    mbs_dirdyn->options->dt0 = 1e-3;
+    // dirdyn options: about integrator
+    mbs_dirdyn->options->integrator = Dopri5;
+    mbs_dirdyn->options->dt_max = 5e-2;
+
+    mbs_run_dirdyn(mbs_dirdyn, mbs_data);
+
+    mbs_delete_dirdyn(mbs_dirdyn, mbs_data);
 
     
     

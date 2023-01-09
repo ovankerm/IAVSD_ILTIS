@@ -21,7 +21,6 @@
 #include "user_all_id.h"
 
 
-
 double ComputeSimpleRadialForce(double Xw, double Zw, double Kw, double Rw, double *Q, double *ng, int hole){
     double Zp;    // ground height under wheel center
     // Road profile from [2]
@@ -185,6 +184,27 @@ double ComputeRadialForce_Belgian_road(double Xw, double Zw, double Kw, double R
     }
 }
 
+double ComputeSimpleRadialForce_Bumpy(double Xw, double Yw, double Zw, double Kw, double Rw, double *Q, double *ng, int left){
+    double Zp;    // ground height under wheel center
+    // Road profile from [2]
+    if (Xw < 3.15){
+        Zp = 0;
+    } else {
+        Zp = sin(Xw)/30 + sin(Yw)/30;
+    }
+    Zp *= left ? -1 : 1;
+
+    ng[1]=0; ng[2]=0; ng[3]=1;
+
+    if (Zp <= Zw-Rw){
+        Q[1] = 0; Q[2] = 0; Q[3] = 0;
+        return 0.0;
+    } else {
+       Q[1] =Xw; Q[2] =0; Q[3] =Zp;
+       return Kw*(Zp + Rw - Zw);
+    }
+}
+
 double ComputeRadialForce_Bumpy(double Xw, double Yw, double Zw, double Kw, double Rw, double *Q, double *ng, int left)
 {
     /*
@@ -202,7 +222,7 @@ double ComputeRadialForce_Bumpy(double Xw, double Yw, double Zw, double Kw, doub
 
     if (Xw >= 3.15 ){
         Zp = sin(Xw)/30 + sin(Yw)/30;
-        slope = cos (Xw)/30 - sin(Yw)/30;
+        slope = cos (Xw)/30 + sin(Yw)/30;
         if (left){
             Zp *= -1;
             slope *= -1;

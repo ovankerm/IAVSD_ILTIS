@@ -98,8 +98,12 @@ double* user_ExtForces(double PxF[4], double RxF[4][4],
             }
 
             else if (um->Status.Bumpy) {
-                Fvert = ComputeRadialForce_Bumpy(PxF[1], PxF[2], PxF[3], K, R, P, ng, left);
+                if(um->Status.Simple_contact){
+                    Fvert = ComputeSimpleRadialForce_Bumpy(PxF[1], PxF[2], PxF[3], K, R, P, ng, left);
+                } else {
+                    Fvert = ComputeRadialForce_Bumpy(PxF[1], PxF[2], PxF[3], K, R, P, ng, left);
                 }
+            }
             else{
                 ng[1] = 0; ng[2] = 0; ng[3] = 1;
                 P[1] = PxF[1]; P[2] = PxF[2]; P[3] = 0;
