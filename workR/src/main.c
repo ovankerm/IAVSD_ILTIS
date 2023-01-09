@@ -241,7 +241,7 @@ int main(int argc, char const *argv[])
         Test PID
     ************************/
    
-    mbs_reset_data(mbs_data);
+/**    mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 0;
     mbs_data->In[1][Conducteur_id] = 0; //Ixx
@@ -344,12 +344,12 @@ int main(int argc, char const *argv[])
     /* COMFORT ANALYSIS at 8m/s                                  *
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     
-    /* mbs_reset_data(mbs_data);
+    mbs_reset_data(mbs_data);
     mbs_data->process = 3;
     mbs_data->m[Conducteur_id] = 70;
     mbs_data->In[1][Conducteur_id] = 9.858; //Ixx
-    mbs_data->In[5][Conducteur_id] = 12.258; //Iyy
-    mbs_data->In[9][Conducteur_id] = 6.183; //Izz 
+    mbs_data->In[5][Conducteur_id] = 11.258; //Iyy
+    mbs_data->In[9][Conducteur_id] = 4.317; //Izz 
     mbs_set_qu(mbs_data,1);
     mbs_set_qu(mbs_data,2);
     mbs_set_qu(mbs_data,6);
@@ -360,7 +360,12 @@ int main(int argc, char const *argv[])
     mbs_data->qd[J_RL_Wheel_id] = mbs_data->qd[1]/mbs_data->user_model->Wheels.R_Rad;
     mbs_data->user_model->Status.Bump = 0;
     mbs_data->user_model->Status.Simple_contact = 0;
+    mbs_data->user_model->Status.Bumpy = 0;
     mbs_data->user_model->Status.Belgian_road = 1; 
+    mbs_data->user_model->Nid_De_Poule.Width = 0.5; 
+    mbs_data->user_model->Nid_De_Poule.Height = 0.2;
+    mbs_data->user_model->Nid_De_Poule.Left = 0;
+    mbs_data->user_model->Nid_De_Poule.Right = 1; 
 
     mbs_dirdyn = mbs_new_dirdyn(mbs_data);
 
@@ -378,7 +383,7 @@ int main(int argc, char const *argv[])
 
     mbs_run_dirdyn(mbs_dirdyn, mbs_data);
 
-    mbs_delete_dirdyn(mbs_dirdyn, mbs_data);  */
+    mbs_delete_dirdyn(mbs_dirdyn, mbs_data); 
 
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
